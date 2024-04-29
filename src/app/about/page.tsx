@@ -11,9 +11,10 @@ const AboutPage: React.FC = () => {
           <Image
             src="/avatar.png"
             alt="caru"
+            layout="responsive"
             width={200}
             height={200}
-            className="rounded-full md:mt-0 size-52 md:size-auto"
+            className="rounded-full max-w-[300px] md:max-w-[400px]"
           />
         </div>
         <div className="flex flex-col items-center justify-center">

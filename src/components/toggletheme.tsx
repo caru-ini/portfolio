@@ -5,7 +5,20 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 
-const ToggleTheme = () => {
+interface ToggleThemeProps {
+  variant?:
+    | 'default'
+    | 'destructive'
+    | 'outline'
+    | 'secondary'
+    | 'ghost'
+    | 'link'
+    | null
+    | undefined;
+  className?: string;
+}
+
+const ToggleTheme = ({ variant = 'default', className }: ToggleThemeProps) => {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
@@ -15,8 +28,9 @@ const ToggleTheme = () => {
 
   return (
     <Button
-      variant={'ghost'}
+      variant={variant}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+      className={className}
     >
       {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </Button>

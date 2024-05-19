@@ -4,12 +4,15 @@ import { FaEnvelope } from 'react-icons/fa6';
 import { MdChevronRight } from 'react-icons/md';
 import { SiDiscord, SiGithub, SiX } from 'react-icons/si';
 import Nav from '@/components/nav';
+import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
     <main>
-      <Nav />
+      <div className='fixed top-0 left-0 p-4'>
+        <ToggleTheme variant={'outline'} />
+      </div>
       <div className='flex flex-col items-center space-y-6 justify-center min-h-[calc(100vh-74px)] flex-wrap'>
         <Image
           src='/avatar.png'

@@ -50,7 +50,7 @@ const Nav: React.FC = () => {
             Blog
           </Button>
         </Link>
-        <ToggleTheme />
+        <ToggleTheme variant={'ghost'} />
       </div>
     </nav>
   );

@@ -13,7 +13,7 @@ export default function Home() {
       <div className='fixed top-0 left-0 p-4'>
         <ToggleTheme variant={'outline'} />
       </div>
-      <div className='flex flex-col items-center space-y-6 justify-center min-h-[calc(100vh-74px)] flex-wrap'>
+      <div className='container flex flex-col items-center space-y-6 justify-center min-h-screen'>
         <Image
           src='/avatar.png'
           alt='caru'
@@ -22,7 +22,7 @@ export default function Home() {
           className='rounded-full'
         />
         <h1 className='text-4xl font-bold'>Caru</h1>
-        <Link href={'/about'}>
+        <Link href={'/about'} className='flex items-center justify-center'>
           <Button variant='secondary'>
             Check My Profile
             <MdChevronRight className='ml-2' size={24} />

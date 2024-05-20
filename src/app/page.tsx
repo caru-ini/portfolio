@@ -10,10 +10,10 @@ import { Button } from '@/components/ui/button';
 export default function Home() {
   return (
     <main>
-      <div className='fixed top-0 left-0 p-4'>
+      <div className='fixed left-0 top-0 p-4'>
         <ToggleTheme variant={'outline'} />
       </div>
-      <div className='container flex flex-col items-center space-y-6 justify-center min-h-screen'>
+      <div className='container flex min-h-screen flex-col items-center justify-center space-y-6'>
         <Image
           src='/avatar.png'
           alt='caru'
@@ -28,7 +28,7 @@ export default function Home() {
             <MdChevronRight className='ml-2' size={24} />
           </Button>
         </Link>
-        <div className='flex space-x-4 items-center'>
+        <div className='flex items-center space-x-4'>
           <Link href='https://twitter.com/caru_ini_8'>
             <SiX size={32} />
           </Link>

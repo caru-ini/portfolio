@@ -36,15 +36,15 @@ const Nav: React.FC = () => {
 
   return (
     <header>
-      <nav className='sticky z-50 flex flex-col justify-center items-center top-0 w-full h-[74px]'>
+      <nav className='sticky top-0 z-50 flex h-[74px] w-full flex-col items-center justify-center'>
         {/* desktop */}
         <div
-          className={`hidden md:flex space-x-4 py-4 px-6 border border-border transition-transform duration-300 ease-in-out w-full ${transition} justify-between items-center bg-background`}
+          className={`hidden w-full space-x-4 border border-border px-6 py-4 transition-transform duration-300 ease-in-out md:flex ${transition} items-center justify-between bg-background`}
         >
           <div className='flex items-center space-x-2'>
             <Link href='/'>
               <div
-                className={`flex items-center space-x-2 border-2 border-teal-100 rounded-md px-2 ${sourceCodePro.className} bg-slate-500 text-white text-xl`}
+                className={`flex items-center space-x-2 rounded-md border-2 border-teal-100 px-2 ${sourceCodePro.className} bg-slate-500 text-xl text-white`}
               >
                 <Terminal />
                 <span>caru.live</span>
@@ -75,9 +75,9 @@ const Nav: React.FC = () => {
           </div>
         </div>
         {/* mobile */}
-        <div className='md:hidden flex justify-between items-center w-full px-6 py-4 border-b border-border bg-background'>
+        <div className='flex w-full items-center justify-between border-b border-border bg-background px-6 py-4 md:hidden'>
           <div
-            className={`flex items-center space-x-2 border-2 border-blue-400 rounded-md px-2 ${sourceCodePro.className} bg-slate-500 text-white text-xl`}
+            className={`flex items-center space-x-2 rounded-md border-2 border-blue-400 px-2 ${sourceCodePro.className} bg-slate-500 text-xl text-white`}
           >
             <Terminal />
             <span>caru.live</span>
@@ -91,8 +91,8 @@ const Nav: React.FC = () => {
           </Button>
         </div>
         {menuOpen && (
-          <div className='fixed top-[74px] left-0 w-full h-full bg-background z-50 flex flex-col p-5'>
-            <div className='text-muted-foreground text-2xl flex flex-col space-y-4'>
+          <div className='fixed left-0 top-[74px] z-50 flex size-full flex-col bg-background p-5'>
+            <div className='flex flex-col space-y-4 text-2xl text-muted-foreground'>
               <Link
                 href='/'
                 onClick={closeMenu}
@@ -108,10 +108,10 @@ const Nav: React.FC = () => {
                 About
               </Link>
             </div>
-            <div className='flex space-x-4 justify-center items-center'>
+            <div className='flex items-center justify-center space-x-4'>
               <ToggleTheme
                 variant={'ghost'}
-                className='border border-border dark:border-gray-700 mt-5 flex-grow'
+                className='mt-5 grow border border-border dark:border-gray-700'
               />
               <Link href='https://github.com/caru-ini'>
                 <SiGithub size={24} className='mt-5' />

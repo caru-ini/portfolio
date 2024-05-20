@@ -3,11 +3,15 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { sourceCodePro } from '@/utils/font';
+import { Menu, Terminal } from 'lucide-react';
+import { SiGithub } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
 const Nav: React.FC = () => {
   const [scroll, setScroll] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
@@ -22,36 +26,98 @@ const Nav: React.FC = () => {
     };
   }, []);
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   const transition = scroll
     ? 'transform translate-y-0'
     : 'transform -translate-y-full';
 
   return (
-    <nav className='sticky z-50 flex justify-center items-center mx-auto top-0'>
+    <nav className='sticky z-50 flex flex-col justify-center items-center top-0 w-full h-[74px]'>
       {/* desktop */}
       <div
-        className={
-          'flex space-x-1 md:space-x-4 bg-secondary rounded-b-3xl py-4 px-6 border border-border transition-transform duration-300 ease-in-out ' +
-          transition
-        }
+        className={`hidden md:flex space-x-4 py-4 px-6 border border-border transition-transform duration-300 ease-in-out w-full ${transition} justify-between items-center`}
       >
-        <Link href='/'>
-          <Button variant={'link'} className='text-xl text-foreground'>
-            Home
-          </Button>
-        </Link>
-        <Link href='/about'>
-          <Button variant={'link'} className='text-xl text-foreground'>
-            About
-          </Button>
-        </Link>
-        <Link href='#'>
-          <Button variant={'link'} className='text-xl text-muted-foreground'>
-            Blog
-          </Button>
-        </Link>
-        <ToggleTheme variant={'ghost'} />
+        <div className='flex items-center space-x-2'>
+          <div
+            className={`flex items-center space-x-2 border-2 border-blue-400 rounded-md px-2 ${sourceCodePro.className} bg-slate-500 text-white text-xl`}
+          >
+            <Terminal />
+            <span>caru.live</span>
+          </div>
+          <Link href='/'>
+            <Button variant={'link'} className='text-xl text-foreground'>
+              Home
+            </Button>
+          </Link>
+          <Link href='/about'>
+            <Button variant={'link'} className='text-xl text-foreground'>
+              About
+            </Button>
+          </Link>
+          <Link href='#'>
+            <Button variant={'link'} className='text-xl text-muted-foreground'>
+              Blog
+            </Button>
+          </Link>
+        </div>
+        <div className='flex items-center space-x-4'>
+          <ToggleTheme
+            variant={'ghost'}
+            className='border border-border dark:border-gray-700'
+          />
+          <Link href='https://github.com/caru-ini'>
+            <SiGithub size={24} />
+          </Link>
+        </div>
       </div>
+      {/* mobile */}
+      <div className='md:hidden flex justify-between items-center w-full px-6 py-4 border-b border-border'>
+        <div
+          className={`flex items-center space-x-2 border-2 border-blue-400 rounded-md px-2 ${sourceCodePro.className} bg-slate-500 text-white text-xl`}
+        >
+          <Terminal />
+          <span>caru.live</span>
+        </div>
+        <Button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className='text-3xl'
+          variant={'outline'}
+        >
+          <Menu />
+        </Button>
+      </div>
+      {menuOpen && (
+        <div className='fixed top-[74px] left-0 w-full h-full bg-background bg-opacity-75 z-50 flex flex-col p-5'>
+          <div className='text-muted-foreground text-2xl flex flex-col space-y-4'>
+            <Link
+              href='/'
+              onClick={closeMenu}
+              className='hover:text-foreground'
+            >
+              Home
+            </Link>
+            <Link
+              href='/about'
+              onClick={closeMenu}
+              className='hover:text-foreground'
+            >
+              About
+            </Link>
+          </div>
+          <div className='flex space-x-4 justify-center items-center'>
+            <ToggleTheme
+              variant={'ghost'}
+              className='border border-border dark:border-gray-700 mt-5 flex-grow'
+            />
+            <Link href='https://github.com/caru-ini'>
+              <SiGithub size={24} className='mt-5' />
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };

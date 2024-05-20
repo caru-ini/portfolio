@@ -6,7 +6,7 @@ const AboutPage: React.FC = () => {
   return (
     <main>
       <Nav />
-      <div className='flex flex-col justify-center min-h-[calc(100vh-74px)] container md:max-w-[800px] space-y-5 mt-3'>
+      <div className='flex flex-col justify-center container space-y-5'>
         <div className='flex flex-col items-center justify-center'>
           <Image
             src='/avatar.png'
@@ -14,7 +14,7 @@ const AboutPage: React.FC = () => {
             layout='responsive'
             width={200}
             height={200}
-            className='rounded-full max-w-[300px] md:max-w-[400px]'
+            className='rounded-full max-w-[300px] md:max-w-[400px] mt-5'
           />
         </div>
         <div className='flex flex-col items-center justify-center'>

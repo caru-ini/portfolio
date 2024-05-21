@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { FaEnvelope } from 'react-icons/fa6';
 import { MdChevronRight } from 'react-icons/md';
 import { SiDiscord, SiGithub, SiX } from 'react-icons/si';
-import Nav from '@/components/nav';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 

@@ -9,7 +9,7 @@ import { SiGithub } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
-const Nav: React.FC = () => {
+const Header: React.FC = () => {
   const [headerHidden, setHeaderHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
@@ -126,4 +126,4 @@ const Nav: React.FC = () => {
   );
 };
 
-export default Nav;
+export default Header;

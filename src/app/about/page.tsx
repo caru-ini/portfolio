@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import Nav from '@/components/nav';
+import Header from '@/components/header';
 
 const AboutPage: React.FC = () => {
   return (
     <main>
-      <Nav />
+      <Header />
       <div className='container flex flex-col justify-center space-y-5'>
         <div className='flex flex-col items-center justify-center'>
           <Image

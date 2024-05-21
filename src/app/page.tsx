@@ -28,18 +28,21 @@ export default function Home() {
           </Button>
         </Link>
         <div className='flex items-center space-x-4'>
-          <Link href='https://twitter.com/caru_ini_8'>
+          <a href='https://twitter.com/caru_ini_8' target='_blank'>
             <SiX size={32} />
-          </Link>
-          <Link href='https://github.com/caru-ini'>
+          </a>
+          <a href='https://github.com/caru-ini'>
             <SiGithub size={32} />
-          </Link>
-          <Link href='https://discordapp.com/users/1226826654794649690'>
+          </a>
+          <a
+            href='https://discordapp.com/users/1226826654794649690'
+            target='_blank'
+          >
             <SiDiscord size={32} />
-          </Link>
-          <Link href='mailto:s1F102400392@iniad.org'>
+          </a>
+          <a href='mailto:s1F102400392@iniad.org' target='_blank'>
             <FaEnvelope size={32} />
-          </Link>
+          </a>
         </div>
       </div>
     </main>

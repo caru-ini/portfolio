@@ -74,7 +74,7 @@ const Nav: React.FC = () => {
         </div>
         {/* mobile */}
         <div
-          className={`flex w-full items-center justify-between border-b border-border bg-background px-6 py-4 transition-transform duration-300 ease-in-out md:hidden ${transition}`}
+          className={`flex w-full items-center justify-between border-b border-border bg-background/50 px-6 py-4 transition-transform duration-300 ease-in-out md:hidden ${transition} backdrop-blur-md`}
         >
           <Link href='/'>
             <div
@@ -93,7 +93,7 @@ const Nav: React.FC = () => {
           </Button>
         </div>
         {menuOpen && (
-          <div className='fixed left-0 top-[73px] z-50 flex size-full flex-col bg-background/50 p-5 backdrop-blur-xl'>
+          <div className='fixed left-0 top-[73px] z-50 flex size-full flex-col bg-background p-5 md:hidden'>
             <div className='flex flex-col space-y-4 text-2xl text-muted-foreground'>
               <Link
                 href='/'

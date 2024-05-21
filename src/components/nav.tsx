@@ -10,14 +10,14 @@ import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
 const Nav: React.FC = () => {
-  const [scroll, setScroll] = useState(true);
+  const [headerHidden, setHeaderHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 20) {
-        setScroll(false);
+        setHeaderHidden(true);
       } else {
-        setScroll(true);
+        setHeaderHidden(false);
       }
     };
     window.addEventListener('scroll', handleScroll);
@@ -30,16 +30,14 @@ const Nav: React.FC = () => {
     setMenuOpen(false);
   };
 
-  const transition = scroll
-    ? 'transform translate-y-0'
-    : 'transform -translate-y-full';
+  const transition = headerHidden && !menuOpen && 'transform -translate-y-full';
 
   return (
-    <header>
-      <nav className='sticky top-0 z-50 flex h-[74px] w-full flex-col items-center justify-center'>
+    <header className='sticky top-0 z-50'>
+      <nav className='sticky -top-1 z-50 flex h-[74px] w-full flex-col items-center justify-center'>
         {/* desktop */}
         <div
-          className={`hidden w-full space-x-4 border border-border px-6 py-4 transition-transform duration-300 ease-in-out md:flex ${transition} items-center justify-between bg-background`}
+          className={`hidden w-full items-center justify-between space-x-4 border border-border bg-background/50 px-6 py-4 backdrop-blur-xl md:flex`}
         >
           <div className='flex items-center space-x-2'>
             <Link href='/'>
@@ -75,13 +73,17 @@ const Nav: React.FC = () => {
           </div>
         </div>
         {/* mobile */}
-        <div className='flex w-full items-center justify-between border-b border-border bg-background px-6 py-4 md:hidden'>
-          <div
-            className={`flex items-center space-x-2 rounded-md border-2 border-blue-400 px-2 ${sourceCodePro.className} bg-slate-500 text-xl text-white`}
-          >
-            <Terminal />
-            <span>caru.live</span>
-          </div>
+        <div
+          className={`flex w-full items-center justify-between border-b border-border bg-background px-6 py-4 transition-transform duration-300 ease-in-out md:hidden ${transition}`}
+        >
+          <Link href='/'>
+            <div
+              className={`flex items-center space-x-2 rounded-md border-2 border-teal-100 px-2 ${sourceCodePro.className} bg-slate-500 text-xl text-white`}
+            >
+              <Terminal />
+              <span>caru.live</span>
+            </div>
+          </Link>
           <Button
             onClick={() => setMenuOpen(!menuOpen)}
             className='text-3xl'
@@ -91,7 +93,7 @@ const Nav: React.FC = () => {
           </Button>
         </div>
         {menuOpen && (
-          <div className='fixed left-0 top-[74px] z-50 flex size-full flex-col bg-background p-5'>
+          <div className='fixed left-0 top-[73px] z-50 flex size-full flex-col bg-background/50 p-5 backdrop-blur-xl'>
             <div className='flex flex-col space-y-4 text-2xl text-muted-foreground'>
               <Link
                 href='/'

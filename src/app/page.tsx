@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <main>
+    <main className='bg-gradient-to-b from-background to-teal-200/10'>
       <div className='fixed left-0 top-0 p-4'>
         <ToggleTheme variant={'outline'} />
       </div>

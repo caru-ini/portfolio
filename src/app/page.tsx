@@ -18,7 +18,8 @@ export default function Home() {
           alt='caru'
           width={200}
           height={200}
-          className='rounded-full'
+          className='select-none rounded-full'
+          draggable={false}
         />
         <h1 className='text-4xl font-bold'>Caru</h1>
         <Link href={'/about'} className='flex items-center justify-center'>

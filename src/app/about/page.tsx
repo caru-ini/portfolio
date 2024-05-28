@@ -14,7 +14,8 @@ const AboutPage: React.FC = () => {
             layout='responsive'
             width={200}
             height={200}
-            className='mt-5 max-w-[300px] rounded-full md:max-w-[400px]'
+            className='mt-5 max-w-[300px] select-none rounded-full md:max-w-[400px]'
+            draggable={false}
           />
         </div>
         <div className='flex flex-col items-center justify-center'>

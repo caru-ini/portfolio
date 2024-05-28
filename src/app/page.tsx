@@ -12,7 +12,7 @@ export default function Home() {
       <div className='fixed left-0 top-0 p-4'>
         <ToggleTheme variant={'outline'} />
       </div>
-      <div className='container flex min-h-screen flex-col items-center justify-center space-y-6'>
+      <div className='container flex min-h-svh flex-col items-center justify-center space-y-6'>
         <Image
           src='/avatar.png'
           alt='caru'

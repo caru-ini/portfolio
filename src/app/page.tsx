@@ -29,7 +29,7 @@ export default function Home() {
           </Button>
         </Link>
         <div className='flex items-center space-x-4'>
-          <a href='https://twitter.com/caru_ini_8' target='_blank'>
+          <a href='https://twitter.com/caru_ini' target='_blank'>
             <SiX size={32} />
           </a>
           <a href='https://github.com/caru-ini'>

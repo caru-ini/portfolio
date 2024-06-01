@@ -2,17 +2,13 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": "pnpm run lint"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "fmt": "prettier --write **/*.{js,jsx,ts,tsx,css,scss}",
-    "fmt:warn": "prettier --l **/*.{js,jsx,ts,tsx,css,scss}",
-    "prepare": "husky install"
+    "fmt:warn": "prettier --l **/*.{js,jsx,ts,tsx,css,scss}"
   },
   "dependencies": {
     "@next/third-parties": "^14.2.3",
@@ -37,7 +33,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "eslint-plugin-tailwindcss": "^3.15.2",
-    "husky": "^8.0.0",
     "lint-staged": "^15.2.2",
     "postcss": "^8",
     "prettier": "^3.2.5",

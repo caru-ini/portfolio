@@ -53,14 +53,6 @@ const Header: React.FC = () => {
                 About
               </Button>
             </Link>
-            <Link href='#'>
-              <Button
-                variant={'link'}
-                className='text-xl text-muted-foreground'
-              >
-                Blog
-              </Button>
-            </Link>
           </div>
           <div className='flex items-center space-x-4'>
             <ToggleTheme

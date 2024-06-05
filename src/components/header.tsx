@@ -37,7 +37,7 @@ const Header: React.FC = () => {
       <nav className='sticky -top-1 z-50 flex h-[74px] w-full flex-col items-center justify-center'>
         {/* desktop */}
         <div
-          className={`hidden w-full items-center justify-between space-x-4 border border-border bg-background/50 px-6 py-4 backdrop-blur-xl md:flex`}
+          className={`hidden w-full items-center justify-between space-x-4 border-b border-border bg-background/50 px-6 py-4 backdrop-blur-xl md:flex`}
         >
           <div className='flex items-center space-x-2'>
             <Link href='/'>

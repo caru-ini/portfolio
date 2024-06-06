@@ -19,41 +19,21 @@ const AboutPage: React.FC = () => {
           />
         </div>
         <div className='flex flex-col items-center justify-center'>
-          <div>
-            <h2 className='ml-2 text-2xl font-bold'>About Me</h2>
-            <div className='w-1/3 border-t-2 border-border' />
-            <p className='mt-5 p-2 pt-0'>
-              Caruと申します。INIAD(東洋大学情報連携学部)の8期生として学んでいます。
-              中学生の頃にプログラミングに興味を持ち、独学でpythonを学んで、discordbotなどを作成していました。
-              最近では、Reactを使ったWebアプリケーションの開発に興味を持ち、勉強しています。
-              <br />
-              サイトはNext.jsで作成しています。
-              なお、現在作成中ですので、詳しいプロフィールはGitHubをご覧ください。
-            </p>
-          </div>
-        </div>
-        <div className='flex flex-col'>
-          <div>
-            <h2 className='ml-2 text-2xl font-bold'>Skills</h2>
-            <div className='w-1/3 border-t-2 border-border' />
-            <div className='mt-5 flex flex-col'>
-              <h3 className='ml-2 text-xl font-bold'>Programming Languages</h3>
-              <ul className='mt-2 list-inside list-disc'>
-                <li>Python</li>
-                <li>JavaScript</li>
-              </ul>
+          <section className='w-full py-12 md:py-24 lg:py-32'>
+            <div className='container flex flex-col items-center justify-center space-y-12 px-4 md:px-6'>
+              <h2 className='text-3xl font-bold tracking-tighter sm:text-5xl'>
+                About Me
+              </h2>
+              <p className='mt-5 max-w-[900px] p-2 pt-0 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
+                Caruと申します。INIAD(東洋大学情報連携学部)の8期生として学んでいます。
+                中学生の頃にプログラミングに興味を持ち、独学でpythonを学んで、discordbotなどを作成していました。
+                最近では、Reactを使ったWebアプリケーションの開発に興味を持ち、勉強しています。
+                <br />
+                サイトはNext.jsで作成しています。
+                なお、現在作成中ですので、詳しいプロフィールはGitHubをご覧ください。
+              </p>
             </div>
-            <div className='mt-5 flex flex-col'>
-              <h3 className='ml-2 text-xl font-bold'>Frameworks</h3>
-              <ul className='mt-2 list-inside list-disc'>
-                <li>React</li>
-                <li>Next.js</li>
-                <li>LangChain</li>
-                <li>OpenAI API</li>
-                <li>Discord.py</li>
-              </ul>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     </main>

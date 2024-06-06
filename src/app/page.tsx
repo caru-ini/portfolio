@@ -4,9 +4,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { QrCode } from 'lucide-react';
-import { FaEnvelope } from 'react-icons/fa6';
 import { MdChevronRight } from 'react-icons/md';
-import { SiDiscord, SiGithub, SiX } from 'react-icons/si';
+import { SiDiscord, SiGithub, SiSpeakerdeck, SiX } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
@@ -66,8 +65,8 @@ export default function Home() {
           >
             <SiDiscord size={32} />
           </a>
-          <a href='mailto:s1F102400392@iniad.org' target='_blank'>
-            <FaEnvelope size={32} />
+          <a href='https://speakerdeck.com/caru'>
+            <SiSpeakerdeck size={32} />
           </a>
         </div>
       </div>

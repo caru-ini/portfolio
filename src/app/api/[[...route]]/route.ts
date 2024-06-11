@@ -33,4 +33,6 @@ app.get('/blog/posts/:id', async (c) => {
   }
 });
 
+export type AppType = typeof app;
+
 export const GET = handle(app);

@@ -9,6 +9,11 @@ import { SiGithub } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
+const links = [
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+];
+
 const Header: React.FC = () => {
   const [headerHidden, setHeaderHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,11 +53,15 @@ const Header: React.FC = () => {
                 <span>caru.live</span>
               </div>
             </Link>
-            <Link href='/about'>
-              <Button variant={'link'} className='text-xl text-foreground'>
-                About
-              </Button>
-            </Link>
+            {links.map(({ href, label }) => {
+              return (
+                <Link key={href} href={href}>
+                  <Button variant={'link'} className='text-xl text-foreground'>
+                    {label}
+                  </Button>
+                </Link>
+              );
+            })}
           </div>
           <div className='flex items-center space-x-4'>
             <ToggleTheme
@@ -94,13 +103,18 @@ const Header: React.FC = () => {
               >
                 Home
               </Link>
-              <Link
-                href='/about'
-                onClick={closeMenu}
-                className='hover:text-foreground'
-              >
-                About
-              </Link>
+              {links.map(({ href, label }) => {
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={closeMenu}
+                    className='hover:text-foreground'
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
             </div>
             <div className='flex items-center justify-center space-x-4'>
               <ToggleTheme

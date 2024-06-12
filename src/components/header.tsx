@@ -7,7 +7,7 @@ import { sourceCodePro } from '@/utils/font';
 import { Menu, Terminal } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 
 const Header: React.FC = () => {
   const [headerHidden, setHeaderHidden] = useState(false);
@@ -48,7 +48,12 @@ const Header: React.FC = () => {
                 <span>caru.live</span>
               </div>
             </Link>
-            <Link href='/about'>
+            <Link
+              href='/about'
+              className={`
+                ${buttonVariants({ variant: 'link' })} text-xl text-foreground
+              `}
+            >
               <Button variant={'link'} className='text-xl text-foreground'>
                 About
               </Button>

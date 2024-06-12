@@ -7,7 +7,7 @@ import { QrCode } from 'lucide-react';
 import { MdChevronRight } from 'react-icons/md';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
-import { Button } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -46,11 +46,12 @@ export default function Home() {
           draggable={false}
         />
         <h1 className='text-4xl font-bold'>Caru</h1>
-        <Link href={'/about'} className='flex items-center justify-center'>
-          <Button variant='secondary'>
-            Check My Profile
-            <MdChevronRight className='ml-2' size={24} />
-          </Button>
+        <Link
+          href={'/about'}
+          className={`flex items-center justify-center ${buttonVariants({ variant: 'secondary' })}`}
+        >
+          Check My Profile
+          <MdChevronRight className='ml-2' size={24} />
         </Link>
         <div className='flex items-center space-x-4'>
           <a href='https://twitter.com/caru_ini' target='_blank'>

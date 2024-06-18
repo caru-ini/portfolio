@@ -5,7 +5,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { QrCode } from 'lucide-react';
 import { MdChevronRight } from 'react-icons/md';
-import { SiDiscord, SiGithub, SiSpeakerdeck, SiX } from 'react-icons/si';
+import {
+  SiDiscord,
+  SiGithub,
+  SiSpeakerdeck,
+  SiX,
+  SiZenn,
+} from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
 import { Button, buttonVariants } from '@/components/ui/button';
 
@@ -59,6 +65,9 @@ export default function Home() {
           </a>
           <a href='https://github.com/caru-ini'>
             <SiGithub size={32} />
+          </a>
+          <a href='https://zenn.dev/caru'>
+            <SiZenn size={32} />
           </a>
           <a
             href='https://discordapp.com/users/1226826654794649690'

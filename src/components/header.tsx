@@ -50,10 +50,10 @@ const Header: React.FC = () => {
   const transition = headerHidden && !menuOpen && 'transform -translate-y-full';
 
   return (
-    <header className='sticky top-0 z-40'>
+    <header className='sticky top-0 z-40 w-full'>
       {isModalOpen && (
         <div
-          className='container fixed inset-0 z-50 flex min-h-full min-w-full items-center justify-center bg-background/50'
+          className='container fixed inset-0 z-50 flex min-h-screen min-w-full items-center justify-center bg-background/50'
           onClick={() => setIsModalOpen(false)}
         >
           <div

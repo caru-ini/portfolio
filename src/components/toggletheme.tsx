@@ -24,15 +24,13 @@ const ToggleTheme = ({ variant = 'default', className }: ToggleThemeProps) => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <></>;
-
   return (
     <Button
       variant={variant}
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       className={className}
     >
-      {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+      {mounted && theme === 'dark' ? <SunIcon /> : <MoonIcon />}
     </Button>
   );
 };

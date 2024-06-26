@@ -14,7 +14,7 @@ import { buttonVariants } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <main className='container flex min-h-[calc(100svh-74px)] flex-col items-center justify-center space-y-6 bg-gradient-to-b from-background to-teal-200/10'>
+    <main className='container flex min-h-[calc(100svh-74px)] flex-col items-center justify-center space-y-6 bg-gradient-to-b from-background'>
       <Image
         src='/avatar.png'
         alt='caru'

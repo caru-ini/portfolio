@@ -9,6 +9,11 @@ import { SiGithub } from 'react-icons/si';
 import ToggleTheme from '@/components/toggletheme';
 import { Button, buttonVariants } from '@/components/ui/button';
 
+const Links: {
+  title: string;
+  href: string;
+}[] = [];
+
 const Header: React.FC = () => {
   const [headerHidden, setHeaderHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,16 +53,13 @@ const Header: React.FC = () => {
                 <span>caru.live</span>
               </div>
             </Link>
-            <Link
-              href='/about'
-              className={`
-                ${buttonVariants({ variant: 'link' })} text-xl text-foreground
-              `}
-            >
+            {Links.map((link) => (
+              <Link href={link.href} key={link.href}>
               <Button variant={'link'} className='text-xl text-foreground'>
-                About
+                  {link.title}
               </Button>
             </Link>
+            ))}
           </div>
           <div className='flex items-center space-x-4'>
             <ToggleTheme

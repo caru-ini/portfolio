@@ -55,10 +55,10 @@ const Header: React.FC = () => {
             </Link>
             {Links.map((link) => (
               <Link href={link.href} key={link.href}>
-              <Button variant={'link'} className='text-xl text-foreground'>
+                <Button variant={'link'} className='text-xl text-foreground'>
                   {link.title}
-              </Button>
-            </Link>
+                </Button>
+              </Link>
             ))}
           </div>
           <div className='flex items-center space-x-4'>
@@ -101,13 +101,16 @@ const Header: React.FC = () => {
               >
                 Home
               </Link>
-              <Link
-                href='/about'
-                onClick={closeMenu}
-                className='hover:text-foreground'
-              >
-                About
-              </Link>
+              {Links.map((link) => (
+                <Link
+                  href={link.href}
+                  key={link.href}
+                  onClick={closeMenu}
+                  className='hover:text-foreground'
+                >
+                  {link.title}
+                </Link>
+              ))}
             </div>
             <div className='flex items-center justify-center space-x-4'>
               <ToggleTheme

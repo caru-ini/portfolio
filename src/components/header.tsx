@@ -4,9 +4,9 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { sourceCodePro } from '@/utils/font';
-import { Menu, QrCode, Terminal } from 'lucide-react';
+import { Menu, QrCode } from 'lucide-react';
 import { SiGithub } from 'react-icons/si';
+import { BrandLogo } from '@/components/brandLogo';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
 
@@ -71,12 +71,7 @@ const Header: React.FC = () => {
         >
           <div className='flex items-center space-x-2'>
             <Link href='/'>
-              <div
-                className={`flex items-center space-x-2 rounded-md border-2 border-teal-100 px-2 ${sourceCodePro.className} bg-slate-500 text-xl text-white`}
-              >
-                <Terminal />
-                <span>caru.live</span>
-              </div>
+              <BrandLogo />
             </Link>
             {renderLinks()}
           </div>
@@ -102,12 +97,7 @@ const Header: React.FC = () => {
           className={`flex w-full items-center justify-between border-b border-border bg-background/50 px-6 py-4 transition-transform duration-300 ease-in-out md:hidden ${transition} backdrop-blur-md`}
         >
           <Link href='/'>
-            <div
-              className={`flex items-center space-x-2 rounded-md border-2 border-teal-100 px-2 ${sourceCodePro.className} bg-slate-500 text-xl text-white`}
-            >
-              <Terminal />
-              <span>caru.live</span>
-            </div>
+            <BrandLogo />
           </Link>
           <Button
             onClick={() => setMenuOpen(!menuOpen)}

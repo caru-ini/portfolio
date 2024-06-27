@@ -16,16 +16,12 @@ const Links: {
 }[] = [];
 
 const Header: React.FC = () => {
-  const [headerHidden, setHeaderHidden] = useState(false);
+  const [scrollY, setScrollY] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setHeaderHidden(true);
-      } else {
-        setHeaderHidden(false);
-      }
+      setScrollY(window.scrollY);
     };
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -47,10 +43,8 @@ const Header: React.FC = () => {
     ));
   };
 
-  const transition = headerHidden && !menuOpen && 'transform -translate-y-full';
-
   return (
-    <header className='sticky top-0 z-40 w-full'>
+    <header className='fixed top-0 z-40 w-full'>
       {isModalOpen && (
         <div
           className='container fixed inset-0 z-50 flex min-h-screen min-w-full items-center justify-center bg-background/50'
@@ -67,7 +61,7 @@ const Header: React.FC = () => {
       <nav className='flex h-[74px] w-full flex-col items-center justify-center'>
         {/* desktop */}
         <div
-          className={`hidden w-full items-center justify-between space-x-4 border-b border-border bg-background/50 px-6 py-4 backdrop-blur-xl md:flex`}
+          className={`hidden w-full items-center justify-between space-x-4 border-b border-border px-6 py-4 md:flex ${scrollY <= 0 ? 'border-none bg-none' : 'bg-background/50'}`}
         >
           <div className='flex items-center space-x-2'>
             <Link href='/'>
@@ -81,8 +75,8 @@ const Header: React.FC = () => {
               className='border border-border dark:border-gray-700'
             />
             <Button
-              variant={'outline'}
-              className='flex items-center space-x-2'
+              variant={'ghost'}
+              className='flex items-center space-x-2 border border-border dark:border-gray-700'
               onClick={() => setIsModalOpen((prev) => !prev)}
             >
               <QrCode size={24} />
@@ -94,7 +88,7 @@ const Header: React.FC = () => {
         </div>
         {/* mobile */}
         <div
-          className={`flex w-full items-center justify-between border-b border-border bg-background/50 px-6 py-4 transition-transform duration-300 ease-in-out md:hidden ${transition} backdrop-blur-md`}
+          className={`flex w-full items-center justify-between border-b border-border px-6 py-4 backdrop-blur-md md:hidden ${scrollY <= 0 && !menuOpen ? 'border-none bg-none' : 'bg-background/50'}`}
         >
           <Link href='/'>
             <BrandLogo />

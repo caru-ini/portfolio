@@ -3,8 +3,7 @@
 import React, { useState } from 'react';
 import { DotGothic16 } from 'next/font/google';
 import Image from 'next/image';
-import Link from 'next/link';
-import { MdChevronRight } from 'react-icons/md';
+import { BsChevronDoubleDown } from 'react-icons/bs';
 import {
   SiDiscord,
   SiGithub,
@@ -22,7 +21,7 @@ export default function Home() {
   return (
     <main>
       {/* Hero */}
-      <div className='flex min-h-[calc(100svh-74px)] w-full flex-col items-center justify-center gap-y-6'>
+      <section className='flex h-svh w-full flex-col items-center justify-center gap-y-6 bg-gray-100 dark:bg-gray-900'>
         <div className='relative'>
           <Image
             src='/avatar.png'
@@ -81,7 +80,12 @@ export default function Home() {
             <SiSpeakerdeck size={32} />
           </a>
         </div>
-      </div>
+        {/* scroll */}
+        <div className='absolute bottom-4 flex flex-col items-center text-muted-foreground'>
+          <BsChevronDoubleDown className='animate-bounce' size={32} />
+          <span className='text-sm'>Learn more</span>
+        </div>
+      </section>
     </main>
   );
 }

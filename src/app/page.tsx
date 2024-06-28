@@ -11,9 +11,44 @@ import {
   SiX,
   SiZenn,
 } from 'react-icons/si';
-import { buttonVariants } from '@/components/ui/button';
+import Skill, { SkillProps } from '@/components/skill';
 
 const dotGothic16 = DotGothic16({ weight: '400', subsets: ['latin'] });
+
+const skills: SkillProps[] = [
+  {
+    icon: '/avatar.png',
+    title: 'React',
+    description: 'React is a JavaScript library for building user interfaces.',
+  },
+  {
+    icon: '/avatar.png',
+    title: 'Next.js',
+    description: 'Next.js is a React framework for production.',
+  },
+  {
+    icon: '/icons/typescript.svg',
+    title: 'TypeScript',
+    description: 'TypeScript is a typed superset of JavaScript.',
+  },
+  {
+    icon: '/icons/tailwindcss.svg',
+    title: 'Tailwind CSS',
+    description: 'Tailwind CSS is a utility-first CSS framework.',
+  },
+  {
+    icon: '/icons/firebase.svg',
+    title: 'Firebase',
+    description:
+      'Firebase is a platform developed by Google for creating mobile and web applications.',
+  },
+  {
+    icon: '/icons/vercel.svg',
+    title: 'Vercel',
+    description:
+      'Vercel is a cloud platform for static sites and Serverless Functions.',
+  },
+];
 
 export default function Home() {
   const [isBubbleShown, setIsBubbleShown] = useState(false);
@@ -84,6 +119,24 @@ export default function Home() {
         <div className='absolute bottom-4 flex flex-col items-center text-muted-foreground'>
           <BsChevronDoubleDown className='animate-bounce' size={32} />
           <span className='text-sm'>Learn more</span>
+        </div>
+      </section>
+      <section className='container mt-10 flex flex-col items-center justify-center gap-y-6'>
+        <h2 className='text-2xl font-bold'>About</h2>
+        <p className='text-center text-lg text-muted-foreground'>
+          はじめまして、Caruです。INIAD(東洋大学情報連携学部)に在学しています。サークルはTypeScript専門のサークル
+          INIAD.ts
+          に所属していて、日々フロントエンドエンジニアを目指して努力しています。
+          プログラミングは、中学生のときにPythonに出会い、独学で楽しんでいたのがきっかけで、高校3年のときにはWeb開発に興味を持ち、ReactやNext.jsについて学び始めました。
+          何度も挫折しながらも、最低限の知識を身につけ、現在に至ります。
+        </p>
+      </section>
+      <section className='container mt-10 flex flex-col items-center justify-center gap-y-6'>
+        <h2 className='text-2xl font-bold'>Skills</h2>
+        <div className='flex flex-wrap justify-center gap-3'>
+          {skills.map((skill, index) => (
+            <Skill key={index} {...skill} />
+          ))}
         </div>
       </section>
     </main>

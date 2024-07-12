@@ -64,7 +64,7 @@ const Header: React.FC = () => {
           className={`hidden w-full items-center justify-between space-x-4 border-b border-border px-6 py-4 backdrop-blur-md md:flex ${scrollY <= 0 ? 'border-none bg-none' : 'bg-background/50'}`}
         >
           <div className='flex items-center space-x-2'>
-            <Link href='/'>
+            <Link href='/' draggable={false}>
               <BrandLogo />
             </Link>
             {renderLinks()}

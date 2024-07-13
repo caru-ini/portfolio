@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import { ThemeProvider } from 'next-themes';
 import Header from '@/components/header';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
+import { Inter } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -20,12 +20,7 @@ export default function RootLayout({
   return (
     <html lang='ja'>
       <body className={inter.className}>
-        <ThemeProvider
-          attribute='class'
-          defaultTheme='dark'
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           <Header />
           {children}
         </ThemeProvider>

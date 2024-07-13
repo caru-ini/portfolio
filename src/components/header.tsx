@@ -1,14 +1,13 @@
 'use client';
 
-import React from 'react';
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Menu, QrCode } from 'lucide-react';
-import { SiGithub } from 'react-icons/si';
 import { BrandLogo } from '@/components/brandLogo';
 import ToggleTheme from '@/components/toggletheme';
 import { Button } from '@/components/ui/button';
+import { Menu, QrCode } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { SiGithub } from 'react-icons/si';
 
 const Links: {
   title: string;
@@ -70,10 +69,7 @@ const Header: React.FC = () => {
             {renderLinks()}
           </div>
           <div className='flex items-center space-x-4'>
-            <ToggleTheme
-              variant={'ghost'}
-              className='border border-border dark:border-gray-700'
-            />
+            <ToggleTheme variant={'ghost'} className='border border-border dark:border-gray-700' />
             <Button
               variant={'ghost'}
               className='flex items-center space-x-2 border border-border dark:border-gray-700'
@@ -93,11 +89,7 @@ const Header: React.FC = () => {
           <Link href='/'>
             <BrandLogo />
           </Link>
-          <Button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className='text-3xl'
-            variant={'outline'}
-          >
+          <Button onClick={() => setMenuOpen(!menuOpen)} className='text-3xl' variant={'outline'}>
             <Menu />
           </Button>
         </div>

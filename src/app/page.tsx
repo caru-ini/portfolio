@@ -72,11 +72,11 @@ export default function Home() {
               About Me
             </div>
             <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
-              Hi, I&apos;m Caru.
+              Hello, I&apos;m Caru😎
             </h2>
             <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-              フロントエンドエンジニアを目指している19歳の大学生です。Web開発やNLPに興味があります。プログラミングを始めたのは中学3年生のときで、
-              Pythonを使ってDiscordBotを作った始めました。
+              Caru(かる)と申します。19歳の大学生で、フロントエンドエンジニアを目指しています。Web開発やNLPに興味があります。プログラミングを始めたのは中学3年生のときで、
+              Pythonを使ってDiscordBotを作っていました。
               その後、Web開発に興味を持ち、フロントエンドエンジニアを目指すようになりました。最近は、TypeScriptやReact,
               Next.jsのお勉強をしつつ、PythonでRAG(Retrieval Augmented
               Generation)を使ってチャットボットで遊んでいます。

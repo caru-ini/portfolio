@@ -68,9 +68,7 @@ export default function Home() {
       <section className='w-full py-12 md:py-24 lg:py-32'>
         <div className='container grid items-center justify-center gap-8 px-6 md:px-10 lg:grid-cols-2 lg:gap-16'>
           <div className='space-y-4'>
-            <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground'>
-              About Me
-            </div>
+            <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm'>About Me</div>
             <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
               Hello, I&apos;m Caru😎
             </h2>
@@ -82,7 +80,7 @@ export default function Home() {
               Generation)を使ってチャットボットで遊んでいます。
             </p>
           </div>
-          <div className='grid grid-cols-2 gap-4'>
+          <div className='grid gap-4 md:grid-cols-2'>
             <div className='grid gap-2'>
               <CodeIcon className='size-8 text-primary' />
               <h3 className='text-lg font-semibold'>Web Development</h3>

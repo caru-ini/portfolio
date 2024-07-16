@@ -85,8 +85,8 @@ export default function Home() {
               <CodeIcon className='size-8 text-primary' />
               <h3 className='text-lg font-semibold'>Web Development</h3>
               <p className='text-muted-foreground'>
-                Next.js (app router, pages router), Reactを使ったフロントエンド開発が得意です。
-                最近は、HonoをAPIサーバーとして使った開発もしています。
+                主にNext.js (app router, pages router), Reactを使って開発しています。
+                TailwindCSSを使ってデザインを行っています。最近は、APIルートにHonoを使って開発しています。
               </p>
             </div>
             <div className='grid gap-2'>

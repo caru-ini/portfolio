@@ -33,7 +33,10 @@ export default function Home() {
             <div className='absolute bottom-0 left-1/2 size-3 -translate-x-1/2 translate-y-1/2 rotate-45 bg-white'></div>
           </div>
         </div>
-        <h1 className='text-4xl font-bold'>Caru</h1>
+        <div className='flex flex-col items-center'>
+          <h1 className='text-4xl font-bold'>Caru</h1>
+          <p className='text-lg text-muted-foreground'>Student / Developer</p>
+        </div>
         <div className='flex items-center space-x-4'>
           <a href='https://twitter.com/caru_ini' target='_blank' rel='noopener noreferrer'>
             <SiX size={32} />

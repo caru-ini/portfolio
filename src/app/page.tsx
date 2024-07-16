@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main>
       {/* Hero */}
-      <section className='flex h-svh w-full flex-col items-center justify-center gap-y-6 bg-gray-100 dark:bg-gray-900'>
+      <section className='flex h-svh w-full flex-col items-center justify-center gap-y-6 bg-gray-100 bg-gradient-to-b dark:from-background dark:to-cyan-950'>
         <div className='relative'>
           <Image
             src='/avatar.png'

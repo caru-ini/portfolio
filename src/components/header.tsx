@@ -43,7 +43,8 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className='fixed top-0 z-40 w-full'>
+    <header className='fixed top-0 z-40 w-full h-[74px]'>
+      {/* mobile modal menu */}
       {isModalOpen && (
         <div
           className='container fixed inset-0 z-50 flex min-h-screen min-w-full items-center justify-center bg-background/50'
@@ -57,8 +58,8 @@ const Header: React.FC = () => {
           </div>
         </div>
       )}
-      <nav className='flex h-[74px] w-full flex-col items-center justify-center'>
-        {/* desktop */}
+      {/* desktop */}
+      <nav className='flex w-full flex-col items-center justify-center'>
         <div
           className={`hidden w-full items-center justify-between space-x-4 border-b border-border px-6 py-4 backdrop-blur-md md:flex ${scrollY <= 0 ? 'border-none bg-none' : 'bg-background/50'}`}
         >

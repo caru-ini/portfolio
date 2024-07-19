@@ -43,7 +43,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className='fixed top-0 z-40 w-full h-[74px]'>
+    <header className='fixed top-0 z-40 h-[74px] w-full'>
       {/* mobile modal menu */}
       {isModalOpen && (
         <div
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
       {/* desktop */}
       <nav className='flex w-full flex-col items-center justify-center'>
         <div
-          className={`hidden w-full items-center justify-between space-x-4 border-b border-border px-6 py-4 backdrop-blur-md md:flex ${scrollY <= 0 ? 'border-none bg-none' : 'bg-background/50'}`}
+          className={`hidden w-full items-center justify-between space-x-4 border-b border-border px-6 py-4 backdrop-blur-md transition-colors duration-300 md:flex ${scrollY <= 0 ? 'border-none bg-none' : 'bg-background/50'}`}
         >
           <div className='flex items-center space-x-2'>
             <Link href='/' draggable={false}>
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
         </div>
         {/* mobile */}
         <div
-          className={`flex w-full items-center justify-between border-b border-border px-6 py-4 backdrop-blur-md md:hidden ${scrollY <= 0 && !menuOpen ? 'border-none bg-none' : 'bg-background/50'}`}
+          className={`flex w-full items-center justify-between border-b border-border px-6 py-4 backdrop-blur-md transition-colors duration-300 md:hidden ${scrollY <= 0 && !menuOpen ? 'border-none bg-none' : 'bg-background/50'}`}
         >
           <Link href='/'>
             <BrandLogo />

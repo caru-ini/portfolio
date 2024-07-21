@@ -1,3 +1,4 @@
+import { BackToPagetop } from '@/components/backToPagetop';
 import { Footer } from '@/components/footer';
 import Header from '@/components/header';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <BackToPagetop />
         </ThemeProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />

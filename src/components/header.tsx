@@ -43,7 +43,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className='fixed top-0 z-40 h-[74px] w-full'>
+    <header className='fixed top-0 z-40 box-border h-[74px] w-full'>
       {/* mobile modal menu */}
       {isModalOpen && (
         <div

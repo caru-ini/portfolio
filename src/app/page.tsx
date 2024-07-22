@@ -30,7 +30,9 @@ export default function Home() {
           <div
             className={`absolute -top-16 left-1/2 -translate-x-1/2 rounded-lg bg-white p-2 text-black shadow-md transition-opacity ease-in-out ${!isBubbleShown && 'opacity-0'}`}
           >
-            <p className={`text-xl ${dotGothic16.className} text-nowrap`}>Hello😎</p>
+            <p className={`text-xl ${dotGothic16.className} text-nowrap`}>
+              Hello<span className='text-pink-500'>♥</span>
+            </p>
             <div className='absolute bottom-0 left-1/2 size-3 -translate-x-1/2 translate-y-1/2 rotate-45 bg-white'></div>
           </div>
         </div>
@@ -68,7 +70,9 @@ export default function Home() {
       <section className='w-full py-12 md:py-24 lg:py-32'>
         <div className='container grid items-center justify-center gap-8 px-6 md:px-10 lg:grid-cols-2 lg:gap-16'>
           <div className='space-y-4'>
-            <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm'>About Me</div>
+            <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
+              About Me
+            </div>
             <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
               Hello, I&apos;m Caru😎
             </h2>

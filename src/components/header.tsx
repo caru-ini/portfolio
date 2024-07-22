@@ -28,10 +28,6 @@ const Header: React.FC = () => {
     };
   }, []);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
   const renderLinks = () => {
     return Links.map((link) => (
       <Link href={link.href} key={link.href}>

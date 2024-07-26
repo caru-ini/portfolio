@@ -18,7 +18,7 @@ export default function Home() {
       <section className='flex h-svh w-full flex-col items-center justify-center gap-y-6 bg-gray-100 bg-gradient-to-b dark:from-cyan-950 dark:to-background'>
         <div className='relative'>
           <Image
-            src='/avatar.png'
+            src='/avatar.webp'
             alt='caru'
             width={200}
             height={200}

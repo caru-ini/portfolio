@@ -1,6 +1,6 @@
 'use client';
 
-import { CodeIcon, DatabaseIcon, Flag, Lock } from 'lucide-react';
+import { CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
 import { DotGothic16 } from 'next/font/google';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -67,7 +67,7 @@ export default function Home() {
           <span className='text-sm'>Learn more</span>
         </div>
       </section>
-      <section className='w-full py-12 md:py-24 lg:py-32'>
+      <section className='py-12 md:py-24 lg:py-32'>
         <div className='container grid items-center justify-center gap-8 px-6 md:px-10 lg:grid-cols-2 lg:gap-16'>
           <div className='space-y-4'>
             <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
@@ -117,6 +117,56 @@ export default function Home() {
               <p className='text-muted-foreground'>
                 普段の開発ではVitestでテストを書いています。テストを書くことで、コードの品質を保つことができるため、カバレッジは100%になるよう開発しています。
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className='py-12 md:py-16 lg:py-24' id='creations'>
+        <div className='container space-y-3'>
+          <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
+            Creations
+          </div>
+          <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>Creations</h2>
+          <p className='text-muted-foreground'>これまでに作成したアプリとかサイトとか</p>
+          <div className='grid gap-8 p-2 md:grid-cols-2 '>
+            <div className='h-full space-y-4'>
+              <h3 className='w-fit rounded-md bg-slate-300 px-2 font-mono text-xl font-semibold  dark:bg-slate-900'>
+                My-Components
+              </h3>
+              <p className='text-muted-foreground'>
+                <code>shadcn/ui</code>を使った自作のコンポーネント集。デモサイトもあります。
+                しかし、肝心の載せるコンポーネントのアイデアがあまりないので、まだコンポーネントの数は少なめです。
+              </p>
+              <div className='flex items-center space-x-4'>
+                <a
+                  href='https://github.com/caru-ini/my-components'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <SiGithub size={32} />
+                </a>
+                <a href='https://components.caru.live/' target='_blank' rel='noopener noreferrer'>
+                  <ExternalLink size={32} />
+                </a>
+              </div>
+            </div>
+            <div className='flex h-full flex-col space-y-4'>
+              <h3 className='w-fit rounded-md bg-slate-300 px-2 font-mono text-xl font-semibold  dark:bg-slate-900'>
+                Hono + D1 Todo
+              </h3>
+              <p className='grow text-muted-foreground'>
+                HonoとCloudFlare D1、Next.jsを使ったTodoアプリ。D1にデータを保存しています。
+                Vitestのなんちゃってテストもあります。 ご参考までにどうぞ。デプロイはしていません。
+              </p>
+              <div className='flex items-center space-x-4'>
+                <a
+                  href='https://github.com/caru-ini/hono-d1-todo'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <SiGithub size={32} />
+                </a>
+              </div>
             </div>
           </div>
         </div>

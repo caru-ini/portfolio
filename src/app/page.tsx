@@ -168,6 +168,24 @@ export default function Home() {
                 </a>
               </div>
             </div>
+            <div className='flex h-full flex-col space-y-4'>
+              <h3 className='w-fit rounded-md bg-slate-300 px-2 font-mono text-xl font-semibold  dark:bg-slate-900'>
+                wol-webui
+              </h3>
+              <p className='grow text-muted-foreground'>
+                自分用に作ったWoL (Wake on LAN)のWebUI。Next.js + Hono +
+                Prisma(PostgreSQL)で作成しています。docker-composeで使用できます。
+              </p>
+              <div className='flex items-center space-x-4'>
+                <a
+                  href='https://github.com/caru-ini/wol-webui'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  <SiGithub size={32} />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

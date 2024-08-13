@@ -1,5 +1,6 @@
 'use client';
 
+import { CreationCard } from '@/components/creationCard';
 import { CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
 import { DotGothic16 } from 'next/font/google';
 import Image from 'next/image';
@@ -129,63 +130,34 @@ export default function Home() {
           <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>Creations</h2>
           <p className='text-muted-foreground'>これまでに作成したアプリとかサイトとか</p>
           <div className='grid gap-8 p-2 md:grid-cols-2 '>
-            <div className='h-full space-y-4'>
-              <h3 className='w-fit rounded-md bg-slate-300 px-2 font-mono text-xl font-semibold  dark:bg-slate-900'>
-                My-Components
-              </h3>
-              <p className='text-muted-foreground'>
-                <code>shadcn/ui</code>を使った自作のコンポーネント集。デモサイトもあります。
-                しかし、肝心の載せるコンポーネントのアイデアがあまりないので、まだコンポーネントの数は少なめです。
-              </p>
-              <div className='flex items-center space-x-4'>
-                <a
-                  href='https://github.com/caru-ini/my-components'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <SiGithub size={32} />
-                </a>
-                <a href='https://components.caru.live/' target='_blank' rel='noopener noreferrer'>
-                  <ExternalLink size={32} />
-                </a>
-              </div>
-            </div>
-            <div className='flex h-full flex-col space-y-4'>
-              <h3 className='w-fit rounded-md bg-slate-300 px-2 font-mono text-xl font-semibold  dark:bg-slate-900'>
-                Hono + D1 Todo
-              </h3>
-              <p className='grow text-muted-foreground'>
-                HonoとCloudFlare D1、Next.jsを使ったTodoアプリ。D1にデータを保存しています。
-                Vitestのなんちゃってテストもあります。 ご参考までにどうぞ。デプロイはしていません。
-              </p>
-              <div className='flex items-center space-x-4'>
-                <a
-                  href='https://github.com/caru-ini/hono-d1-todo'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <SiGithub size={32} />
-                </a>
-              </div>
-            </div>
-            <div className='flex h-full flex-col space-y-4'>
-              <h3 className='w-fit rounded-md bg-slate-300 px-2 font-mono text-xl font-semibold  dark:bg-slate-900'>
-                wol-webui
-              </h3>
-              <p className='grow text-muted-foreground'>
-                自分用に作ったWoL (Wake on LAN)のWebUI。Next.js + Hono +
-                Prisma(PostgreSQL)で作成しています。docker-composeで使用できます。
-              </p>
-              <div className='flex items-center space-x-4'>
-                <a
-                  href='https://github.com/caru-ini/wol-webui'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <SiGithub size={32} />
-                </a>
-              </div>
-            </div>
+            <CreationCard
+              title='My-Components'
+              links={[
+                { href: 'https://github.com/caru-ini/my-components', icon: <SiGithub size={32} /> },
+                { href: 'https://components.caru.live/', icon: <ExternalLink size={32} /> },
+              ]}
+            >
+              <code>shadcn/ui</code>を使った自作のコンポーネント集。デモサイトもあります。
+              しかし、肝心の載せるコンポーネントのアイデアがあまりないので、まだコンポーネントの数は少なめです。
+            </CreationCard>
+            <CreationCard
+              title='Hono + D1 Todo'
+              links={[
+                { href: 'https://github.com/caru-ini/hono-d1-todo', icon: <SiGithub size={32} /> },
+              ]}
+            >
+              HonoとCloudFlare D1、Next.jsを使ったTodoアプリ。D1にデータを保存しています。
+              Vitestのなんちゃってテストもあります。 ご参考までにどうぞ。デプロイはしていません。
+            </CreationCard>
+            <CreationCard
+              title='wol-webui'
+              links={[
+                { href: 'https://github.com/caru-ini/wol-webui', icon: <SiGithub size={32} /> },
+              ]}
+            >
+              自分用に作ったWoL (Wake on LAN)のWebUI。Next.js + Hono +
+              Prisma(PostgreSQL)で作成しています。docker-composeで使用できます。
+            </CreationCard>
           </div>
         </div>
       </section>

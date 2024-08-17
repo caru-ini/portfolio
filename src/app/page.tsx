@@ -78,7 +78,7 @@ export default function Home() {
               Hello, I&apos;m Caru😎
             </h2>
             <p className='max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
-              Caru(かる)と申します。19歳の大学生で、フロントエンドエンジニアを目指しています。Web開発やNLPに興味があります。プログラミングを始めたのは中学3年生のときで、
+              Caru(かる)と申します。18歳の大学生で、フロントエンドエンジニアを目指しています。Web開発やNLPに興味があります。プログラミングを始めたのは中学3年生のときで、
               Pythonを使ってDiscordBotを作っていました。
               その後、Web開発に興味を持ち、フロントエンドエンジニアを目指すようになりました。最近は、TypeScriptやReact,
               Next.jsのお勉強をしつつ、PythonでRAG(Retrieval Augmented

@@ -1,7 +1,7 @@
 'use client';
 
 import { BrandLogo } from '@/components/brandLogo';
-import ToggleTheme from '@/components/toggletheme';
+import ToggleTheme from '@/components/layout/toggletheme';
 import { Button } from '@/components/ui/button';
 import { Menu, QrCode } from 'lucide-react';
 import Image from 'next/image';

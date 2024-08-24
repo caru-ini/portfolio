@@ -161,6 +161,32 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className='py-12 md:py-16 lg:py-24' id='blog'>
+        <div className='container space-y-3'>
+          <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
+            Blog
+          </div>
+          <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
+            Latest Posts
+          </h2>
+          <p className='text-muted-foreground'>趣味の話から技術の話まで</p>
+          <div className='flex h-40 items-center justify-center rounded-md bg-secondary shadow-lg shadow-slate-900 backdrop-blur'>
+            <p className='text-2xl text-muted-foreground'>🚧Coming soon...</p>
+          </div>
+          <div className='mt-8 flex justify-end'>
+            {/* <a
+              href='/blog'
+              className={cn(
+                buttonVariants({ variant: 'ghost' }),
+                'text-primary rounded-full hover:text-primary',
+              )}
+            >
+              もっと見る
+              <ArrowRight size={20} className='inline-block' />
+            </a> */}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

@@ -1,14 +1,12 @@
 'use client';
 
 import { CreationCard } from '@/components/creationCard';
+import { dotGothic16 } from '@/utils/font';
 import { CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
-import { DotGothic16 } from 'next/font/google';
 import Image from 'next/image';
 import { useState } from 'react';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
-
-const dotGothic16 = DotGothic16({ weight: '400', subsets: ['latin'] });
 
 export default function Home() {
   const [isBubbleShown, setIsBubbleShown] = useState(false);

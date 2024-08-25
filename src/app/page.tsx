@@ -1,40 +1,15 @@
-'use client';
-
+import { Avatar } from '@/components/avatar';
 import { CreationCard } from '@/components/creationCard';
-import { dotGothic16 } from '@/utils/font';
 import { CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
 
 export default function Home() {
-  const [isBubbleShown, setIsBubbleShown] = useState(false);
-
   return (
     <main>
       {/* Hero */}
       <section className='flex h-svh w-full flex-col items-center justify-center gap-y-6 bg-gray-100 bg-gradient-to-b dark:from-cyan-950 dark:to-background'>
-        <div className='relative'>
-          <Image
-            src='/avatar.webp'
-            alt='caru'
-            width={200}
-            height={200}
-            className='select-none rounded-full'
-            draggable={false}
-            onMouseEnter={() => setIsBubbleShown(true)}
-            onMouseLeave={() => setIsBubbleShown(false)}
-          />
-          <div
-            className={`absolute -top-16 left-1/2 -translate-x-1/2 rounded-lg bg-white p-2 text-black shadow-md transition-opacity ease-in-out ${!isBubbleShown && 'opacity-0'}`}
-          >
-            <p className={`text-xl ${dotGothic16.className} text-nowrap`}>
-              Hello<span className='text-pink-500'>♥</span>
-            </p>
-            <div className='absolute bottom-0 left-1/2 size-3 -translate-x-1/2 translate-y-1/2 rotate-45 bg-white'></div>
-          </div>
-        </div>
+        <Avatar />
         <div className='flex flex-col items-center'>
           <h1 className='text-4xl font-bold'>Caru</h1>
           <p className='text-lg text-muted-foreground'>Student / Developer</p>

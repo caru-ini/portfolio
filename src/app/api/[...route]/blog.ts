@@ -6,8 +6,7 @@ export const blog = new Hono()
     try {
       const entries = await contentful.getEntries({
         content_type: 'post',
-        // @ts-ignore
-        order: '-sys.createdAt',
+        order: ['-sys.createdAt'],
       });
 
       const posts = entries.items.map((item) => ({
@@ -15,7 +14,7 @@ export const blog = new Hono()
         title: item.fields.title,
         slug: item.fields.slug,
         excerpt: item.fields.excerpt,
-        tags: item.fields.tags,
+        tags: item.metadata.tags.map((tag) => tag.sys.id),
         createdAt: item.sys.createdAt,
         updatedAt: item.sys.updatedAt,
       }));

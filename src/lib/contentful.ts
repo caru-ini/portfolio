@@ -34,9 +34,10 @@ export const getLatestPostIndex = async (limit = 10) => {
     };
   });
 
-  const validated = postSchema.array().parse(mapped);
+  const validated = postSchema.array().safeParse(mapped);
 
-  return validated;
+  if (validated.success) return validated.data;
+  return [];
 };
 
 export const getPostBySlug = async (slug: string) => {
@@ -59,7 +60,7 @@ export const getPostBySlug = async (slug: string) => {
     updatedAt: entry.items[0].sys.updatedAt,
   };
 
-  const validated = postSchema.parse(mapped);
-
-  return validated;
+  const validated = postSchema.safeParse(mapped);
+  if (validated.success) return validated.data;
+  return null;
 };

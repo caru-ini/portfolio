@@ -1,8 +1,19 @@
 import { createClient } from 'contentful';
+import { z } from 'zod';
 
 export const contentful = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
+});
+
+export const postSchema = z.object({
+  id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  content: z.string(),
+  tags: z.array(z.string()),
+  createdAt: z.string(),
+  updatedAt: z.string(),
 });
 
 export const getLatestPostIndex = async (limit = 10) => {
@@ -23,5 +34,32 @@ export const getLatestPostIndex = async (limit = 10) => {
     };
   });
 
-  return mapped;
+  const validated = postSchema.array().parse(mapped);
+
+  return validated;
+};
+
+export const getPostBySlug = async (slug: string) => {
+  const entry = await contentful.getEntries({
+    content_type: 'post',
+    'fields.slug': slug,
+  });
+
+  if (entry.items.length === 0) {
+    return null;
+  }
+
+  const mapped = {
+    id: entry.items[0].sys.id,
+    title: entry.items[0].fields.title,
+    slug: entry.items[0].fields.slug,
+    content: entry.items[0].fields.content,
+    tags: entry.items[0].metadata.tags.map((tag: any) => tag.sys.id),
+    createdAt: entry.items[0].sys.createdAt,
+    updatedAt: entry.items[0].sys.updatedAt,
+  };
+
+  const validated = postSchema.parse(mapped);
+
+  return validated;
 };

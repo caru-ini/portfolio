@@ -3,6 +3,8 @@ import { TagBadge } from '@/components/blog/tagBadge';
 import { getPostBySlug } from '@/lib/contentful';
 import { redirect } from 'next/navigation';
 
+export const runtime = 'edge';
+
 type BlogPostPageProps = {
   params: {
     slug: string;

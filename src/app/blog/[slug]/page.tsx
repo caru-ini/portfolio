@@ -8,8 +8,6 @@ import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
-export const runtime = 'edge';
-
 type BlogPostPageProps = {
   params: {
     slug: string;
@@ -28,10 +26,13 @@ export const generateMetadata = async ({ params: { slug } }: BlogPostPageProps) 
   );
 };
 
-const Page: NextPage<BlogPostPageProps> = async ({ params: { slug } }) => {
+async function getPost(slug: string) {
   const { isEnabled } = draftMode();
-  console.log('Preview mode enabled: ', isEnabled);
-  const post = isEnabled ? await getPreviewPostBySlug(slug) : await getPostBySlug(slug);
+  return isEnabled ? await getPreviewPostBySlug(slug) : await getPostBySlug(slug);
+}
+
+const Page: NextPage<BlogPostPageProps> = async ({ params: { slug } }) => {
+  const post = await getPost(slug);
 
   if (!post) {
     return redirect('/404');

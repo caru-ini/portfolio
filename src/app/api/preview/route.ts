@@ -1,5 +1,5 @@
 import { getPreviewPostBySlug } from '@/lib/contentful';
-import { draftMode } from 'next/headers';
+import { cookies, draftMode } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -19,6 +19,18 @@ export async function GET(request: NextRequest) {
   }
 
   draftMode().enable();
+
+  // This is a hack due to a bug with cookies and NextJS, this code might not be required in the future
+  const cookieStore = cookies();
+  const cookie = cookieStore.get('__prerender_bypass');
+  cookies().set({
+    name: '__prerender_bypass',
+    value: cookie?.value || '1',
+    httpOnly: true,
+    path: '/',
+    secure: true,
+    sameSite: 'none',
+  });
 
   redirect(`/blog/${slug}`);
   return;

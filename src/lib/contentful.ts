@@ -3,7 +3,9 @@ import { z } from 'zod';
 
 const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID!;
 const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN!;
+const CONTENTFUL_PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_TOKEN!;
 const CONTENTFUL_API_URL = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}`;
+const CONTENTFUL_PREVIEW_API_URL = `https://preview.contentful.com/spaces/${CONTENTFUL_SPACE_ID}`;
 
 export const postSchema = z.object({
   id: z.string(),
@@ -30,11 +32,25 @@ async function fetchContentful(endpoint: string, params: Record<string, string>)
   return response.json();
 }
 
-export const getLatestPostIndex = cache(async (limit = 10) => {
+async function fetchContentfulPreview(endpoint: string, params: Record<string, string>) {
+  const url = new URL(`${CONTENTFUL_PREVIEW_API_URL}${endpoint}`);
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.append(key, value);
+  });
+  url.searchParams.append('access_token', CONTENTFUL_PREVIEW_TOKEN);
+
+  const response = await fetch(url.toString());
+  if (!response.ok) {
+    throw new Error(`Contentful API error: ${response.statusText}`);
+  }
+  return response.json();
+}
+
+export const getLatestPostIndex = cache(async (limit = 6) => {
   const entries = await fetchContentful('/entries', {
     content_type: 'post',
     order: '-sys.createdAt',
-    limit: limit.toString(),
+    limit: limit === -1 ? '' : limit.toString(),
   });
 
   const mapped = entries.items.map((entry: any) => ({
@@ -80,3 +96,31 @@ export const getPostBySlug = cache(async (slug: string) => {
   if (validated.success) return validated.data;
   return null;
 });
+
+export const getPreviewPostBySlug = async (slug: string) => {
+  const entries = await fetchContentfulPreview('/entries', {
+    content_type: 'post',
+    'fields.slug': slug,
+  });
+
+  if (entries.items.length === 0) {
+    return null;
+  }
+
+  const entry = entries.items[0];
+  const mapped = {
+    id: entry.sys.id,
+    title: entry.fields.title ?? 'No title',
+    slug: entry.fields.slug,
+    excerpt: entry.fields.excerpt ?? 'No excerpt',
+    content: entry.fields.content ?? 'No content',
+    tags: entry.metadata.tags?.map((tag: any) => tag.sys.id) ?? [],
+    createdAt: entry.sys.createdAt ?? new Date().toISOString(),
+    updatedAt: entry.sys.updatedAt ?? new Date().toISOString(),
+  };
+
+  const validated = postSchema.safeParse(mapped);
+  if (validated.success) return validated.data;
+  console.log(validated.error);
+  return null;
+};

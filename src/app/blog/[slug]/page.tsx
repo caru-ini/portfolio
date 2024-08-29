@@ -3,6 +3,7 @@ import { BlogPostContent } from '@/components/blog/postContent';
 import { BlogPostHeader } from '@/components/blog/postHeader';
 import { getPostBySlug, getPreviewPostBySlug } from '@/lib/contentful';
 import { ChevronLeft } from 'lucide-react';
+import { NextPage } from 'next';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -27,7 +28,7 @@ export const generateMetadata = async ({ params: { slug } }: BlogPostPageProps) 
   );
 };
 
-const BlogPostPage: React.FC<BlogPostPageProps> = async ({ params: { slug } }) => {
+const Page: NextPage<BlogPostPageProps> = async ({ params: { slug } }) => {
   const { isEnabled } = draftMode();
   console.log('Preview mode enabled: ', isEnabled);
   const post = isEnabled ? await getPreviewPostBySlug(slug) : await getPostBySlug(slug);
@@ -56,4 +57,4 @@ const BlogPostPage: React.FC<BlogPostPageProps> = async ({ params: { slug } }) =
   );
 };
 
-export default BlogPostPage;
+export default Page;

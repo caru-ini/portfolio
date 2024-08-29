@@ -1,7 +1,7 @@
 import { LatestPosts } from '@/components/blog/latestPosts';
 import { TagBadge } from '@/components/blog/tagBadge';
 
-export const BlogPage = () => {
+const Page = () => {
   return (
     <div className='container mt-[74px] flex flex-1 flex-col gap-8'>
       <div className='flex flex-col gap-2'>
@@ -24,4 +24,4 @@ export const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default Page;

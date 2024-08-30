@@ -7,7 +7,7 @@ type PostHeaderProps = {
 };
 
 export const BlogPostHeader: React.FC<PostHeaderProps> = ({ title, updatedAt, tags }) => (
-  <header>
+  <header className='grow-0'>
     <time className='mb-2 block text-sm text-muted-foreground'>
       {new Date(updatedAt).toLocaleDateString('en-US', {
         year: 'numeric',

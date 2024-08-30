@@ -38,7 +38,7 @@ const Page: NextPage<BlogPostPageProps> = async ({ params: { slug } }) => {
     return redirect('/404');
   }
   return (
-    <div className='container mt-[74px] flex max-w-[800px] flex-col gap-2'>
+    <div className='container mt-[74px] flex max-w-[800px] grow flex-col gap-2'>
       <Link
         href='/blog'
         passHref
@@ -49,7 +49,7 @@ const Page: NextPage<BlogPostPageProps> = async ({ params: { slug } }) => {
         </span>
         Back to Blog
       </Link>
-      <article className='mb-8 flex flex-col gap-8'>
+      <article className='mb-8 flex grow flex-col gap-8'>
         <BlogPostHeader title={post.title} tags={post.tags} updatedAt={post.createdAt} />
         <BlogPostContent content={post.content} />
         <BlogAuthor />

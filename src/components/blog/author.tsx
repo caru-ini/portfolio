@@ -11,7 +11,7 @@ export const BlogAuthor: React.FC = () => {
   const ignore = (e: React.MouseEvent) => e.stopPropagation();
 
   return (
-    <div onClick={onClick} className='cursor-pointer'>
+    <div onClick={onClick} className='grow-0 cursor-pointer'>
       <div className='flex select-none flex-col rounded-md border border-border p-4'>
         <p className='mb-2 text-sm text-muted-foreground md:text-base'>この記事を書いた人</p>
         <div className='flex gap-4'>

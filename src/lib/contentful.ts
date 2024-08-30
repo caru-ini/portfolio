@@ -1,11 +1,10 @@
+import { createClient } from 'contentful';
 import { cache } from 'react';
 import { z } from 'zod';
 
-const CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID!;
-const CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN!;
-const CONTENTFUL_PREVIEW_TOKEN = process.env.CONTENTFUL_PREVIEW_TOKEN!;
-const CONTENTFUL_API_URL = `https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}`;
-const CONTENTFUL_PREVIEW_API_URL = `https://preview.contentful.com/spaces/${CONTENTFUL_SPACE_ID}`;
+const CONTENTFUL_SPACE_ID = z.string().parse(process.env.CONTENTFUL_SPACE_ID!);
+const CONTENTFUL_ACCESS_TOKEN = z.string().parse(process.env.CONTENTFUL_ACCESS_TOKEN!);
+const CONTENTFUL_PREVIEW_TOKEN = z.string().parse(process.env.CONTENTFUL_PREVIEW_TOKEN!);
 
 export const postSchema = z.object({
   id: z.string(),
@@ -18,39 +17,23 @@ export const postSchema = z.object({
   updatedAt: z.string(),
 });
 
-async function fetchContentful(endpoint: string, params: Record<string, string>) {
-  const url = new URL(`${CONTENTFUL_API_URL}${endpoint}`);
-  Object.entries(params).forEach(([key, value]) => {
-    url.searchParams.append(key, value);
-  });
-  url.searchParams.append('access_token', CONTENTFUL_ACCESS_TOKEN);
+export const client = createClient({
+  space: CONTENTFUL_SPACE_ID,
+  accessToken: CONTENTFUL_ACCESS_TOKEN,
+  host: 'cdn.contentful.com',
+});
 
-  const response = await fetch(url.toString());
-  if (!response.ok) {
-    throw new Error(`Contentful API error: ${response.statusText}`);
-  }
-  return response.json();
-}
-
-async function fetchContentfulPreview(endpoint: string, params: Record<string, string>) {
-  const url = new URL(`${CONTENTFUL_PREVIEW_API_URL}${endpoint}`);
-  Object.entries(params).forEach(([key, value]) => {
-    url.searchParams.append(key, value);
-  });
-  url.searchParams.append('access_token', CONTENTFUL_PREVIEW_TOKEN);
-
-  const response = await fetch(url.toString());
-  if (!response.ok) {
-    throw new Error(`Contentful API error: ${response.statusText}`);
-  }
-  return response.json();
-}
+export const previewClient = createClient({
+  space: CONTENTFUL_SPACE_ID,
+  accessToken: CONTENTFUL_PREVIEW_TOKEN,
+  host: 'preview.contentful.com',
+});
 
 export const getLatestPostIndex = cache(async (limit = 6) => {
-  const entries = await fetchContentful('/entries', {
+  const entries = await client.getEntries({
     content_type: 'post',
-    order: '-sys.createdAt',
-    limit: limit === -1 ? '' : limit.toString(),
+    order: ['-sys.createdAt'],
+    limit: limit,
   });
 
   const mapped = entries.items.map((entry: any) => ({
@@ -71,7 +54,7 @@ export const getLatestPostIndex = cache(async (limit = 6) => {
 });
 
 export const getPostBySlug = cache(async (slug: string) => {
-  const entries = await fetchContentful('/entries', {
+  const entries = await client.getEntries({
     content_type: 'post',
     'fields.slug': slug,
   });
@@ -98,7 +81,7 @@ export const getPostBySlug = cache(async (slug: string) => {
 });
 
 export const getPreviewPostBySlug = async (slug: string) => {
-  const entries = await fetchContentfulPreview('/entries', {
+  const entries = await previewClient.getEntries({
     content_type: 'post',
     'fields.slug': slug,
   });

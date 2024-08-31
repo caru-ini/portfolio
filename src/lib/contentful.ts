@@ -40,6 +40,7 @@ const ContentfulEntrySchema = z.object({
 
 export type ContentfulEntry = z.infer<typeof ContentfulEntrySchema>;
 
+// tag data from content entry
 export type ContentfulTag = z.infer<typeof TagSchema>;
 
 export const client = createClient({
@@ -63,10 +64,7 @@ export const getLatestPostIndex = cache(async (limit = 6) => {
 
   const validated = z.array(ContentfulEntrySchema).safeParse(entries.items);
 
-  console.log(validated.data);
-
   if (validated.success) return validated.data;
-  console.log(validated.error);
   return [];
 });
 
@@ -104,6 +102,14 @@ export const getPreviewPostBySlug = async (slug: string) => {
   const validated = ContentfulEntrySchema.safeParse(entry);
 
   if (validated.success) return validated.data;
-  console.log(validated.error);
   return null;
 };
+
+export const getTags = cache(async () => {
+  const entries = await client.getTags();
+
+  if (entries.items.length === 0) {
+    return [];
+  }
+  return entries.items;
+});

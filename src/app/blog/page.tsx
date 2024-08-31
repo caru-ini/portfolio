@@ -1,7 +1,10 @@
 import { LatestPosts } from '@/components/blog/latestPosts';
 import { TagBadge } from '@/components/blog/tagBadge';
+import { getTags } from '@/lib/contentful';
 
-const Page = () => {
+const Page = async () => {
+  const data = await getTags();
+  const tags = data.map((tag) => tag.sys.id);
   return (
     <div className='container mt-[74px] flex flex-1 flex-col gap-8'>
       <div className='flex flex-col gap-2'>
@@ -15,7 +18,7 @@ const Page = () => {
       <section className='flex flex-col gap-2' id='tags'>
         <h2 className='text-2xl font-bold'>タグ</h2>
         <ul className='flex flex-wrap gap-2'>
-          {['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vercel', 'Netlify'].map((tag) => (
+          {tags.map((tag) => (
             <TagBadge key={tag} tag={tag} />
           ))}
         </ul>

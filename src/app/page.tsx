@@ -1,13 +1,15 @@
 import { Avatar } from '@/components/avatar';
-import { LatestPosts } from '@/components/blog/latestPosts';
+import { PostList } from '@/components/blog/postList';
 import { CreationCard } from '@/components/creationCard';
 import { buttonVariants } from '@/components/ui/button';
+import { getLatestPostIndex } from '@/lib/contentful';
 import { cn } from '@/lib/utils';
 import { ArrowRight, CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getLatestPostIndex(3);
   return (
     <main>
       {/* Hero */}
@@ -146,7 +148,7 @@ export default function Home() {
             Latest Posts
           </h2>
           <p className='text-muted-foreground'>最近書いた記事や、最近の記事を紹介します。</p>
-          <LatestPosts />
+          <PostList posts={posts} />
           <div className='mt-8 flex justify-end'>
             <a
               href='/blog'

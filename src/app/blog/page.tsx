@@ -1,10 +1,11 @@
-import { LatestPosts } from '@/components/blog/latestPosts';
+import { PostList } from '@/components/blog/postList';
 import { TagBadge } from '@/components/blog/tagBadge';
-import { getTags } from '@/lib/contentful';
+import { getLatestPostIndex, getTags } from '@/lib/contentful';
 
 const Page = async () => {
   const data = await getTags();
   const tags = data.map((tag) => tag.sys.id);
+  const posts = await getLatestPostIndex(16);
   return (
     <div className='container mt-[74px] flex flex-1 flex-col gap-8'>
       <div className='flex flex-col gap-2'>
@@ -13,7 +14,7 @@ const Page = async () => {
       </div>
       <section className='flex flex-col gap-2' id='latest-posts'>
         <h2 className='text-2xl font-bold'>記事一覧</h2>
-        <LatestPosts limit={18} />
+        <PostList posts={posts} />
       </section>
       <section className='flex flex-col gap-2' id='tags'>
         <h2 className='text-2xl font-bold'>タグ</h2>

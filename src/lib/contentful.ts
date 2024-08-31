@@ -105,6 +105,30 @@ export const getPreviewPostBySlug = async (slug: string) => {
   return null;
 };
 
+export const getPostByTag = cache(async (tagId: string) => {
+  const entries = await client.getEntries({
+    content_type: 'post',
+    'metadata.tags.sys.id[all]': [tagId],
+  });
+
+  const validated = z.array(ContentfulEntrySchema).safeParse(entries.items);
+
+  if (validated.success) return validated.data;
+  return [];
+});
+
+export const getTagById = cache(async (id: string) => {
+  const entry = await client.getTags({
+    'sys.id': id,
+  });
+
+  if (!entry) {
+    return null;
+  }
+
+  return entry.items[0];
+});
+
 export const getTags = cache(async () => {
   const entries = await client.getTags();
 

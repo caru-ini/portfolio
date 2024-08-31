@@ -4,18 +4,43 @@ import { z } from 'zod';
 
 const CONTENTFUL_SPACE_ID = z.string().parse(process.env.CONTENTFUL_SPACE_ID!);
 const CONTENTFUL_ACCESS_TOKEN = z.string().parse(process.env.CONTENTFUL_ACCESS_TOKEN!);
-const CONTENTFUL_PREVIEW_TOKEN = z.string().parse(process.env.CONTENTFUL_PREVIEW_TOKEN!);
+const CONTENTFUL_PREVIEW_ACCESS_TOKEN = z
+  .string()
+  .parse(process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN!);
 
-export const postSchema = z.object({
+const LinkSchema = z.object({
+  type: z.literal('Link'),
+  linkType: z.string(),
   id: z.string(),
-  title: z.string(),
-  slug: z.string(),
-  excerpt: z.string(),
-  content: z.string(),
-  tags: z.array(z.string()),
-  createdAt: z.string(),
-  updatedAt: z.string(),
 });
+
+const TagSchema = z.object({
+  sys: LinkSchema,
+});
+
+const ContentfulEntrySchema = z.object({
+  metadata: z.object({
+    tags: z.array(TagSchema),
+  }),
+  sys: z.object({
+    id: z.string(),
+    type: z.literal('Entry'),
+    createdAt: z.string(),
+    updatedAt: z.string(),
+    revision: z.number(),
+    locale: z.string(),
+  }),
+  fields: z.object({
+    title: z.string().default(''),
+    slug: z.string().default(''),
+    content: z.string().default(''),
+    excerpt: z.string().default(''),
+  }),
+});
+
+export type ContentfulEntry = z.infer<typeof ContentfulEntrySchema>;
+
+export type ContentfulTag = z.infer<typeof TagSchema>;
 
 export const client = createClient({
   space: CONTENTFUL_SPACE_ID,
@@ -25,7 +50,7 @@ export const client = createClient({
 
 export const previewClient = createClient({
   space: CONTENTFUL_SPACE_ID,
-  accessToken: CONTENTFUL_PREVIEW_TOKEN,
+  accessToken: CONTENTFUL_PREVIEW_ACCESS_TOKEN,
   host: 'preview.contentful.com',
 });
 
@@ -36,20 +61,12 @@ export const getLatestPostIndex = cache(async (limit = 6) => {
     limit: limit,
   });
 
-  const mapped = entries.items.map((entry: any) => ({
-    id: entry.sys.id,
-    title: entry.fields.title,
-    slug: entry.fields.slug,
-    excerpt: entry.fields.excerpt,
-    tags: entry.metadata.tags.map((tag: any) => tag.sys.id),
-    createdAt: entry.sys.createdAt,
-    updatedAt: entry.sys.updatedAt,
-    content: entry.fields.content,
-  }));
+  const validated = z.array(ContentfulEntrySchema).safeParse(entries.items);
 
-  const validated = postSchema.array().safeParse(mapped);
+  console.log(validated.data);
 
   if (validated.success) return validated.data;
+  console.log(validated.error);
   return [];
 });
 
@@ -64,20 +81,12 @@ export const getPostBySlug = cache(async (slug: string) => {
   }
 
   const entry = entries.items[0];
-  const mapped = {
-    id: entry.sys.id,
-    title: entry.fields.title,
-    slug: entry.fields.slug,
-    excerpt: entry.fields.excerpt,
-    content: entry.fields.content,
-    tags: entry.metadata.tags.map((tag: any) => tag.sys.id),
-    createdAt: entry.sys.createdAt,
-    updatedAt: entry.sys.updatedAt,
-  };
 
-  const validated = postSchema.safeParse(mapped);
-  if (validated.success) return validated.data;
-  return null;
+  if (!entry) {
+    return null;
+  }
+
+  return ContentfulEntrySchema.parse(entry);
 });
 
 export const getPreviewPostBySlug = async (slug: string) => {
@@ -91,18 +100,9 @@ export const getPreviewPostBySlug = async (slug: string) => {
   }
 
   const entry = entries.items[0];
-  const mapped = {
-    id: entry.sys.id,
-    title: entry.fields.title ?? 'No title',
-    slug: entry.fields.slug,
-    excerpt: entry.fields.excerpt ?? 'No excerpt',
-    content: entry.fields.content ?? 'No content',
-    tags: entry.metadata.tags?.map((tag: any) => tag.sys.id) ?? [],
-    createdAt: entry.sys.createdAt ?? new Date().toISOString(),
-    updatedAt: entry.sys.updatedAt ?? new Date().toISOString(),
-  };
 
-  const validated = postSchema.safeParse(mapped);
+  const validated = ContentfulEntrySchema.safeParse(entry);
+
   if (validated.success) return validated.data;
   console.log(validated.error);
   return null;

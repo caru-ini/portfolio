@@ -10,7 +10,7 @@ export const LatestPosts: React.FC<LatestPostsProps> = async ({ limit = 3 }) => 
   return (
     <div className='grid gap-8 md:grid-cols-2 lg:grid-cols-3'>
       {posts ? (
-        posts.map((post: any) => <BlogPostCard key={post.id} {...post} />)
+        posts.map((post) => <BlogPostCard key={post.sys.id} post={post} />)
       ) : (
         <div className='h-40 animate-pulse rounded-lg bg-gray-200'></div>
       )}

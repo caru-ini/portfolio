@@ -1,23 +1,17 @@
+import { ContentfulEntry } from '@/lib/contentful';
 import { CalendarDays } from 'lucide-react';
 import Link from 'next/link';
 import { TagBadge } from './tagBadge';
 
 type BlogPostCardProps = {
-  title: string;
-  slug: string;
-  excerpt: string;
-  tags?: string[];
-  updatedAt: string;
-  createdAt: string;
+  post: ContentfulEntry;
 };
 
-export const BlogPostCard: React.FC<BlogPostCardProps> = ({
-  title,
-  slug,
-  excerpt,
-  tags,
-  createdAt,
-}) => {
+export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
+  const tags = post.metadata.tags.map((tag) => tag.sys.id);
+  const { title, excerpt, slug } = post.fields;
+  const { createdAt } = post.sys;
+
   return (
     <Link
       href={'/blog/' + slug}

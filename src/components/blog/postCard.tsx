@@ -1,6 +1,7 @@
+'use client';
 import { ContentfulEntry } from '@/lib/contentful';
 import { CalendarDays } from 'lucide-react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { TagBadge } from './tagBadge';
 
 type BlogPostCardProps = {
@@ -8,14 +9,19 @@ type BlogPostCardProps = {
 };
 
 export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
+  const router = useRouter();
   const tags = post.metadata.tags.map((tag) => tag.sys.id);
   const { title, excerpt, slug } = post.fields;
   const { createdAt } = post.sys;
 
+  const onClick = () => {
+    router.push(`/blog/${slug}`);
+  };
+
   return (
-    <Link
-      href={'/blog/' + slug}
-      className='rounded-lg border border-border p-4 transition-all duration-300 ease-out hover:scale-105 hover:bg-secondary/20 hover:shadow-md'
+    <button
+      onClick={onClick}
+      className='flex flex-col rounded-lg border border-border p-4 transition-all duration-300 ease-out hover:scale-105 hover:bg-secondary/20 hover:shadow-md'
     >
       <h3 className='mb-2 text-xl font-semibold'>{title}</h3>
       <p className='mb-2 inline-flex items-center text-sm text-muted-foreground'>
@@ -26,6 +32,6 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
       <div className='mt-2 flex flex-wrap'>
         {tags?.map((tag) => <TagBadge tag={tag} key={tag} />)}
       </div>
-    </Link>
+    </button>
   );
 };

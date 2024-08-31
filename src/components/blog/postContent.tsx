@@ -1,4 +1,5 @@
 import { mdIt } from '@/lib/markdownIt';
+import 'highlight.js/styles/atom-one-dark.css';
 import './style.css';
 
 type BlogPostContentProps = {

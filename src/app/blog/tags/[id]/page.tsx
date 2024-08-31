@@ -30,11 +30,11 @@ const Page: NextPage<PageProps> = async ({ params: { id } }) => {
           Back to Blog
         </Link>
         <h1 className='text-3xl font-bold tracking-tight md:text-4xl'>
-          タグ {tag.sys?.id} の記事一覧
+          タグ <span className='rounded-md bg-secondary px-2 font-mono'>{tag.sys?.id}</span>{' '}
+          の記事一覧
         </h1>
       </div>
       <section className='flex flex-col gap-2' id='latest-posts'>
-        <h2 className='text-2xl font-bold'>記事一覧</h2>
         <PostList posts={posts} />
       </section>
     </div>

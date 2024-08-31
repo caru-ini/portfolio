@@ -19,15 +19,19 @@ const Image = async ({ params: { slug } }: OpenGraphImageProps) => {
   if (!post) {
     return null;
   }
+
+  const { title } = post.fields;
+  const tags = post.metadata.tags?.map((tag) => tag.sys.id);
+
   return new ImageResponse(
     (
       <div tw='flex w-full h-full flex-col items-center justify-center bg-teal-50'>
         <div tw='flex h-[570px] w-[1140px] flex-col justify-between rounded-xl bg-slate-300 p-5 shadow-lg'>
           <div tw='flex flex-col'>
-            <h1 tw={'mt-3 text-6xl font-bold'}>{post.title}</h1>
+            <h1 tw={'mt-3 text-6xl font-bold'}>{title}</h1>
             <div tw='flex flex-col'>
               <ul tw='flex flex-wrap'>
-                {post.tags.map((tag) => (
+                {tags.map((tag) => (
                   <li key={tag}>
                     <span tw='px-3 py-1 text-xl text-white bg-slate-700 rounded-full'>{tag}</span>
                   </li>

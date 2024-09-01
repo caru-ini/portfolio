@@ -27,7 +27,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ({ post }) => {
   return (
     <div
       onClick={onClick}
-      className='flex flex-col rounded-lg border border-border p-4 transition-all duration-300 ease-out hover:scale-105 hover:bg-secondary/20 hover:shadow-md'
+      className='flex cursor-pointer flex-col rounded-lg border border-border p-4 transition-all duration-300 ease-out hover:scale-105 hover:bg-secondary/20 hover:shadow-md'
     >
       <h3 className='mb-2 text-xl font-semibold'>{title}</h3>
       <p className='mb-2 inline-flex items-center text-sm text-muted-foreground'>

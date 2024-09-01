@@ -1,10 +1,15 @@
 import { Avatar } from '@/components/avatar';
+import { PostList } from '@/components/blog/postList';
 import { CreationCard } from '@/components/creationCard';
-import { CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
+import { buttonVariants } from '@/components/ui/button';
+import { getLatestPostIndex } from '@/lib/contentful';
+import { cn } from '@/lib/utils';
+import { ArrowRight, CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lucide-react';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getLatestPostIndex(3);
   return (
     <main>
       {/* Hero */}
@@ -142,12 +147,10 @@ export default function Home() {
           <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
             Latest Posts
           </h2>
-          <p className='text-muted-foreground'>趣味の話から技術の話まで</p>
-          <div className='flex h-40 items-center justify-center rounded-md bg-secondary shadow-lg shadow-slate-900 backdrop-blur'>
-            <p className='text-2xl text-muted-foreground'>🚧Coming soon...</p>
-          </div>
+          <p className='text-muted-foreground'>最近書いた記事や、最近の記事を紹介します。</p>
+          <PostList posts={posts} />
           <div className='mt-8 flex justify-end'>
-            {/* <a
+            <a
               href='/blog'
               className={cn(
                 buttonVariants({ variant: 'ghost' }),
@@ -156,7 +159,7 @@ export default function Home() {
             >
               もっと見る
               <ArrowRight size={20} className='inline-block' />
-            </a> */}
+            </a>
           </div>
         </div>
       </section>

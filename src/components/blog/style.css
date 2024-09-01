@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.markdown-body h2 {
+  @apply border-l-4 border-primary pl-2;
+}
+
+.markdown-body h3 {
+  @apply border-l-4 border-secondary pl-2;
+}

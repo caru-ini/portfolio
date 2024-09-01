@@ -1,5 +1,4 @@
 import { createClient } from 'contentful';
-import { cache } from 'react';
 import { z } from 'zod';
 
 const CONTENTFUL_SPACE_ID = z.string().parse(process.env.CONTENTFUL_SPACE_ID!);
@@ -55,7 +54,7 @@ export const previewClient = createClient({
   host: 'preview.contentful.com',
 });
 
-export const getLatestPostIndex = cache(async (limit = 6) => {
+export const getLatestPostIndex = async (limit = 6) => {
   const entries = await client.getEntries({
     content_type: 'post',
     order: ['-sys.createdAt'],
@@ -66,9 +65,9 @@ export const getLatestPostIndex = cache(async (limit = 6) => {
 
   if (validated.success) return validated.data;
   return [];
-});
+};
 
-export const getPostBySlug = cache(async (slug: string) => {
+export const getPostBySlug = async (slug: string) => {
   const entries = await client.getEntries({
     content_type: 'post',
     'fields.slug': slug,
@@ -85,7 +84,7 @@ export const getPostBySlug = cache(async (slug: string) => {
   }
 
   return ContentfulEntrySchema.parse(entry);
-});
+};
 
 export const getPreviewPostBySlug = async (slug: string) => {
   const entries = await previewClient.getEntries({
@@ -105,7 +104,7 @@ export const getPreviewPostBySlug = async (slug: string) => {
   return null;
 };
 
-export const getPostByTag = cache(async (tagId: string) => {
+export const getPostByTag = async (tagId: string) => {
   const entries = await client.getEntries({
     content_type: 'post',
     'metadata.tags.sys.id[all]': [tagId],
@@ -115,9 +114,9 @@ export const getPostByTag = cache(async (tagId: string) => {
 
   if (validated.success) return validated.data;
   return [];
-});
+};
 
-export const getTagById = cache(async (id: string) => {
+export const getTagById = async (id: string) => {
   const entry = await client.getTags({
     'sys.id': id,
   });
@@ -127,13 +126,13 @@ export const getTagById = cache(async (id: string) => {
   }
 
   return entry.items[0];
-});
+};
 
-export const getTags = cache(async () => {
+export const getTags = async () => {
   const entries = await client.getTags();
 
   if (entries.items.length === 0) {
     return [];
   }
   return entries.items;
-});
+};

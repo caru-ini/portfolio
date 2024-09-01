@@ -8,6 +8,8 @@ import { ArrowRight, CodeIcon, DatabaseIcon, ExternalLink, Flag, Lock } from 'lu
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
 
+export const revalidate = 60;
+
 export default async function Home() {
   const posts = await getLatestPostIndex(3);
   return (

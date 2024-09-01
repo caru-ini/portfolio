@@ -2,6 +2,8 @@ import { PostList } from '@/components/blog/postList';
 import { TagBadge } from '@/components/blog/tagBadge';
 import { getLatestPostIndex, getTags } from '@/lib/contentful';
 
+export const revalidate = 60;
+
 const Page = async () => {
   const data = await getTags();
   const tags = data.map((tag) => tag.sys.id);

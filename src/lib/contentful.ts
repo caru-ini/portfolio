@@ -17,7 +17,7 @@ const TagSchema = z.object({
   sys: LinkSchema,
 });
 
-const ContentfulEntrySchema = z.object({
+export const ContentfulEntrySchema = z.object({
   metadata: z.object({
     tags: z.array(TagSchema),
   }),

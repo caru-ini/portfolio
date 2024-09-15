@@ -140,6 +140,16 @@ export default async function Home() {
               自分用に作ったWoL (Wake on LAN)のWebUI。Next.js + Hono +
               Prisma(PostgreSQL)で作成しています。docker-composeで使用できます。
             </CreationCard>
+            <CreationCard
+              title='chat-cli'
+              links={[
+                { href: 'https://github.com/caru-ini/chat-cli', icon: <SiGithub size={32} /> },
+              ]}
+            >
+              Pythonで作成したリッチなChatGPT(API)のCLI。 openai + rich +
+              prompt_toolkitなどを使っています。
+              レスポンスのストリーミング表示、ツール、マルチセッション対応です。
+            </CreationCard>
           </div>
         </div>
       </section>

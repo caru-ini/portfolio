@@ -7,7 +7,7 @@ export const Avatar = () => {
   const [isBubbleShown, setIsBubbleShown] = useState(false);
 
   return (
-    <div className='relative'>
+    <div className='relative flex flex-col items-center'>
       <Image
         src='/avatar.webp'
         alt='caru'
@@ -19,7 +19,9 @@ export const Avatar = () => {
         onMouseLeave={() => setIsBubbleShown(false)}
       />
       <div
-        className={`absolute -top-16 left-1/2 -translate-x-1/2 rounded-lg bg-white p-2 text-black shadow-md transition-opacity ease-in-out ${!isBubbleShown && 'opacity-0'}`}
+        className={`absolute -top-16 left-1/2 -translate-x-1/2 rounded-lg bg-white p-2 text-black shadow-md transition-opacity duration-300 ease-in-out ${
+          isBubbleShown ? 'opacity-100' : 'opacity-0'
+        }`}
       >
         <p className={`text-xl ${dotGothic16.className} text-nowrap`}>
           Hello<span className='text-pink-500'>♥</span>

@@ -1,5 +1,7 @@
-import { Avatar } from '@/components/avatar';
-import { BsChevronDoubleDown } from 'react-icons/bs';
+import { ProfileJson } from '@/components/ProfileJson';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { dotGothic16 } from '@/utils/font';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
 
 const socialLinks = [
@@ -12,23 +14,40 @@ const socialLinks = [
 
 export function Hero() {
   return (
-    <section className='flex h-svh w-full flex-col bg-secondary'>
-      <div className='flex size-full flex-col items-center justify-center gap-y-6 bg-gradient-to-b from-cyan-100 to-background dark:from-cyan-950 dark:to-background'>
-        <Avatar />
-        <div className='flex flex-col items-center'>
-          <h1 className='text-4xl font-bold'>Caru</h1>
-          <p className='text-lg text-muted-foreground'>Student / Developer</p>
+    <section className='flex h-svh w-full items-center justify-center'>
+      <div className='container flex items-center justify-between'>
+        <div className='flex flex-col gap-6'>
+          <h1 className={cn('text-5xl font-bold', dotGothic16.className)}>
+            Expand
+            <br />
+            The
+            <br />
+            World.
+          </h1>
+          <p className={cn('text-xl text-muted-foreground', dotGothic16.className)}>
+            学生開発者として、革新的なアイデアを現実に
+          </p>
+          <div className='flex gap-4'>
+            <Button className={cn('text-white', dotGothic16.className)}>
+              ↓ Check out my projects
+            </Button>
+            <Button variant='outline' className={cn('text-white', dotGothic16.className)}>
+              Contact me
+            </Button>
+          </div>
+          <div className='flex items-center space-x-4'>
+            {socialLinks.map((link, index) => (
+              <a key={index} href={link.href} target='_blank' rel='noopener noreferrer'>
+                <link.icon
+                  size={24}
+                  className='text-muted-foreground transition-colors hover:text-foreground'
+                />
+              </a>
+            ))}
+          </div>
         </div>
-        <div className='flex items-center space-x-4'>
-          {socialLinks.map((link, index) => (
-            <a key={index} href={link.href} target='_blank' rel='noopener noreferrer'>
-              <link.icon size={32} />
-            </a>
-          ))}
-        </div>
-        <div className='absolute bottom-4 flex flex-col items-center text-muted-foreground'>
-          <BsChevronDoubleDown className='animate-bounce' size={32} />
-          <span className='text-sm'>Learn more</span>
+        <div className='hidden md:flex md:items-center md:justify-center'>
+          <ProfileJson />
         </div>
       </div>
     </section>

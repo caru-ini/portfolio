@@ -2,6 +2,7 @@ import { ProfileJson } from '@/components/ProfileJson';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { dotGothic16 } from '@/utils/font';
+import Link from 'next/link';
 import { SiDiscord, SiGithub, SiSpeakerdeck, SiX, SiZenn } from 'react-icons/si';
 
 const socialLinks = [
@@ -28,9 +29,11 @@ export function Hero() {
             学生開発者として、革新的なアイデアを現実に
           </p>
           <div className='flex gap-4'>
-            <Button className={cn('text-white', dotGothic16.className)}>
-              ↓ Check out my projects
-            </Button>
+            <Link href='#creations' passHref>
+              <Button className={cn('text-white', dotGothic16.className)}>
+                ↓ Check out my projects
+              </Button>
+            </Link>
             <Button variant='outline' className={cn('text-white', dotGothic16.className)}>
               Contact me
             </Button>

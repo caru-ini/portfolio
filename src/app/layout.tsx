@@ -26,7 +26,7 @@ export default function RootLayout({
   const { isEnabled } = draftMode();
   return (
     <html lang='ja'>
-      <body className={cn(inter.className, 'flex flex-col min-h-svh')}>
+      <body className={cn(inter.className, 'flex flex-col min-h-svh scroll-smooth')}>
         <ContentfulPreviewProvider
           locale='en-US'
           enableInspectorMode={isEnabled}

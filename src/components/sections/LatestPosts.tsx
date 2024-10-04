@@ -2,7 +2,8 @@ import { PostList } from '@/components/blog/postList';
 import { buttonVariants } from '@/components/ui/button';
 import { ContentfulEntry } from '@/lib/contentful';
 import { cn } from '@/lib/utils';
-import { ArrowRight } from 'lucide-react';
+import { dotGothic16 } from '@/utils/font';
+import Link from 'next/link';
 
 export function LatestPosts({ posts }: { posts: ContentfulEntry[] }) {
   return (
@@ -15,16 +16,16 @@ export function LatestPosts({ posts }: { posts: ContentfulEntry[] }) {
         <p className='text-muted-foreground'>最近書いた記事や、最近の記事を紹介します。</p>
         <PostList posts={posts} />
         <div className='mt-8 flex justify-end'>
-          <a
+          <Link
             href='/blog'
             className={cn(
-              buttonVariants({ variant: 'ghost' }),
-              'text-primary rounded-full hover:text-primary',
+              buttonVariants({ variant: 'outline' }),
+              'text-foreground',
+              dotGothic16.className,
             )}
           >
-            もっと見る
-            <ArrowRight size={20} className='inline-block' />
-          </a>
+            Check out more posts ➡
+          </Link>
         </div>
       </div>
     </section>

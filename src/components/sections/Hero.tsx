@@ -42,7 +42,7 @@ export function Hero() {
                 ↓ Check out my projects
               </Button>
             </Link>
-            <Button variant='outline' className={cn('text-white', dotGothic16.className)}>
+            <Button variant='outline' className={cn('text-foreground', dotGothic16.className)}>
               Contact me
             </Button>
           </div>

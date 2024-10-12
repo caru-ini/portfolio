@@ -16,7 +16,7 @@ export const NyanSection: React.FC = () => {
         <div className='absolute -top-12 right-1/2 translate-x-1/2 rounded-lg bg-white p-2 shadow-md'>
           <span
             className={cn(
-              'text-xl font-bold text-background text-nowrap relaxed',
+              'text-xl font-bold text-black text-nowrap relaxed',
               dotGothic16.className,
             )}
           >

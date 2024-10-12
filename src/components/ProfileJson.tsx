@@ -45,8 +45,8 @@ export function ProfileJson() {
   }, []);
 
   return (
-    <div className='h-[264px] w-[400px] bg-secondary/10'>
-      <pre className={cn('text-muted-foreground p-3 rounded-md whitespace-pre-wrap')}>
+    <div className='h-[264px] w-[400px] rounded-md bg-secondary dark:bg-secondary/20'>
+      <pre className={cn('text-muted-foreground p-3 whitespace-pre-wrap')}>
         <code dangerouslySetInnerHTML={{ __html: highlightText(displayedText) }} />
       </pre>
     </div>

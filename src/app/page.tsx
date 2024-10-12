@@ -1,6 +1,7 @@
 import { About } from '@/components/sections/About';
 import { Creations } from '@/components/sections/Creations';
 import { Hero } from '@/components/sections/Hero';
+import Hobbies from '@/components/sections/Hobbies';
 import { LatestPosts } from '@/components/sections/LatestPosts';
 import { getLatestPostIndex } from '@/lib/contentful';
 
@@ -12,6 +13,7 @@ export default async function Home() {
     <main>
       <Hero />
       <About />
+      <Hobbies />
       <Creations />
       <LatestPosts posts={posts} />
     </main>

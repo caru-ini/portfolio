@@ -10,7 +10,7 @@ export function About() {
             About Me
           </div>
           <h2 className='text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl'>
-            Hello, I&apos;m Caru😎
+            I&apos;m Caru😎
           </h2>
           <p className='text-muted-foreground md:text-xl/relaxed lg:max-w-[60vw] lg:text-base/relaxed xl:text-xl/relaxed'>
             18歳の大学生で、フロントエンドエンジニアを目指しています。Web開発とNLPに興味があり、

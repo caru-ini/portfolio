@@ -28,17 +28,21 @@ const strengths = [
 
 export const Strengths = () => {
   return (
-    <div className='container mt-16 grid gap-8 md:grid-cols-2'>
-      {strengths.map((strength) => (
-        <div
-          key={strength.title}
-          className='box-content grid gap-2 p-3 transition-transform hover:scale-105'
-        >
-          <strength.icon className='size-8 text-primary' />
-          <h3 className={cn('text-lg font-semibold', sourceCodePro.className)}>{strength.title}</h3>
-          <p className='text-muted-foreground'>{strength.description}</p>
-        </div>
-      ))}
-    </div>
+    <section id='strengths' className='container py-12 md:py-24 lg:py-32'>
+      <div className='grid gap-3 rounded-lg border border-border from-transparent via-muted to-muted/50 px-3 py-5 md:grid-cols-2'>
+        {strengths.map((strength) => (
+          <div
+            key={strength.title}
+            className='glow box-content grid gap-2 rounded-lg bg-background p-3 transition-transform hover:z-10 hover:scale-105'
+          >
+            <strength.icon className='size-8 text-primary' />
+            <h3 className={cn('text-lg font-semibold', sourceCodePro.className)}>
+              {strength.title}
+            </h3>
+            <p className='text-muted-foreground'>{strength.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };

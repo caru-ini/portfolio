@@ -47,6 +47,9 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
   }
+  .glow {
+    @apply [border:1px_solid_hsl(var(--border))] [box-shadow:0_-20px_80px_-20px_hsl(var(--muted))_inset] dark:[border:1px_solid_hsl(var(--border))] dark:[box-shadow:0_-20px_80px_-20px_hsl(var(--muted))_inset];
+  }
 }
 
 @layer base {

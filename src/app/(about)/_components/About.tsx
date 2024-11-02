@@ -1,5 +1,5 @@
-import { NyanSection } from '@/components/sections/NyanSection';
-import { Strengths } from '@/components/sections/Strengths';
+import { NyanSection } from '@/app/(about)/_components/NyanSection';
+import { Strengths } from '@/app/(about)/_components/Strengths';
 
 export function About() {
   return (

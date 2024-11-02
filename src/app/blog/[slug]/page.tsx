@@ -1,4 +1,4 @@
-import { Post } from '@/components/blog/post';
+import { Post } from '@/app/blog/_components/post';
 import { getPostBySlug, getPreviewPostBySlug } from '@/lib/contentful';
 import { ChevronLeft } from 'lucide-react';
 import { NextPage } from 'next';

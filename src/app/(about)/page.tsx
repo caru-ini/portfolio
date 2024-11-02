@@ -1,8 +1,8 @@
-import { About } from '@/components/sections/About';
-import { Creations } from '@/components/sections/Creations';
-import { Hero } from '@/components/sections/Hero';
-import Hobbies from '@/components/sections/Hobbies';
-import { LatestPosts } from '@/components/sections/LatestPosts';
+import { About } from '@/app/(about)/_components/About';
+import { Creations } from '@/app/(about)/_components/Creations';
+import { Hero } from '@/app/(about)/_components/Hero';
+import Hobbies from '@/app/(about)/_components/Hobbies';
+import { LatestPosts } from '@/app/(about)/_components/LatestPosts';
 import { getLatestPostIndex } from '@/lib/contentful';
 
 export const revalidate = 60;

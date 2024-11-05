@@ -1,7 +1,6 @@
 'use client';
 
 import { BrandLogo } from '@/components/brandLogo';
-import ToggleTheme from '@/components/layout/toggletheme';
 import { Button } from '@/components/ui/button';
 import { Menu, QrCode } from 'lucide-react';
 import Image from 'next/image';
@@ -66,7 +65,6 @@ const Header: React.FC = () => {
             {renderLinks()}
           </div>
           <div className='flex items-center space-x-4'>
-            <ToggleTheme variant={'ghost'} className='border border-border dark:border-gray-700' />
             <Button
               variant={'ghost'}
               className='flex items-center space-x-2 border border-border dark:border-gray-700'
@@ -96,10 +94,6 @@ const Header: React.FC = () => {
               {renderLinks()}
             </div>
             <div className='flex items-center justify-center space-x-4'>
-              <ToggleTheme
-                variant={'ghost'}
-                className='mt-5 grow border border-border dark:border-gray-700'
-              />
               <Button
                 variant={'outline'}
                 className='mt-5'

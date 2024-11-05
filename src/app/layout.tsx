@@ -33,12 +33,7 @@ export default function RootLayout({
           enableLiveUpdates={isEnabled}
           debugMode={isEnabled}
         >
-          <ThemeProvider
-            attribute='class'
-            defaultTheme='dark'
-            enableSystem
-            disableTransitionOnChange
-          >
+          <ThemeProvider attribute='class' forcedTheme='dark' disableTransitionOnChange>
             <Header />
             {children}
             <Footer />

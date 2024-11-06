@@ -14,7 +14,7 @@ const Hobbies = () => {
               メモリが大量に積んであるので、友達とマイクラするときに重宝してます。
             </p>
           </div>
-          <div>
+          {/* <div>
             <h3 className='text-xl font-semibold'>音楽鑑賞</h3>
             <p className='mt-2 text-muted-foreground'>
               界隈曲やリスペクト曲を聴くのが好きです。特に好きなアーティストは
@@ -23,7 +23,7 @@ const Hobbies = () => {
               </a>
               さんです。一回聞いてみて欲しい。
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

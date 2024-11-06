@@ -6,13 +6,7 @@ export const NyanSection: React.FC = () => {
   return (
     <div className='flex shrink-0 flex-col items-center justify-center'>
       <div className='relative inline-block'>
-        <Image
-          src='/avatar.webp'
-          alt='Nyan Icon'
-          width={200}
-          height={200}
-          className='rounded-full'
-        />
+        <Image src='/avatar.jpg' alt='Hello' width={200} height={200} className='rounded-full' />
         <div className='absolute -top-12 right-1/2 translate-x-1/2 rounded-lg bg-white p-2 shadow-md'>
           <span
             className={cn(

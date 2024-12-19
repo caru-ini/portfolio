@@ -1,4 +1,4 @@
-import { NyanSection } from '@/app/(about)/_components/NyanSection';
+import { HelloSection } from '@/app/(about)/_components/HelloSection';
 import { Strengths } from '@/app/(about)/_components/Strengths';
 
 export function About() {
@@ -20,7 +20,7 @@ export function About() {
             </p>
           </div>
         </div>
-        <NyanSection />
+        <HelloSection />
       </div>
       <Strengths />
     </section>

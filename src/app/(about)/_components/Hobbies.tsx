@@ -10,7 +10,8 @@ const Hobbies = () => {
           <div>
             <h3 className='text-xl font-semibold'>サーバーいじり</h3>
             <p className='mt-2 text-muted-foreground'>
-              Proxmoxを入れて、Nextcloudでファイル共有に使ったり、SSHでVSCodeを使ったりしています。
+              HPEのDL360
+              Gen9(ラックサーバー!)にProxmoxを入れて、Nextcloudでファイル共有に使ったり、SSHでVSCodeを使ったりしています。
               メモリが大量に積んであるので、友達とマイクラするときに重宝してます。
             </p>
           </div>

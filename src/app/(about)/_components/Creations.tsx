@@ -65,7 +65,7 @@ const CreationCard: React.FC<Creation> = ({ title, links, description }) => {
 export function Creations() {
   return (
     <section className='py-12 md:py-16 lg:py-24' id='creations'>
-      <div className='container space-y-3'>
+      <div className='space-y-3'>
         <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
           Creations
         </div>

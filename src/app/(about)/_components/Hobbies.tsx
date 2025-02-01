@@ -1,7 +1,7 @@
 const Hobbies = () => {
   return (
     <section className='py-12 md:py-16 lg:py-24' id='hobbies'>
-      <div className='container space-y-3'>
+      <div className='space-y-3'>
         <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
           Hobbies
         </div>

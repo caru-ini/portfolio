@@ -4,7 +4,7 @@ import { Strengths } from '@/app/(about)/_components/Strengths';
 export function About() {
   return (
     <section className='py-12 md:py-24 lg:py-32'>
-      <div className='container flex flex-wrap items-center justify-center gap-20 md:px-10 lg:gap-16'>
+      <div className='flex flex-wrap items-center justify-center gap-20 md:gap-16'>
         <div className='grow space-y-4'>
           <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-white'>
             About Me

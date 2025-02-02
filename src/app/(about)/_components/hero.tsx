@@ -1,4 +1,4 @@
-import { ProfileJson } from '@/app/(about)/_components/ProfileJson';
+import { ProfileJson } from '@/app/(about)/_components/profile-json';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { dotGothic16 } from '@/utils/font';

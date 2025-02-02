@@ -1,4 +1,4 @@
-import { PostList } from '@/app/blog/_components/postList';
+import { PostList } from '@/app/blog/_components/post-list';
 import { getPostByTag, getTagById } from '@/lib/contentful';
 import { ChevronLeft } from 'lucide-react';
 import { NextPage } from 'next';

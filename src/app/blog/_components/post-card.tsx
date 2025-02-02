@@ -5,7 +5,7 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import { CalendarDays } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { TagBadge } from './tagBadge';
+import { TagBadge } from './tag-badge';
 
 type BlogPostCardProps = {
   post: ContentfulEntry;

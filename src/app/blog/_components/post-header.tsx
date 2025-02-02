@@ -1,5 +1,5 @@
 import { ContentfulTag } from '@/lib/contentful';
-import { TagBadge } from './tagBadge';
+import { TagBadge } from './tag-badge';
 
 type PostHeaderProps = {
   title: string;

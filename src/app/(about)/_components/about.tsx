@@ -1,5 +1,5 @@
-import { HelloSection } from '@/app/(about)/_components/HelloSection';
-import { Strengths } from '@/app/(about)/_components/Strengths';
+import { HelloSection } from '@/app/(about)/_components/hello-section';
+import { Strengths } from '@/app/(about)/_components/strengths';
 
 export function About() {
   return (

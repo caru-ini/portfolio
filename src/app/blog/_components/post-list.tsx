@@ -1,5 +1,5 @@
 import { ContentfulEntry } from '@/lib/contentful';
-import { BlogPostCard } from './postCard';
+import { BlogPostCard } from './post-card';
 
 type PostsListProps = {
   posts: ContentfulEntry[];

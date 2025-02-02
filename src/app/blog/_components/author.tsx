@@ -17,7 +17,7 @@ export const BlogAuthor: React.FC = () => {
         <div className='flex gap-4'>
           <div className='flex shrink-0 items-center'>
             <Image
-              src='/avatar.webp'
+              src='https://github.com/caru-ini.png'
               alt='caru'
               className='rounded-full'
               width={100}

@@ -1,5 +1,5 @@
-import { PostList } from '@/app/blog/_components/postList';
-import { TagBadge } from '@/app/blog/_components/tagBadge';
+import { PostList } from '@/app/blog/_components/post-list';
+import { TagBadge } from '@/app/blog/_components/tag-badge';
 import { getLatestPostIndex, getTags } from '@/lib/contentful';
 
 export const revalidate = 60;

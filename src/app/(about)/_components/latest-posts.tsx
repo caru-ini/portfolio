@@ -1,4 +1,4 @@
-import { PostList } from '@/app/blog/_components/postList';
+import { PostList } from '@/app/blog/_components/post-list';
 import { buttonVariants } from '@/components/ui/button';
 import { ContentfulEntry } from '@/lib/contentful';
 import { cn } from '@/lib/utils';

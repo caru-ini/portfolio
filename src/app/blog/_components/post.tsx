@@ -7,8 +7,8 @@ import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';
 import React from 'react';
 import { BlogAuthor } from './author';
-import { BlogPostContent } from './postContent';
-import { BlogPostHeader } from './postHeader';
+import { BlogPostContent } from './post-content';
+import { BlogPostHeader } from './post-header';
 
 type PostProps = {
   post: ContentfulEntry;

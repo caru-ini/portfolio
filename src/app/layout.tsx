@@ -1,5 +1,4 @@
 import { BackToPagetop } from '@/components/backToPagetop';
-import { ContentfulPreviewProvider } from '@/components/layout/contentful-provider';
 import { Footer } from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import { cn } from '@/lib/utils';
@@ -23,23 +22,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isEnabled } = draftMode();
   return (
     <html lang='ja'>
       <body className={cn(inter.className, 'flex flex-col min-h-svh')}>
-        <ContentfulPreviewProvider
-          locale='en-US'
-          enableInspectorMode={isEnabled}
-          enableLiveUpdates={isEnabled}
-          debugMode={isEnabled}
-        >
           <ThemeProvider attribute='class' forcedTheme='dark' disableTransitionOnChange>
             <Header />
             {children}
             <Footer />
             <BackToPagetop />
           </ThemeProvider>
-        </ContentfulPreviewProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
     </html>

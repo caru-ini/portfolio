@@ -4,7 +4,7 @@
 
 Simple, self-made portfolio website.
 
-## Tech Stack
+## Key Features
 
 - React
 - Next.js

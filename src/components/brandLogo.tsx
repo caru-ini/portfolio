@@ -1,11 +1,9 @@
-import { sourceCodePro } from '@/utils/font';
-import { Terminal } from 'lucide-react';
+import { dotGothic16 } from '@/utils/font';
 
 export const BrandLogo: React.FC = () => (
   <div
-    className={`flex items-center gap-x-2 rounded-md border-2 border-blue-400 px-2 dark:border-teal-200 ${sourceCodePro.className} select-none bg-slate-500 text-xl text-white`}
+    className={`${dotGothic16.className} select-none text-2xl`}
   >
-    <Terminal />
-    <span>caru.live</span>
+    <span>CARU</span>.<span className="text-blue-400">live</span>
   </div>
 );

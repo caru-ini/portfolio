@@ -6,7 +6,6 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Inter } from 'next/font/google';
-import { draftMode } from 'next/headers';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -25,12 +24,12 @@ export default function RootLayout({
   return (
     <html lang='ja'>
       <body className={cn(inter.className, 'flex flex-col min-h-svh')}>
-          <ThemeProvider attribute='class' forcedTheme='dark' disableTransitionOnChange>
-            <Header />
-            {children}
-            <Footer />
-            <BackToPagetop />
-          </ThemeProvider>
+        <ThemeProvider attribute='class' forcedTheme='dark' disableTransitionOnChange>
+          <Header />
+          {children}
+          <Footer />
+          <BackToPagetop />
+        </ThemeProvider>
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
     </html>

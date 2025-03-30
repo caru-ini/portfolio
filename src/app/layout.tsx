@@ -1,21 +1,17 @@
-import { BackToPagetop } from '@/components/backToPagetop';
-import { ContentfulPreviewProvider } from '@/components/layout/contentful-provider';
-import { Footer } from '@/components/layout/footer';
-import Header from '@/components/layout/header';
-import { cn } from '@/lib/utils';
-import { GoogleAnalytics } from '@next/third-parties/google';
-import type { Metadata } from 'next';
-import { ThemeProvider } from 'next-themes';
-import { Inter } from 'next/font/google';
-import { draftMode } from 'next/headers';
-import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
+import { ThemeProvider } from "@/components/theme-provider";
+import { env } from "@/env";
+import { inter, poppins } from "@/lib/fonts";
+import { GoogleTagManager } from "@next/third-parties/google";
+import type { Metadata } from "next";
+import { SessionProvider } from "next-auth/react";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://caru.live'),
-  title: 'caru.live',
-  description: 'Caruのポートフォリオサイトです。',
+  title: "caru-ini",
+  description: "Caru's Portfolio.",
+  icons: {
+    icon: "./avatar.webp",
+  },
 };
 
 export default function RootLayout({
@@ -23,25 +19,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isEnabled } = draftMode();
   return (
-    <html lang='ja'>
-      <body className={cn(inter.className, 'flex flex-col min-h-svh')}>
-        <ContentfulPreviewProvider
-          locale='en-US'
-          enableInspectorMode={isEnabled}
-          enableLiveUpdates={isEnabled}
-          debugMode={isEnabled}
-        >
-          <ThemeProvider attribute='class' forcedTheme='dark' disableTransitionOnChange>
-            <Header />
-            {children}
-            <Footer />
-            <BackToPagetop />
-          </ThemeProvider>
-        </ContentfulPreviewProvider>
-      </body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ''} />
+    <html lang="ja" suppressHydrationWarning className={`${poppins.variable} ${inter.variable}`}>
+      <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID ?? ""} />
+      <SessionProvider>
+        <body className="flex min-h-svh flex-col" suppressHydrationWarning>
+          <ThemeProvider>{children}</ThemeProvider>
+        </body>
+      </SessionProvider>
     </html>
   );
 }

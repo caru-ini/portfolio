@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
 import { ProjectsSection } from "@/components/projects-section";
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <SkillsSection />
       <ProjectsSection />
+      <Footer />
     </main>
   );
 }

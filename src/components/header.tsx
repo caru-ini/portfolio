@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { cn } from "@/lib/utils";
-import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -40,7 +39,7 @@ export const Header = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 font-medium transition-colors hover:text-primary"
           >
-            <ExternalLink className="size-4" />
+            <Image src="/runa.svg" alt="Runa" width={16} height={16} className="size-4" />
             <span className="hidden md:block">Runa.dev</span>
           </Link>
           <Button variant="outline" className="gap-2" size="sm" asChild>

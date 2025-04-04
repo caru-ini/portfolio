@@ -1,5 +1,6 @@
 "use client";
 
+import { QRCodeDisplay } from "@/components/qr-code";
 import { ExternalLink, Heart, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -160,6 +161,9 @@ export const Footer = () => {
           <div>
             &copy; {currentYear} Caru. Made with <Heart className="inline size-3 text-red-500" /> in
             Tokyo.
+          </div>
+          <div>
+            <QRCodeDisplay buttonText="サイトQRコード" modalTitle="このサイトのQRコード" />
           </div>
         </div>
       </div>

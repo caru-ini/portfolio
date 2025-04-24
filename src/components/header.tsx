@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { cn } from "@/lib/utils";
@@ -20,9 +21,7 @@ export const Header = () => {
       )}
     >
       <div className="container mx-auto flex max-w-2xl items-center justify-between px-4">
-        <Link href="/" className="font-poppins text-xl font-bold text-primary">
-          Caru<span className="text-foreground">.live</span>
-        </Link>
+        <BrandLogo />
         <nav className="flex items-center gap-6">
           <Link
             href="https://github.com/caru-ini"

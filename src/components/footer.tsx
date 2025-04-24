@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandLogo } from "@/components/brand-logo";
 import { QRCodeDisplay } from "@/components/qr-code";
 import { ExternalLink, Heart, Mail } from "lucide-react";
 import Image from "next/image";
@@ -14,9 +15,7 @@ export const Footer = () => {
       <div className="container mx-auto max-w-5xl px-4 py-12">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
           <div className="flex flex-col items-start gap-4">
-            <Link href="/" className="font-poppins text-xl font-bold text-primary">
-              Caru<span className="text-foreground">.live</span>
-            </Link>
+            <BrandLogo />
             <p className="text-sm text-muted-foreground">
               エンジニアを目指す大学生。東洋大学情報連携学部(INIAD)所属。
               <br />

@@ -10,6 +10,10 @@ const nextConfig = {
       {
         hostname: "github.com",
       },
+      {
+        hostname: "res.cloudinary.com",
+        pathname: "/zenn/image/upload/**",
+      },
     ],
   },
 };

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getZennArticles, ZennArticleItem } from "@/lib/zenn";
 import { ArrowRight, Calendar } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 interface ZennArticlesProps {
@@ -20,7 +21,22 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
       <div className="container mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-center text-3xl font-bold">最新の記事</h2>
-          <p className="text-muted-foreground">Zennからの新鮮な記事をお届けします。</p>
+          <p className="inline-flex items-center gap-0.5 text-muted-foreground">
+            <Link
+              href="https://zenn.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center"
+            >
+              <Image
+                src="https://static.zenn.studio/images/logo.png"
+                alt="Zenn"
+                width={65}
+                height={13}
+              />
+            </Link>
+            からの新鮮な記事をお届けします。
+          </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (

@@ -2,7 +2,7 @@
 
 import { BrandLogo } from "@/components/brand-logo";
 import { QRCodeDisplay } from "@/components/qr-code";
-import { ExternalLink, Heart, Mail } from "lucide-react";
+import { ExternalLink, Heart, ImageIcon, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiDiscord, SiGithub, SiX } from "react-icons/si";
@@ -106,6 +106,17 @@ export const Footer = () => {
                   LAPRAS
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/mediakit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
+                >
+                  <ImageIcon className="size-4" />
+                  メディアキット
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -134,22 +145,22 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
+                  href="https://github.com/frouriojs/magnito"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground transition-colors hover:text-primary"
+                >
+                  magnito
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="https://github.com/caru-ini/next-authjs-template"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-primary"
                 >
                   Next.js Auth.js Template
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://github.com/caru-ini/hono-d1-todo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground transition-colors hover:text-primary"
-                >
-                  Hono D1 Todo
                 </Link>
               </li>
             </ul>

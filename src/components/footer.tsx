@@ -2,7 +2,7 @@
 
 import { BrandLogo } from "@/components/brand-logo";
 import { QRCodeDisplay } from "@/components/qr-code";
-import { ExternalLink, Heart, ImageIcon, Mail } from "lucide-react";
+import { Heart, ImageIcon, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiDiscord, SiGithub, SiX } from "react-icons/si";
@@ -93,17 +93,6 @@ export const Footer = () => {
                 >
                   <Image src="/runa.svg" alt="Runa" width={16} height={16} className="size-4" />
                   Runa.dev
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://lapras.com/public/VNMRI0Q"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
-                >
-                  <ExternalLink className="size-4" />
-                  LAPRAS
                 </Link>
               </li>
               <li>

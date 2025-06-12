@@ -1,6 +1,5 @@
 "use client";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,17 +25,17 @@ export function HeroSection() {
       </div>
 
       <div className="container relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center">
-        <Avatar className="mb-4 size-[200px] select-none">
-          <AvatarImage src="/avatar.webp" asChild>
-            <Image
-              src="/avatar.webp"
-              alt="Caru"
-              width={200}
-              height={200}
-              className="rounded-full"
-            />
-          </AvatarImage>
-        </Avatar>
+        <Image
+          src="/avatar.webp"
+          alt="Caru"
+          width={200}
+          height={200}
+          quality={20}
+          priority
+          className="mb-4 size-[200px] select-none rounded-full"
+          draggable={false}
+          onContextMenu={(e) => e.preventDefault()}
+        />
         <h1 className="mb-4 font-poppins text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
           Caru
         </h1>

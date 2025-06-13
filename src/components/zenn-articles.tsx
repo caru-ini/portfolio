@@ -38,7 +38,7 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
             からの新鮮な記事をお届けします。
           </p>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto flex max-w-2xl flex-col gap-4">
           {articles.map((article) => (
             <Link href={article.link} target="_blank" rel="noopener noreferrer" key={article.link}>
               <Card className="transition-all hover:shadow-md">
@@ -53,13 +53,13 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
               </Card>
             </Link>
           ))}
-        </div>
-        <div className="ml-auto mt-3 inline-block w-full text-end">
-          <Button variant={"ghost"} className="rounded-full" asChild>
-            <Link href="https://zenn.dev/caru" target="_blank" rel="noopener noreferrer">
-              さらにみる <ArrowRight className="size-4" />
-            </Link>
-          </Button>
+          <div className="ml-auto mt-3 inline-block w-full text-end">
+            <Button variant={"ghost"} className="rounded-full" asChild>
+              <Link href="https://zenn.dev/caru" target="_blank" rel="noopener noreferrer">
+                さらにみる <ArrowRight className="size-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

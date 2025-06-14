@@ -40,6 +40,9 @@ export default async function BlogDetailPage({ params }: Props) {
   const { slug } = await params;
 
   let article;
+  if (slug.startsWith("_")) {
+    notFound();
+  }
   try {
     article = await getCachedArticle(slug);
   } catch {

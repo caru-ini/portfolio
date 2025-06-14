@@ -1,13 +1,24 @@
 import { env } from "@/env";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { owner: string; repo: string; path: string[] } }
-) {
+export async function GET(request: NextRequest) {
   try {
-    const { owner, repo, path } = params;
-    const imagePath = path.join("/");
+    const url = new URL(request.url);
+
+    const pathParts = url.pathname.split("/");
+
+    const imagesIdx = pathParts.findIndex((part) => part === "images");
+    if (
+      imagesIdx === -1 ||
+      !pathParts[imagesIdx + 1] ||
+      !pathParts[imagesIdx + 2] ||
+      pathParts.length <= imagesIdx + 3
+    ) {
+      return NextResponse.json({ error: "Invalid image path" }, { status: 400 });
+    }
+    const owner = pathParts[imagesIdx + 1];
+    const repo = pathParts[imagesIdx + 2];
+    const imagePath = pathParts.slice(imagesIdx + 3).join("/");
 
     const githubUrl = `https://raw.githubusercontent.com/${owner}/${repo}/main/${imagePath}`;
 
@@ -32,7 +43,7 @@ export async function GET(
       status: 200,
       headers: {
         "Content-Type": contentType,
-        "Cache-Control": "public, max-age=86400, s-maxage=86400", // 24 hours
+        "Cache-Control": "public, max-age=86400, s-maxage=86400",
         "CDN-Cache-Control": "public, max-age=86400",
         "Vercel-CDN-Cache-Control": "public, max-age=86400",
       },

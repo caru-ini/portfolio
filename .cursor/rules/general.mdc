@@ -1,0 +1,329 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: About this project & best practices
+globs:
+alwaysApply: false
+---
+
+# Portfolio Project - Cursor Rules
+
+## Project Overview
+
+This is a Next.js 15 portfolio website using:
+
+- Next.js 15 (App Router)
+- TypeScript
+- React 19 RC
+- Prisma with SQLite
+- Auth.js v5 beta
+- shadcn/ui components
+- Tailwind CSS 3.4
+- T3 Env for environment management
+
+## Code Style & Formatting
+
+### General
+
+- Use TypeScript for all new files
+- Prefer ES6+ syntax and modern JavaScript features
+- Use ESM imports/exports consistently
+- Follow the existing Prettier configuration (2 spaces, semicolons, double quotes)
+- Use meaningful variable and function names
+- Keep functions small and focused
+
+### File Naming
+
+- Always use kebab-case for file names (e.g., `user-profile.tsx`)
+
+### Import Organization
+
+- Use absolute imports with `@/` alias for internal modules
+
+## React & Next.js Best Practices
+
+### Components
+
+- Use React Server Components by default
+- Add "use client" directive only when necessary (hooks, event handlers, browser APIs)
+- Use TypeScript interfaces for props
+- For Page, use `export default function`
+- Otherwise, always use `export const` (arrow funtion)
+- Co-locate component-specific types in the same file
+- DO NOT edit files in `src/components/ui` (Generated Component(s) from shadcn/ui comes here)
+
+### Next.js App Router
+
+- Use the `app/` directory structure
+- Leverage file-based routing
+- Use `layout.tsx` for shared layouts
+- Use `page.tsx` for route components
+- Use `loading.tsx` and `error.tsx` for loading and error states
+- Prefer Server Actions for form handling
+
+### Performance
+
+- Use `next/image` for all images
+- Implement proper loading states
+
+## UI & Styling
+
+### Component Usage
+
+- Prefer shadcn/ui components over custom implementations
+- Use the configured aliases:
+  - `@/components` for components
+  - `@/components/ui` for shadcn/ui components (no custom component, add via cli(`shadcn@latest add`) only)
+  - `@/lib/utils` for utilities
+  - `@/hooks` for custom hooks
+- Follow shadcn/ui conventions for component composition
+
+### Tailwind CSS
+
+- Use Tailwind utility classes
+- Follow the configured class sorting with `tailwindcss/classnames-order`
+- Use the `cn()` utility from `@/lib/utils` for conditional classes
+- Leverage CSS variables for theme colors (e.g. `bg-muted`, `text-foreground`,`text-destructive`)
+- Use responsive design principles (mobile-first)
+
+### Theming
+
+- Support both light and dark themes
+- Use CSS variables defined in `globals.css`
+- Use `next-themes` for theme switching
+- Test components in both themes
+
+## Database & Prisma
+
+### Schema Design
+
+- Use descriptive model and field names
+- Include proper relations and constraints
+- Use `@map` for database field naming when needed
+- Follow the existing Auth.js schema patterns
+
+### Database Operations
+
+- Use the centralized Prisma client from `@/lib/prisma`
+- Implement proper error handling for database operations
+- Use transactions for multi-model operations
+- Follow Prisma best practices for queries and mutations
+
+### Migrations
+
+- Always generate migrations for schema changes
+- Use descriptive migration names
+- Test migrations thoroughly
+- Use environment-specific database URLs
+
+## Authentication (Auth.js)
+
+### Implementation
+
+- Use the configured Auth.js v5 beta setup
+- Leverage the Prisma adapter for user management
+- Implement proper session handling
+- Use middleware for protected routes when needed
+
+### Security
+
+- Validate user sessions on server-side
+- Implement proper CSRF protection
+- Use environment variables for sensitive configuration
+- Follow OAuth provider best practices
+
+## Environment Management
+
+### T3 Env
+
+- Define all environment variables in `src/env/`
+- Use client/server separation for env vars
+- Validate environment variables at build time
+- Never expose server-side env vars to client
+
+### Configuration
+
+- Use `.env.local` for local development
+- Use proper env var naming conventions
+- Document required environment variables
+
+## State Management
+
+### Server State
+
+- Prefer Server Components for data fetching
+- Use Server Actions for mutations
+- Implement proper loading and error states
+- Cache data appropriately
+
+### Client State
+
+- Use React hooks for local state
+- Use React Context sparingly
+- Consider state colocation
+
+## Error Handling
+
+### Implementation
+
+- Use `error.tsx` boundaries in app directory
+- Implement proper try-catch blocks
+- Provide meaningful error messages
+- Log errors appropriately
+
+### User Experience
+
+- Show loading states during operations
+- Provide clear error feedback
+- Implement graceful fallbacks
+- Use toast notifications for actions
+
+## Performance & Optimization
+
+### Code Splitting
+
+- Use dynamic imports for heavy components
+- Implement route-based code splitting
+- Lazy load non-critical components
+
+### Caching
+
+- Leverage Next.js(App router 15) caching strategies
+- Use appropriate cache headers
+- Implement client-side caching when beneficial
+
+## Testing & Quality
+
+### Code Quality
+
+- Run `pnpm check` before commits (lint + typecheck)
+- Use `pnpm format:write` for code formatting
+- Fix ESLint warnings and errors
+- Maintain high TypeScript strict mode compliance
+
+### Development Workflow
+
+- Use `pnpm dev --turbo` for development
+- Run database operations with `dotenv -e .env.local`
+- Use `pnpm db:studio` for database inspection
+
+## AI Integration
+
+### Vercel AI SDK
+
+- Use the configured AI SDK for LLM integrations
+- Implement proper streaming for chat interfaces
+- Handle AI responses gracefully
+- Follow rate limiting best practices
+
+## Security Best Practices
+
+### General
+
+- Validate all user inputs
+- Use TypeScript for type safety
+- Implement proper CORS policies
+- Use HTTPS in production
+
+### API Routes
+
+- Validate request methods
+- Implement proper authentication checks
+- Use rate limiting for public endpoints
+- Sanitize input data
+
+## Deployment & Production
+
+### Build Process
+
+- Ensure clean builds with `pnpm build`
+- Test production builds locally with `pnpm preview`
+- Optimize for Core Web Vitals
+
+### Environment
+
+- Use production-ready database (not SQLite)
+- Set proper environment variables
+- Implement monitoring and logging
+- Use CDN for static assets
+
+## Additional Guidelines
+
+### Documentation
+
+- Comment complex business logic
+- Maintain up-to-date README
+- Document API endpoints
+- Keep component props well-typed
+
+### Accessibility
+
+- Use semantic HTML elements
+- Implement proper ARIA attributes
+- Ensure keyboard navigation
+- Test with screen readers
+- Maintain proper color contrast
+
+### SEO
+
+- Use Next.js metadata API
+- Implement proper meta tags
+- Use structured data when applicable
+- Optimize for search engines
+
+## Zenn Integration
+
+### RSS Feed
+
+- Use the configured RSS parser for Zenn articles
+- Cache article data appropriately
+- Handle RSS feed errors gracefully
+- Display articles with proper formatting
+
+### Content Display
+
+- Show article thumbnails using next/image
+- Implement proper date formatting with date-fns
+- Add loading states for external content
+- Handle missing or invalid RSS data
+
+## Component Architecture
+
+### File Organization
+
+- Place reusable UI components in `@/components/*` (NO `@/components/ui` !!)
+- Place components only used in specific page/path in `@/app/../_components/*` (e.g. `@/app/settings/profile/_components/`,`@/app/settings/_components/`)
+
+### Component Patterns
+
+- Prefer composition over prop drilling
+- Use compound components for complex UI
+- Implement proper loading and error boundaries
+- Keep components pure and predictable
+
+## Icons & Assets
+
+### Icon Usage
+
+- Use Lucide React for consistent iconography
+- Use React Icons sparingly for specific needs (e.g. GitHub icon)
+- Implement proper icon sizing and accessibility
+
+### Fonts
+
+- Use the configured font families (Inter, Poppins, DotGothic16)
+- Implement proper font loading strategies
+
+## Docker & Development
+
+### Container Usage
+
+- Use the provided docker-compose.yml for consistency
+- Ensure database persistence in containers
+- Document container setup and usage
+- Use containers for production-like testing
+
+Remember: This project uses cutting-edge versions (React 19 RC, Next.js 15, Auth.js v5 beta), so stay updated with latest documentation and breaking changes.

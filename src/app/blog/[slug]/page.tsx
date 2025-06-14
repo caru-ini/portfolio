@@ -46,7 +46,10 @@ export default async function BlogDetailPage({ params }: Props) {
     notFound();
   }
 
-  const htmlContent = await markdownToHtml(article.content);
+  const htmlContent = await markdownToHtml(article.content, {
+    owner: BLOG_CONFIG.OWNER,
+    repo: BLOG_CONFIG.REPO,
+  });
   const toc = extractTocFromMarkdown(article.content);
 
   const structuredData = {

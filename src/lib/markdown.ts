@@ -54,6 +54,16 @@ const processCodeBlockTitle = (content: string): string => {
   return content.replace(/^```(\w+):([^ ]+)$/gm, '```$1 title="$2"');
 };
 
+const processImagePaths = (content: string, owner: string, repo: string): string => {
+  /**
+   * @description Convert relative image paths to use the image proxy API
+   * Only processes relative paths (./path) and absolute paths that don't start with http(s)
+   */
+  return content
+    .replace(/!\[([^\]]*)\]\(\.\/([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`)
+    .replace(/!\[([^\]]*)\]\(\/(?!\/|https?:)([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`);
+};
+
 const createSlug = (text: string, usedSlugs: Set<string>): string => {
   /**
    * @description Create a slug from text (Japanese, English, and numbers)
@@ -106,8 +116,19 @@ export const extractTocFromMarkdown = (markdown: string): TocItem[] => {
   return toc;
 };
 
-export const markdownToHtml = async (markdown: string): Promise<string> => {
-  const processedMarkdown = processUrlLines(processCodeBlockTitle(markdown));
+export const markdownToHtml = async (
+  markdown: string,
+  options?: {
+    owner?: string;
+    repo?: string;
+  }
+): Promise<string> => {
+  let processedMarkdown = processUrlLines(processCodeBlockTitle(markdown));
+
+  // Process image paths if repository info is provided
+  if (options?.owner && options?.repo) {
+    processedMarkdown = processImagePaths(processedMarkdown, options.owner, options.repo);
+  }
 
   const result = await unified()
     .use(remarkParse, { fragment: true })

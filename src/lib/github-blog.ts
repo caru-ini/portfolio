@@ -78,7 +78,10 @@ const queryArticlesList = async ({
     }
 
     const articles = repository.tree.entries
-      .filter((entry) => entry.type === "blob" && entry.name.endsWith(".md"))
+      .filter(
+        (entry) =>
+          entry.type === "blob" && entry.name.endsWith(".md") && !entry.name.startsWith("_")
+      )
       .map((entry) => {
         const slug = entry.name.replace(/\.md$/, "");
         const { data, content: mdContent } = matter(entry.object.text);
@@ -115,6 +118,10 @@ const queryArticle = async ({
 }) => {
   try {
     const graphqlClient = createGraphQLClient(githubToken);
+
+    if (slug.startsWith("_")) {
+      throw new Error(`Article not found: ${slug}`);
+    }
 
     const { repository } = await graphqlClient<{
       repository: {

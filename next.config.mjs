@@ -8,14 +8,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "github.com",
-      },
-      {
-        hostname: "res.cloudinary.com",
-        pathname: "/zenn/image/upload/**",
-      },
-      {
-        hostname: "static.zenn.studio",
+        // allow all domains for markdown images
+        // but for safety, we only allow https
+        hostname: "*",
+        protocol: "https",
       },
     ],
   },

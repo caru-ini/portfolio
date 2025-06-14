@@ -1,3 +1,4 @@
+import { BlogSection } from "@/components/blog-section";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { HeroSection } from "@/components/hero-section";
@@ -13,6 +14,7 @@ export default function Home() {
       <SkillsSection />
       <ProjectsSection />
       <ZennArticles feedUrl="https://zenn.dev/caru/feed" />
+      <BlogSection />
       <Footer />
     </main>
   );

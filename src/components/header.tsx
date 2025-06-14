@@ -4,6 +4,7 @@ import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { cn } from "@/lib/utils";
+import { Newspaper } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -23,6 +24,13 @@ export const Header = () => {
       <div className="container mx-auto flex max-w-2xl items-center justify-between px-4">
         <BrandLogo />
         <nav className="flex items-center gap-6">
+          <Link
+            href="/blog"
+            className="flex items-center gap-1.5 font-medium transition-colors hover:text-primary"
+          >
+            <Newspaper className="size-4" />
+            <span className="hidden md:block">Blog</span>
+          </Link>
           <Link
             href="https://github.com/caru-ini"
             target="_blank"

@@ -1,0 +1,60 @@
+.shiki {
+  @apply rounded-[0.25rem];
+}
+
+.prose pre {
+  background-color: #0f111a;
+  color: #babed8;
+}
+
+.prose code:not(pre code):after,
+.prose code:not(pre code):before {
+  content: "";
+}
+
+.prose code:not(pre code) {
+  background-color: #0f111a;
+  color: #babed8;
+  @apply rounded-[0.25rem] px-1 py-0.5;
+}
+
+.prose h1,
+.prose h2 {
+  @apply border-b-2 border-border/40 pb-1 no-underline;
+}
+
+/* Anchor link styles */
+.anchor-link {
+  @apply text-inherit no-underline;
+}
+
+.anchor-link:hover {
+  @apply text-primary;
+}
+
+/* Heading styles for better TOC integration */
+h1[id],
+h2[id],
+h3[id],
+h4[id],
+h5[id],
+h6[id] {
+  @apply scroll-mt-24;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/30;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}

@@ -30,7 +30,7 @@ export function HeroSection() {
           alt="Caru"
           width={200}
           height={200}
-          quality={20}
+          quality={70}
           priority
           className="mb-4 size-[200px] select-none rounded-full"
           draggable={false}

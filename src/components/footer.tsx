@@ -97,13 +97,13 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/mediakit"
+                  href="/presskit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
                 >
                   <ImageIcon className="size-4" />
-                  メディアキット
+                  プレスキット
                 </Link>
               </li>
             </ul>

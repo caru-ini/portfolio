@@ -14,6 +14,7 @@ export const env = createEnv({
     GOOGLE_GENERATIVE_AI_API_KEY: z.string().min(1),
     GITHUB_TOKEN: z.string().min(1),
     GITHUB_WEBHOOK_SECRET: z.string().min(1),
+    GOOGLE_FONTS_API_KEY: z.string().min(1),
   },
   /**
    * Specify runtimeEnv manually for Next.js < 13.4.4
@@ -27,6 +28,7 @@ export const env = createEnv({
     GOOGLE_GENERATIVE_AI_API_KEY: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
     GITHUB_TOKEN: process.env.GITHUB_TOKEN,
     GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,
+    GOOGLE_FONTS_API_KEY: process.env.GOOGLE_FONTS_API_KEY,
   },
   /**
    * Skip validation of environment variables (useful for CI/CD)

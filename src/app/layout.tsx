@@ -10,8 +10,11 @@ export const metadata: Metadata = {
   title: "caru-ini",
   description: "Caru's Portfolio.",
   icons: {
-    icon: "./avatar.webp",
+    icon: "/avatar.webp",
   },
+  metadataBase: new URL(
+    env.NODE_ENV === "development" ? "http://localhost:3000" : "https://caru.moe"
+  ),
 };
 
 export default function RootLayout({

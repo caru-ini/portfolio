@@ -58,10 +58,15 @@ const processImagePaths = (content: string, owner: string, repo: string): string
   /**
    * @description Convert relative image paths to use the image proxy API
    * Only processes relative paths (./path) and absolute paths that don't start with http(s)
+   * Also adds loading and styling attributes for better image handling
    */
   return content
     .replace(/!\[([^\]]*)\]\(\.\/([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`)
-    .replace(/!\[([^\]]*)\]\(\/(?!\/|https?:)([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`);
+    .replace(/!\[([^\]]*)\]\(\/(?!\/|https?:)([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`)
+    .replace(
+      /!\[([^\]]*)\]\(([^)]+)\)/g,
+      '<img src="$2" alt="$1" loading="lazy" style="max-height: min(80vh, 600px); object-fit: contain; width: 100%; height: auto;" onclick="window.open(this.src, \'_blank\')" />'
+    );
 };
 
 const createSlug = (text: string, usedSlugs: Set<string>): string => {
@@ -90,7 +95,6 @@ const createSlug = (text: string, usedSlugs: Set<string>): string => {
   usedSlugs.add(uniqueSlug);
   return uniqueSlug;
 };
-
 export const extractTocFromMarkdown = (markdown: string): TocItem[] => {
   /**
    * @description Extract table of contents from markdown
@@ -98,19 +102,24 @@ export const extractTocFromMarkdown = (markdown: string): TocItem[] => {
   const lines = markdown.split("\n");
   const toc: TocItem[] = [];
   const usedSlugs = new Set<string>();
+  let inCodeBlock = false;
 
   for (const line of lines) {
-    const match = line.match(/^(#{1,3})\s+(.+)$/);
-    if (match) {
-      const level = match[1].length;
-      if (level > 3) {
-        continue;
-      }
-      const text = match[2].trim();
-      const id = createSlug(text, usedSlugs);
-
-      toc.push({ id, text, level });
+    if (line.trim().startsWith("```")) {
+      inCodeBlock = !inCodeBlock;
+      continue;
     }
+
+    if (inCodeBlock) continue;
+
+    const headingMatch = line.match(/^(#{1,3})\s+(.+)$/);
+    if (!headingMatch) continue;
+
+    const level = headingMatch[1].length;
+    const text = headingMatch[2].trim();
+    const id = createSlug(text, usedSlugs);
+
+    toc.push({ id, text, level });
   }
 
   return toc;

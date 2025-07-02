@@ -5,6 +5,7 @@
 .prose pre {
   background-color: #0f111a;
   color: #babed8;
+  @apply overflow-x-auto;
 }
 
 .prose code:not(pre code):after,
@@ -15,7 +16,7 @@
 .prose code:not(pre code) {
   background-color: #0f111a;
   color: #babed8;
-  @apply rounded-[0.25rem] px-1 py-0.5;
+  @apply rounded-[0.25rem] px-1 py-0.5 text-xs sm:text-sm;
 }
 
 .prose h1,
@@ -42,9 +43,93 @@ h6[id] {
   @apply scroll-mt-24;
 }
 
+/* Mobile scroll margin adjustment */
+@media (max-width: 1024px) {
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  h6[id] {
+    @apply scroll-mt-16;
+  }
+}
+
+/* Table responsiveness */
+.prose table {
+  @apply w-full overflow-x-auto block text-sm;
+}
+
+.prose tbody {
+  @apply block w-full overflow-x-auto;
+}
+
+.prose thead,
+.prose tr {
+  @apply block;
+}
+
+.prose th,
+.prose td {
+  @apply inline-block p-2 min-w-[120px] text-left align-top;
+}
+
+/* Image responsiveness and size control */
+.prose img {
+  @apply w-full rounded-lg;
+  height: auto;
+  max-width: 100%;
+  max-height: min(80vh, 600px);
+  object-fit: contain;
+}
+
+/* Mobile image size optimization */
+@media (max-width: 768px) {
+  .prose img {
+    max-height: min(70vh, 500px);
+  }
+}
+
+/* Small mobile optimization */
+@media (max-width: 480px) {
+  .prose img {
+    max-height: min(60vh, 400px);
+  }
+}
+
+/* 縦長画像の特別な制限 */
+.prose img[style*="aspect-ratio"] {
+  max-height: min(90vh, 800px);
+}
+
+/* クリック可能な画像のスタイル */
+.prose img:hover {
+  @apply cursor-pointer transition-opacity duration-200;
+  opacity: 0.9;
+}
+
+/* 画像読み込み中のプレースホルダー */
+.prose img[loading="lazy"] {
+  @apply bg-muted/20;
+  min-height: 200px;
+}
+
+/* 画像を含む段落の制限 */
+.prose p:has(img) {
+  @apply max-h-screen overflow-hidden;
+}
+
+/* 画像のコンテナ制限 */
+.prose figure,
+.prose p img {
+  display: block;
+  margin: 1rem auto;
+}
+
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -57,4 +142,9 @@ h6[id] {
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground/50;
+}
+
+/* Code block improvements for all devices */
+.prose pre {
+  @apply text-sm max-w-full;
 }

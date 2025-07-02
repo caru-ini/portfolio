@@ -10,22 +10,22 @@ export const ArticleHeader = ({ article }: { article: BlogArticleMeta }) => {
   }).format(new Date(article.date));
 
   return (
-    <section className="relative overflow-hidden border-b bg-gradient-to-br from-background via-muted/20 to-primary/5 py-4 pt-24 md:py-8 md:pt-32">
+    <section className="relative overflow-hidden border-b bg-gradient-to-br from-background via-muted/20 to-primary/5 py-3 pt-20 sm:py-4 sm:pt-24 md:py-8 md:pt-32">
       <div className="container mx-auto max-w-2xl px-4">
         <Link
           href="/blog"
-          className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:-translate-x-1 hover:text-primary"
+          className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:-translate-x-1 hover:text-primary sm:mb-8"
         >
           <ArrowLeft className="size-4" />
           ブログ一覧に戻る
         </Link>
 
-        <header className="space-y-3">
-          <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
+        <header className="space-y-3 sm:space-y-4">
+          <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
             {article.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 rounded-xl bg-card/50 p-2 pl-0 text-sm text-muted-foreground backdrop-blur-sm">
+          <div className="flex flex-col gap-3 rounded-xl bg-card/50 p-3 text-sm text-muted-foreground backdrop-blur-sm sm:flex-row sm:items-center sm:gap-4 sm:p-2 sm:pl-0">
             <div className="flex items-center gap-2 font-medium">
               <Calendar className="size-4" />
               <time dateTime={formattedDate}>{formattedDate}</time>
@@ -37,12 +37,12 @@ export const ArticleHeader = ({ article }: { article: BlogArticleMeta }) => {
           </div>
 
           {article.tags && article.tags.length > 0 && (
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
               <Tag className="size-4 text-muted-foreground" />
               {article.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-colors hover:bg-primary/15"
+                  className="rounded-full bg-primary/10 px-3 py-1.5 text-xs font-medium text-primary backdrop-blur-sm transition-colors hover:bg-primary/15 sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {tag}
                 </span>

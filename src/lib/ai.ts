@@ -8,7 +8,7 @@ export const generateWithGemini = async ({
   instructions: string;
   input: string;
 }) => {
-  const model = google("gemini-2.0-flash-exp");
+  const model = google("gemini-2.5-flash");
   const response = await generateText({
     model,
     prompt: `${instructions}\n\n${input}`,

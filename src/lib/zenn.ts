@@ -12,7 +12,18 @@ export interface ZennArticleItem {
 // Instantiate the parser
 const parser = new Parser<object, ZennArticleItem>();
 
-const generateWithGeminiCached = cache(generateWithGemini);
+const generateWithGeminiCached = cache(async (input: string) => {
+  return await generateWithGemini({
+    instructions: `## Instructions
+    以下の記事の技術的な詳細や重要なポイントについてまとめた簡潔な説明を書いてください。
+    筆者について書く必要はありません。
+    出力はプレーンテキストで、日本語(敬体)で記述してください。
+    この要約は筆者"かる(@caru_ini)"のサイトのブログ記事紹介セクションで、ブログ記事カードの短い説明として使用されます。
+    読者の興味を引く(ただしフォーマルに)、わかりやすい説明を心がけてください。
+    出力は100文字以内に収めてください。`,
+    input,
+  });
+});
 
 const getZennFeed = async (feedUrl: string) => {
   // when cacheLife() added in stable, uncomment this
@@ -33,13 +44,7 @@ export async function getZennArticles(feedUrl: string): Promise<ZennArticleItem[
     // Ensure items exist and map them, providing default values if needed
     const descriptions = await Promise.all(
       feed.items.map(async (item) => {
-        return await generateWithGeminiCached({
-          instructions: `## Instructions
-            以下の記事の技術的な詳細や重要なポイントについてまとめた簡潔な説明を書いてください。
-            筆者について書く必要はありません。
-            出力はプレーンテキストで、日本語(敬体)で記述してください。を含め、100文字以内に収めてください。この要約は筆者"かる(@caru_ini)"のサイトの一部として使用されます。`,
-          input: item.contentSnippet ?? "",
-        });
+        return item.contentSnippet ? await generateWithGeminiCached(item.contentSnippet) : "";
       })
     );
     return (

@@ -85,7 +85,7 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-2xl gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -98,7 +98,7 @@ export function ProjectsSection() {
 function ProjectCard({ project }: { project: ProjectType }) {
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-all hover:shadow-md">
-      <div className="relative h-48 w-full overflow-hidden">
+      <div className="relative h-48 overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}

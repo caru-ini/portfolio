@@ -34,7 +34,7 @@ export const BlogSection = async () => {
             <p className="text-lg text-muted-foreground">最初の記事をお楽しみに！</p>
           </div>
         ) : (
-          <div className="mx-auto max-w-2xl space-y-6">
+          <div className="mx-auto max-w-4xl space-y-6">
             {recentArticles.map((article) => (
               <BlogCard key={article.slug} article={article} />
             ))}

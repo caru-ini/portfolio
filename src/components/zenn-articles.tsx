@@ -38,7 +38,7 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
             からの新鮮な記事をお届けします。
           </p>
         </div>
-        <div className="mx-auto flex max-w-2xl flex-col gap-4">
+        <div className="mx-auto flex max-w-4xl flex-col gap-4">
           {articles.map((article) => (
             <Link href={article.link} target="_blank" rel="noopener noreferrer" key={article.link}>
               <Card className="transition-all hover:shadow-md">

@@ -1,3 +1,4 @@
+import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 import { ThemeProvider } from "@/components/theme-provider";
 import { env } from "@/env";
 import { inter, mPlus1p, poppins } from "@/lib/fonts";
@@ -31,7 +32,10 @@ export default function RootLayout({
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID ?? ""} />
       <SessionProvider>
         <body className="flex min-h-svh flex-col" suppressHydrationWarning>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            {children}
+            <ScrollToTopButton />
+          </ThemeProvider>
         </body>
       </SessionProvider>
     </html>

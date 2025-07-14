@@ -27,22 +27,15 @@ export const ArticleToc = ({ toc, isMobile = true }: ArticleTocProps) => {
     });
   }, []);
 
-  const handleClick = useCallback(
-    (id: string) => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-      // Close TOC after clicking (only for mobile)
-      if (isMobile) {
-        setIsOpen(false);
-      }
-    },
-    [isMobile]
-  );
+  const handleClick = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, {

@@ -1,3 +1,4 @@
+import { AboutAuthor } from "@/app/blog/[slug]/_components/about-author";
 import { ArticleHeader } from "@/app/blog/[slug]/_components/article-header";
 import { ArticleToc } from "@/app/blog/[slug]/_components/article-toc";
 import { Footer } from "@/components/footer";
@@ -96,6 +97,7 @@ export default async function BlogDetailPage({ params }: Props) {
                       className="prose prose-gray dark:prose-invert md:prose-lg prose-headings:tracking-tight prose-h1:text-2xl prose-h2:text-xl prose-h3:text-lg prose-p:leading-relaxed prose-code:rounded prose-code:px-1.5 prose-code:py-0.5 prose-pre:bg-muted/50 prose-pre:backdrop-blur-sm prose-li:leading-relaxed prose-img:rounded-lg prose-img:object-contain"
                       dangerouslySetInnerHTML={{ __html: htmlContent }}
                     />
+                    <AboutAuthor />
                   </main>
 
                   <aside>
@@ -109,6 +111,7 @@ export default async function BlogDetailPage({ params }: Props) {
                     className="prose prose-sm prose-gray dark:prose-invert sm:prose-base prose-headings:tracking-tight prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-p:leading-relaxed prose-code:rounded prose-code:px-1 prose-code:py-0.5 prose-pre:overflow-x-auto prose-pre:bg-muted/50 prose-pre:backdrop-blur-sm prose-li:leading-relaxed prose-img:rounded-lg prose-img:object-contain sm:prose-h1:text-2xl sm:prose-h2:text-xl sm:prose-h3:text-lg sm:prose-code:px-1.5"
                     dangerouslySetInnerHTML={{ __html: htmlContent }}
                   />
+                  <AboutAuthor />
                 </main>
               </>
             ) : (
@@ -117,6 +120,7 @@ export default async function BlogDetailPage({ params }: Props) {
                   className="prose prose-sm prose-gray dark:prose-invert sm:prose-base md:prose-lg prose-headings:tracking-tight prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-p:leading-relaxed prose-code:rounded prose-code:px-1 prose-code:py-0.5 prose-pre:overflow-x-auto prose-pre:bg-muted/50 prose-pre:backdrop-blur-sm prose-li:leading-relaxed prose-img:rounded-lg prose-img:object-contain sm:prose-h1:text-2xl sm:prose-h2:text-xl sm:prose-h3:text-lg sm:prose-code:px-1.5"
                   dangerouslySetInnerHTML={{ __html: htmlContent }}
                 />
+                <AboutAuthor />
               </main>
             )}
           </div>

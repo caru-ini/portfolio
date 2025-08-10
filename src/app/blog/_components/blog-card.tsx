@@ -11,7 +11,7 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
   }).format(new Date(article.date));
 
   return (
-    <Link href={`/blog/${article.slug}`} className="group max-w-2xl">
+    <Link href={`/blog/${article.slug}`} className="group w-full">
       <Card className="overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-border hover:bg-card/80 hover:shadow-xl">
         <CardHeader className="pb-4">
           <div className="mb-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">

@@ -47,7 +47,7 @@ export default async function BlogListPage() {
               <p className="text-lg text-muted-foreground">最初の記事をお楽しみに！</p>
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="flex flex-col items-center gap-y-4">
               {articles.map((article) => (
                 <BlogCard key={article.slug} article={article} />
               ))}

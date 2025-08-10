@@ -1,6 +1,7 @@
 import { BlogArticle } from "@/lib/github-blog";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { transformerNotationDiff } from "@shikijs/transformers";
+import type { Heading } from "mdast";
 import { Metadata } from "next";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -10,12 +11,23 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
+import { visit } from "unist-util-visit";
 
-export interface TocItem {
-  id: string;
-  text: string;
-  level: number;
-}
+export type TocItem = {
+  url: string;
+  depth: number;
+  value: string;
+};
+
+type MarkdownProcessingOptions = {
+  owner?: string;
+  repo?: string;
+};
+
+type MarkdownProcessingResult = {
+  html: string;
+  toc: TocItem[];
+};
 
 export const getPageMeta = async (article: BlogArticle): Promise<Metadata> => ({
   /**
@@ -37,29 +49,33 @@ export const getPageMeta = async (article: BlogArticle): Promise<Metadata> => ({
   },
 });
 
+/**
+ * Process URL lines and convert them to linkcard iframe
+ */
 const processUrlLines = (content: string): string => {
-  /**
-   * @description Process URL lines and convert them to linkcard iframe
-   */
   return content.replace(
     /^(https?:\/\/[^\s]+)$/gm,
     '<iframe src="/embed?url=$1" class="w-full" frameborder="0" style="margin: 16px 0;"></iframe>'
   );
 };
 
+/**
+ * Convert ```{language}:{title} to ```{language} title="{title}"
+ */
 const processCodeBlockTitle = (content: string): string => {
-  /**
-   * @description Convert ```{language}:{title} to ```{language} title="{title}"
-   */
   return content.replace(/^```(\w+):([^ ]+)$/gm, '```$1 title="$2"');
 };
 
+/**
+ * Convert relative image paths to use the image proxy API
+ * Only processes relative paths (./path) and absolute paths that don't start with http(s)
+ * Also adds loading and styling attributes for better image handling
+ */
 const processImagePaths = (content: string, owner: string, repo: string): string => {
-  /**
-   * @description Convert relative image paths to use the image proxy API
-   * Only processes relative paths (./path) and absolute paths that don't start with http(s)
-   * Also adds loading and styling attributes for better image handling
-   */
+  if (!owner || !repo) {
+    throw new Error("Owner and repo are required for image processing");
+  }
+
   return content
     .replace(/!\[([^\]]*)\]\(\.\/([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`)
     .replace(/!\[([^\]]*)\]\(\/(?!\/|https?:)([^)]+)\)/g, `![$1](/api/images/${owner}/${repo}/$2)`)
@@ -69,11 +85,15 @@ const processImagePaths = (content: string, owner: string, repo: string): string
     );
 };
 
-const createSlug = (text: string, usedSlugs: Set<string>): string => {
-  /**
-   * @description Create a slug from text (Japanese, English, and numbers)
-   */
-  let slug = text
+/**
+ * Create a slug from text (Japanese, English, and numbers)
+ */
+const createSlug = (text: string): string => {
+  if (!text || typeof text !== "string") {
+    return "heading";
+  }
+
+  const slugValue = text
     .trim()
     .toLowerCase()
     .replace(/\s+/g, "-")
@@ -81,58 +101,15 @@ const createSlug = (text: string, usedSlugs: Set<string>): string => {
     .replace(/-+/g, "-")
     .replace(/^-+|-+$/g, "");
 
-  if (!slug) {
-    slug = "heading";
-  }
-
-  let uniqueSlug = slug;
-  let counter = 1;
-  while (usedSlugs.has(uniqueSlug)) {
-    uniqueSlug = `${slug}-${counter}`;
-    counter++;
-  }
-
-  usedSlugs.add(uniqueSlug);
-  return uniqueSlug;
-};
-export const extractTocFromMarkdown = (markdown: string): TocItem[] => {
-  /**
-   * @description Extract table of contents from markdown
-   */
-  const lines = markdown.split("\n");
-  const toc: TocItem[] = [];
-  const usedSlugs = new Set<string>();
-  let inCodeBlock = false;
-
-  for (const line of lines) {
-    if (line.trim().startsWith("```")) {
-      inCodeBlock = !inCodeBlock;
-      continue;
-    }
-
-    if (inCodeBlock) continue;
-
-    const headingMatch = line.match(/^(#{1,3})\s+(.+)$/);
-    if (!headingMatch) continue;
-
-    const level = headingMatch[1].length;
-    const text = headingMatch[2].trim();
-    const id = createSlug(text, usedSlugs);
-
-    toc.push({ id, text, level });
-  }
-
-  return toc;
+  return slugValue || "heading";
 };
 
 export const markdownToHtml = async (
   markdown: string,
-  options?: {
-    owner?: string;
-    repo?: string;
-  }
-): Promise<string> => {
+  options?: MarkdownProcessingOptions
+): Promise<MarkdownProcessingResult> => {
   let processedMarkdown = processUrlLines(processCodeBlockTitle(markdown));
+  const toc: TocItem[] = [];
 
   // Process image paths if repository info is provided
   if (options?.owner && options?.repo) {
@@ -142,6 +119,14 @@ export const markdownToHtml = async (
   const result = await unified()
     .use(remarkParse, { fragment: true })
     .use(remarkGfm)
+    .use(() => (tree) => {
+      visit(tree, "heading", (node: Heading) => {
+        if (node.children[0]?.type === "text") {
+          const value = node.children[0].value;
+          toc.push({ value, depth: node.depth, url: `#${createSlug(value)}` });
+        }
+      });
+    })
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeSlug)
     .use(rehypeAutoLinkHeadings, {
@@ -158,5 +143,5 @@ export const markdownToHtml = async (
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(processedMarkdown);
 
-  return String(result);
+  return { html: String(result), toc };
 };

@@ -13,21 +13,21 @@ const avatars = [
     filename: "avatar_noAhoge_cropped.png",
     description: "アイコンのアバター画像",
     type: "icon",
-    category: "アイコン用",
+    category: "アイコン",
   },
   {
     label: "アイコン アホ毛あり",
     filename: "avatar_ahoge_cropped.png",
     description: "アイコンのアバター画像",
     type: "icon",
-    category: "アイコン用",
+    category: "アイコン",
   },
   {
     label: "アホ毛あり",
     filename: "avatar_ahoge.png",
     description: "アホ毛ありのアバター画像",
     type: "normal",
-    category: "通常版",
+    category: "全身",
   },
   {
     label: "アホ毛あり 透過背景",
@@ -41,7 +41,7 @@ const avatars = [
     filename: "avatar_noAhoge.png",
     description: "アホ毛なしのアバター画像",
     type: "normal",
-    category: "通常版",
+    category: "全身",
   },
   {
     label: "アホ毛なし 透過背景",
@@ -50,7 +50,14 @@ const avatars = [
     type: "normal",
     category: "透過背景",
   },
-];
+  {
+    label: "Caru.moe ロゴ",
+    filename: "logo.svg",
+    description: "Caru.moe ロゴ",
+    type: "normal",
+    category: "ロゴ",
+  },
+] as const;
 
 const allowedUsages = [
   "Webサイト、ブログ、SNS等での活動紹介",
@@ -186,13 +193,11 @@ export default function PressKitPage() {
                       <CardTitle className="text-lg transition-colors group-hover:text-blue-600">
                         {avatar.label}
                       </CardTitle>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-3">
                         <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">
                           {avatar.category}
                         </span>
-                        <div className="opacity-0 transition-opacity group-hover:opacity-100">
-                          <Download className="size-4 text-blue-600" />
-                        </div>
+                        <Download className="size-4 text-blue-600" />
                       </div>
                     </div>
                   </CardHeader>
@@ -222,7 +227,7 @@ export default function PressKitPage() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                           <ImageIcon className="size-3" />
-                          PNG形式
+                          {avatar.filename.split(".")[1].toUpperCase()}形式
                         </div>
                         <div className="text-xs font-medium text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
                           クリックでダウンロード

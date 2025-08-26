@@ -12,7 +12,7 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
 
   return (
     <Link href={`/blog/${article.slug}`} className="group w-full">
-      <Card className="overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-border hover:bg-card/80 hover:shadow-xl">
+      <Card className="overflow-hidden border border-border/50 bg-card/50 backdrop-blur-sm transition-all duration-300 hover:border-border hover:bg-card/80 hover:ring-1 hover:ring-ring">
         <CardHeader className="pb-4">
           <div className="mb-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
@@ -27,7 +27,7 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
             </div>
           </div>
 
-          <CardTitle className="line-clamp-2 text-xl leading-tight transition-colors group-hover:text-primary md:text-2xl">
+          <CardTitle className="line-clamp-2 text-xl leading-tight transition-colors duration-300 md:text-2xl">
             {article.title}
           </CardTitle>
 

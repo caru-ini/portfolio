@@ -185,7 +185,7 @@ export default function PressKitPage() {
             {avatars.map((avatar) => (
               <Card
                 key={avatar.filename}
-                className="group cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-lg"
+                className="group cursor-pointer overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-ring"
               >
                 <Link href={`/avatars/dist/${avatar.filename}`} download className="block">
                   <CardHeader className="pb-3">

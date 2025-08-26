@@ -41,7 +41,7 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
         <div className="mx-auto flex max-w-4xl flex-col gap-4">
           {articles.map((article) => (
             <Link href={article.link} target="_blank" rel="noopener noreferrer" key={article.link}>
-              <Card className="transition-all hover:shadow-md">
+              <Card className="transition-all duration-300 hover:ring-1 hover:ring-ring">
                 <CardHeader>
                   <CardTitle className="text-lg">{article.title}</CardTitle>
                   <CardDescription className="flex items-center gap-1">

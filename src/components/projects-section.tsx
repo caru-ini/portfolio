@@ -97,7 +97,7 @@ export function ProjectsSection() {
 
 function ProjectCard({ project }: { project: ProjectType }) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden transition-all hover:shadow-md">
+    <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-ring">
       <div className="relative h-48 overflow-hidden">
         <Image
           src={project.image}

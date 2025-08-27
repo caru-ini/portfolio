@@ -62,7 +62,7 @@ export function HeroSection() {
           <Button variant="outline" className="gap-2 bg-background" asChild>
             <Link href="https://bento.me/caru-ini" target="_blank" rel="noopener noreferrer">
               <Image src="/bento.svg" alt="Bento" width={20} height={20} />
-              <span>Bento.me</span>
+              <span>リンク集</span>
             </Link>
           </Button>
         </div>

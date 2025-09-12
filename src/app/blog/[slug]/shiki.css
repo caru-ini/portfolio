@@ -5,7 +5,11 @@
 .prose pre {
   background-color: #0f111a;
   color: #babed8;
-  @apply overflow-x-auto;
+  @apply p-0;
+}
+
+.prose pre code {
+  @apply overflow-x-auto p-4;
 }
 
 .prose code:not(pre code):after,
@@ -147,4 +151,19 @@ h6[id] {
 /* Code block improvements for all devices */
 .prose pre {
   @apply text-sm max-w-full;
+}
+
+/* Ensure link-wrapped headings keep heading typography */
+.prose :is(h1, h2, h3, h4, h5, h6) > a {
+  color: inherit;
+  text-decoration: none;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+/* Keep hover clean; color change is controlled separately if needed */
+.prose :is(h1, h2, h3, h4, h5, h6) > a:hover {
+  color: inherit;
+  text-decoration: none;
 }

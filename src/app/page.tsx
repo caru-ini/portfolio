@@ -1,10 +1,10 @@
-import { BlogSection } from "@/components/blog-section";
+import { BlogSection } from "@/app/_components/blog-section";
+import { HeroSection } from "@/app/_components/hero-section";
+import { ProjectsSection } from "@/app/_components/projects-section";
+import { SkillsSection } from "@/app/_components/skills-section";
+import { ZennArticles } from "@/app/_components/zenn-articles";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
-import { HeroSection } from "@/components/hero-section";
-import { ProjectsSection } from "@/components/projects-section";
-import { SkillsSection } from "@/components/skills-section";
-import { ZennArticles } from "@/components/zenn-articles";
 
 export default function Home() {
   return (

@@ -63,6 +63,7 @@ export default async function BlogDetailPage({ params }: Props) {
     author: {
       "@type": "Person",
       name: "Caru",
+      url: "https://caru.moe",
     },
     keywords: article.tags?.join(", "),
   };

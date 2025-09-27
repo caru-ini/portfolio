@@ -15,7 +15,7 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        "fixed left-0 right-0 top-0 z-50 bg-transparent transition-all duration-300",
+        "fixed left-0 right-0 top-0 z-50 bg-transparent px-2 transition-all duration-300",
         isScrolled ? "py-2" : "py-2 md:py-3"
       )}
     >

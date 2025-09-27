@@ -24,7 +24,7 @@ type ProjectType = {
   demo?: string;
 };
 
-const projects: ProjectType[] = [
+const projects = [
   {
     id: "portfolio",
     title: "ポートフォリオサイト",
@@ -32,7 +32,6 @@ const projects: ProjectType[] = [
     image: "/projects/portfolio.webp",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     github: "https://github.com/caru-ini/portfolio",
-    demo: "",
   },
   {
     id: "yoncomic-studio",
@@ -72,7 +71,7 @@ const projects: ProjectType[] = [
     tags: ["TypeScript", "Docker", "Cognito", "API", "フレームワーク"],
     github: "https://github.com/frouriojs/magnito",
   },
-];
+] satisfies ProjectType[];
 
 export function ProjectsSection() {
   return (
@@ -103,6 +102,8 @@ function ProjectCard({ project }: { project: ProjectType }) {
           src={project.image}
           alt={project.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          quality={70}
           className={`object-center transition-transform duration-300 ${
             project.id === "magnito" ? "object-contain" : "object-cover"
           }`}

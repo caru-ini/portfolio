@@ -95,7 +95,7 @@ export default async function Image({ params }: ImageProps) {
                   paddingTop: "12px",
                   paddingBottom: "12px",
                   borderRadius: "8px",
-                  fontSize: "24px",
+                  fontSize: "28px",
                   color: "#374151",
                   display: "flex",
                   alignItems: "center",
@@ -120,7 +120,7 @@ export default async function Image({ params }: ImageProps) {
         >
           <div
             style={{
-              fontSize: "60px",
+              fontSize: "70px",
               color: "#1f2937",
               fontWeight: "bold",
               maxWidth: "1024px",
@@ -145,17 +145,26 @@ export default async function Image({ params }: ImageProps) {
             <img
               src={`https://avatars.githubusercontent.com/u/166897461?s=1000&v=4`}
               alt="Caru Avatar"
-              width={80}
-              height={80}
+              width={100}
+              height={100}
               style={{ borderRadius: "50%", marginRight: "16px" }}
             />
-            <div style={{ fontSize: "40px", color: "#374151", fontWeight: "bold" }}>Caru</div>
+            <div
+              style={{
+                fontSize: "60px",
+                color: "#374151",
+                fontWeight: "bold",
+                fontFamily: "Poppins",
+              }}
+            >
+              Caru
+            </div>
           </div>
 
           {/* 右下: Caru.moe */}
           <div
             style={{
-              fontSize: "40px",
+              fontSize: "60px",
               color: "#374151",
               fontWeight: "bold",
               fontFamily: "Poppins",
@@ -165,6 +174,16 @@ export default async function Image({ params }: ImageProps) {
             <span style={{ color: "#63aeea" }}>Caru</span>.moe
           </div>
         </div>
+        {/* 最下部 カラーバー */}
+        <div
+          style={{
+            backgroundColor: "#63aeea",
+            height: "16px",
+            width: "100%",
+            position: "absolute",
+            bottom: 0,
+          }}
+        />
       </div>
     ),
     {

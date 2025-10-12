@@ -5,6 +5,26 @@ import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticlesList } from "@/lib/github-blog";
 import { Newspaper } from "lucide-react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog | Caru",
+  description:
+    "技術的な学びや日々の気づきを記録しているブログ。プログラミング、Web開発に関する記事を発信しています。",
+  openGraph: {
+    title: "Blog | Caru",
+    description:
+      "技術的な学びや日々の気づきを記録しているブログ。プログラミング、Web開発に関する記事を発信しています。",
+    type: "website",
+    url: `${BLOG_CONFIG.SITE_URL}/blog`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Caru",
+    description:
+      "技術的な学びや日々の気づきを記録しているブログ。プログラミング、Web開発に関する記事を発信しています。",
+  },
+};
 
 export default async function BlogListPage() {
   const articles = await getArticlesList({

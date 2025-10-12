@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     env.NODE_ENV === "development" ? "http://localhost:3000" : "https://caru.moe"
   ),
+  alternates: {
+    types: {
+      "application/rss+xml": "/blog/rss.xml",
+      "application/atom+xml": "/blog/atom.xml",
+      "application/feed+json": "/blog/feed.json",
+    },
+  },
 };
 
 export default function RootLayout({

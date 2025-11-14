@@ -116,6 +116,7 @@ export default async function Image({ params }: ImageProps) {
             display: "flex",
             alignItems: "center",
             paddingLeft: "48px",
+            marginTop: "50px",
           }}
         >
           <div

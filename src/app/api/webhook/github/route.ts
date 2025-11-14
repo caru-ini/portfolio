@@ -1,6 +1,6 @@
 import { env } from "@/env";
 import crypto from "crypto";
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
@@ -26,6 +26,7 @@ export async function POST(request: NextRequest) {
     if (payload.ref === "refs/heads/main" && payload.repository) {
       console.log(`Revalidating cache for repository: ${payload.repository.full_name}`);
       revalidateTag("posts");
+      revalidatePath("/");
 
       return NextResponse.json(
         {

@@ -1,3 +1,5 @@
+export const revalidate = 3600;
+
 import { BlogSection } from "@/app/_components/blog-section";
 import { HeroSection } from "@/app/_components/hero-section";
 import { ProjectsSection } from "@/app/_components/projects-section";

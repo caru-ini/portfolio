@@ -17,7 +17,7 @@ export const BlogSection = async () => {
 
   return (
     <section className="py-20" id="blog">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto flex max-w-4xl flex-col items-center px-4">
         <div className="mb-12 text-center">
           <div className="mb-4 inline-block">
             <div className="rounded-2xl bg-primary/10 p-3 backdrop-blur-sm">

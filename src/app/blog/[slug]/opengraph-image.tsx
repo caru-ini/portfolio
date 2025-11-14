@@ -179,13 +179,26 @@ export default async function Image({ params }: ImageProps) {
         {/* 最下部 カラーバー */}
         <div
           style={{
-            backgroundColor: "#63aeea",
-            height: "16px",
+            display: "flex",
             width: "100%",
+            height: "16px",
             position: "absolute",
             bottom: 0,
           }}
-        />
+        >
+          <div
+            style={{
+              backgroundColor: "#63aeea",
+              width: "87%",
+            }}
+          />
+          <div
+            style={{
+              backgroundColor: "#f9a8d4",
+              width: "13%",
+            }}
+          />
+        </div>
       </div>
     ),
     {

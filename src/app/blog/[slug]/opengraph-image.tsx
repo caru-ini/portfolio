@@ -171,7 +171,8 @@ export default async function Image({ params }: ImageProps) {
               display: "flex",
             }}
           >
-            <span style={{ color: "#63aeea" }}>Caru</span>.moe
+            <span style={{ color: "#63aeea" }}>Caru</span>.
+            <span style={{ color: "#f9a8d4" }}>moe</span>
           </div>
         </div>
         {/* 最下部 カラーバー */}

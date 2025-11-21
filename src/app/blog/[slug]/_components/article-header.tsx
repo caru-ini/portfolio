@@ -21,7 +21,7 @@ export const ArticleHeader = ({ article }: { article: BlogArticleMeta }) => {
         </Link>
 
         <header className="space-y-3 sm:space-y-4">
-          <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl lg:text-5xl">
+          <h1 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl md:text-4xl">
             {article.title}
           </h1>
 

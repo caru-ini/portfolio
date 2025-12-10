@@ -7,6 +7,13 @@ import { SkillsSection } from "@/app/_components/skills-section";
 import { ZennArticles } from "@/app/_components/zenn-articles";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://caru.moe",
+  },
+};
 
 export default function Home() {
   return (

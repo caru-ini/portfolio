@@ -1,5 +1,10 @@
-import { google } from "@ai-sdk/google";
+import { env } from "@/env";
+import { createOpenRouter } from "@openrouter/ai-sdk-provider";
 import { generateText } from "ai";
+
+const openRouter = createOpenRouter({
+  apiKey: env.OPENROUTER_API_KEY,
+});
 
 export const generateWithGemini = async ({
   instructions,
@@ -8,7 +13,7 @@ export const generateWithGemini = async ({
   instructions: string;
   input: string;
 }) => {
-  const model = google("gemini-2.5-flash");
+  const model = openRouter("google/gemma-3-27b-it:free");
   const response = await generateText({
     model,
     prompt: `${instructions}\n\n${input}`,

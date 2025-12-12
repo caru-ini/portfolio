@@ -17,20 +17,6 @@ export const env = createEnv({
     OPENROUTER_API_KEY: z.string().min(1),
   },
   /**
-   * Specify runtimeEnv manually for Next.js < 13.4.4
-   */
-  runtimeEnv: {
-    NODE_ENV: process.env.NODE_ENV,
-    AUTH_SECRET: process.env.AUTH_SECRET,
-    DATABASE_URL: process.env.DATABASE_URL,
-    AUTH_GITHUB_ID: process.env.AUTH_GITHUB_ID,
-    AUTH_GITHUB_SECRET: process.env.AUTH_GITHUB_SECRET,
-    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
-    GITHUB_WEBHOOK_SECRET: process.env.GITHUB_WEBHOOK_SECRET,
-    GOOGLE_FONTS_API_KEY: process.env.GOOGLE_FONTS_API_KEY,
-    OPENROUTER_API_KEY: process.env.OPENROUTER_API_KEY,
-  },
-  /**
    * Skip validation of environment variables (useful for CI/CD)
    */
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

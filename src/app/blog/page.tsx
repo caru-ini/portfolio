@@ -4,7 +4,7 @@ import { Header } from "@/components/header";
 import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticlesList } from "@/lib/github-blog";
-import { Newspaper } from "lucide-react";
+import { Icon } from "@iconify/react";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ export default async function BlogListPage() {
           <div className="space-y-4">
             <div className="inline-block">
               <div className="rounded-2xl bg-primary/10 p-4 backdrop-blur-sm">
-                <Newspaper className="size-8 text-primary" />
+                <Icon icon="lucide:notebook-pen" className="size-8 text-primary" />
               </div>
             </div>
             <h1 className="text-4xl font-bold sm:text-5xl lg:text-6xl">Blog</h1>

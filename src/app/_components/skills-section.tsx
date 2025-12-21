@@ -1,17 +1,9 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useMemo } from "react";
-import {
-  SiDocker,
-  SiGit,
-  SiNextdotjs,
-  SiOpenai,
-  SiPrisma,
-  SiReact,
-  SiTailwindcss,
-} from "react-icons/si";
 
 type Involvement = "個人開発" | "日常ツール" | "学習中";
 
@@ -29,32 +21,32 @@ const SvgIcon = ({ src, alt }: { src: string; alt: string }) => {
 const skills: SkillType[] = [
   {
     name: "TypeScript",
-    icon: <SvgIcon src="/icons/typescript.svg" alt="TypeScript" />,
+    icon: <Icon icon="logos:typescript-icon" className="size-8" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Next.js (App Router)",
-    icon: <SiNextdotjs className="size-8" />,
+    icon: <Icon icon="logos:nextjs-icon" className="size-8" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "React",
-    icon: <SiReact className="size-8 text-[#61DAFB]" />,
+    icon: <Icon icon="logos:react" className="size-8" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
 
   {
     name: "Tailwind CSS",
-    icon: <SiTailwindcss className="size-8 text-[#06B6D4]" />,
+    icon: <Icon icon="logos:tailwindcss-icon" className="size-8" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Hono",
-    icon: <SvgIcon src="/icons/hono.svg" alt="Hono" />,
+    icon: <Icon icon="logos:hono" className="size-8" />,
     category: "バックエンド",
     involvement: "個人開発",
   },
@@ -66,13 +58,13 @@ const skills: SkillType[] = [
   },
   {
     name: "Prisma",
-    icon: <SiPrisma className="size-8 text-[#2D3748]" />,
+    icon: <Icon icon="logos:prisma" className="size-8" />,
     category: "バックエンド",
     involvement: "個人開発",
   },
   {
     name: "OpenAI API",
-    icon: <SiOpenai className="size-8 text-[#000000]" />,
+    icon: <Icon icon="logos:openai-icon" className="size-8" />,
     category: "その他",
     involvement: "個人開発",
   },
@@ -84,19 +76,19 @@ const skills: SkillType[] = [
   },
   {
     name: "AWS",
-    icon: <SvgIcon src="/icons/aws.svg" alt="AWS" />,
+    icon: <Icon icon="logos:aws" className="size-8" />,
     category: "その他",
     involvement: "学習中",
   },
   {
     name: "Docker",
-    icon: <SiDocker className="size-8 text-[#2496ED]" />,
+    icon: <Icon icon="logos:docker-icon" className="size-8" />,
     category: "その他",
     involvement: "日常ツール",
   },
   {
     name: "Git",
-    icon: <SiGit className="size-8 text-[#F05032]" />,
+    icon: <Icon icon="logos:git-icon" className="size-8" />,
     category: "その他",
     involvement: "日常ツール",
   },

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { BlogArticleMeta } from "@/lib/github-blog";
-import { Calendar, Clock, Tag } from "lucide-react";
+import { Icon } from "@iconify/react";
 import Link from "next/link";
 
 export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
@@ -16,13 +16,13 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
         <CardHeader className="pb-4">
           <div className="mb-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-1.5">
-              <Calendar className="size-3.5" />
+              <Icon icon="lucide:calendar" className="size-3.5" />
               <time dateTime={formattedDate} className="font-medium">
                 {formattedDate}
               </time>
             </div>
             <div className="flex items-center gap-1.5">
-              <Clock className="size-3.5" />
+              <Icon icon="lucide:clock" className="size-3.5" />
               <span className="font-medium">{article.readingTime}</span>
             </div>
           </div>
@@ -41,7 +41,7 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
         {article.tags && article.tags.length > 0 && (
           <CardContent className="pt-0">
             <div className="flex flex-wrap items-center gap-2">
-              <Tag className="size-3.5 text-muted-foreground" />
+              <Icon icon="lucide:tag" className="size-3.5 text-muted-foreground" />
               {article.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}

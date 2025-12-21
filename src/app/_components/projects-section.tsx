@@ -9,7 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -134,7 +134,7 @@ function ProjectCard({ project }: { project: ProjectType }) {
         {project.demo && (
           <Button size="sm" className="gap-2" asChild>
             <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="size-4" />
+              <Icon icon="lucide:external-link" className="size-4" />
               <span>デモ</span>
             </Link>
           </Button>

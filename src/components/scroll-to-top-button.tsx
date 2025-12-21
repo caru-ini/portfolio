@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { cn } from "@/lib/utils";
-import { ChevronUp } from "lucide-react";
+import { Icon } from "@iconify/react";
 
 export const ScrollToTopButton = () => {
   const isScrolled = useScrollHeader();
@@ -26,7 +26,7 @@ export const ScrollToTopButton = () => {
       )}
       aria-label="ページの上部に戻る"
     >
-      <ChevronUp className="size-5" />
+      <Icon icon="lucide:chevron-up" className="size-5" />
     </Button>
   );
 };

@@ -1,7 +1,7 @@
 import { Header } from "@/components/header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Home } from "lucide-react";
+import { Icon } from "@iconify/react";
 import Link from "next/link";
 
 export default function NotFound() {
@@ -25,7 +25,7 @@ export default function NotFound() {
             <div className="flex flex-col gap-2 sm:flex-row sm:justify-center">
               <Button asChild>
                 <Link href="/">
-                  <Home className="mr-2 size-4" />
+                  <Icon icon="lucide:home" className="mr-2 size-4" />
                   ホームに戻る
                 </Link>
               </Button>

@@ -2,7 +2,7 @@
 
 import { BrandLogo } from "@/components/brand-logo";
 import { QRCodeDisplay } from "@/components/qr-code";
-import { Heart, ImageIcon, Mail } from "lucide-react";
+import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiDiscord, SiGithub, SiX } from "react-icons/si";
@@ -54,7 +54,7 @@ export const Footer = () => {
                 className="text-muted-foreground transition-colors hover:text-primary"
                 aria-label="Email"
               >
-                <Mail className="size-5" />
+                <Icon icon="lucide:mail" className="size-5" />
               </Link>
             </div>
           </div>
@@ -102,7 +102,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
                 >
-                  <ImageIcon className="size-4" />
+                  <Icon icon="lucide:image-icon" className="size-4" />
                   プレスキット
                 </Link>
               </li>
@@ -158,8 +158,8 @@ export const Footer = () => {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-center text-sm text-muted-foreground md:flex-row">
           <div>
-            &copy; {currentYear} Caru. Made with <Heart className="inline size-3 text-red-500" /> in
-            Tokyo.
+            &copy; {currentYear} Caru. Made with{" "}
+            <Icon icon="lucide:heart" className="inline size-3 text-red-500" /> in Tokyo.
           </div>
           <div>
             <QRCodeDisplay buttonText="サイトQRコード" modalTitle="このサイトのQRコード" />

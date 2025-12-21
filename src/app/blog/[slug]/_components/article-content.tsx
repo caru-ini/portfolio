@@ -7,7 +7,7 @@ const proseClasses = {
   base: "prose prose-gray dark:prose-invert prose-headings:tracking-tight prose-headings:font-semibold prose-p:leading-relaxed prose-code:rounded prose-code:px-1.5 prose-code:py-0.5 prose-pre:bg-muted/50 prose-pre:backdrop-blur-sm prose-li:leading-relaxed prose-img:rounded-lg prose-img:object-contain",
   mobile:
     "prose-sm prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-code:px-1 sm:prose-base sm:prose-h1:text-2xl sm:prose-h2:text-xl sm:prose-h3:text-lg sm:prose-code:px-1.5",
-  desktop: "md:prose-lg",
+  desktop: "md:prose-lg prose-code:text-sm",
   mobileOverrides: "prose-pre:overflow-x-auto",
 } as const;
 

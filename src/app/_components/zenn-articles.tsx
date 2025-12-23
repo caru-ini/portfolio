@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getZennArticles, ZennArticleItem } from "@/lib/zenn";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
@@ -18,7 +17,7 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
 
   return (
     <section className="py-20" id="zenn-articles">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto max-w-5xl px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-center text-3xl font-bold">最新の記事</h2>
           <p className="inline-flex items-center gap-0.5 text-muted-foreground">
@@ -38,30 +37,47 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
             からの新鮮な記事をお届けします。
           </p>
         </div>
-        <div className="mx-auto flex max-w-4xl flex-col gap-4">
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
-            <Link href={article.link} target="_blank" rel="noopener noreferrer" key={article.link}>
-              <Card className="transition-all duration-300 hover:ring-1 hover:ring-ring">
-                <CardHeader>
-                  <CardTitle className="text-lg">{article.title}</CardTitle>
-                  <CardDescription className="flex items-center gap-1">
-                    <Icon icon="lucide:calendar" className="size-4" />
-                    {new Date(article.isoDate).toLocaleDateString("ja-JP")}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>{article.description}</CardContent>
-              </Card>
-            </Link>
+            <ArticleCard key={article.link} article={article} />
           ))}
-          <div className="ml-auto mt-3 inline-block w-full text-end">
-            <Button variant={"ghost"} className="rounded-full" asChild>
-              <Link href="https://zenn.dev/caru" target="_blank" rel="noopener noreferrer">
-                さらにみる <Icon icon="lucide:arrow-right" className="size-4" />
-              </Link>
-            </Button>
-          </div>
+        </div>
+
+        <div className="mt-8 text-end">
+          <Button variant="ghost" className="rounded-full" asChild>
+            <Link href="https://zenn.dev/caru" target="_blank" rel="noopener noreferrer">
+              さらにみる <Icon icon="lucide:arrow-right" className="ml-1 size-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
   );
 };
+
+function ArticleCard({ article }: { article: ZennArticleItem }) {
+  return (
+    <Link
+      href={article.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex flex-col overflow-hidden rounded-xl border border-border/50 bg-background transition-all duration-300 hover:border-border hover:ring-1 hover:ring-ring"
+    >
+      <div className="flex flex-1 flex-col p-5">
+        <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
+          <Icon icon="lucide:calendar" className="size-3.5" />
+          <time dateTime={article.isoDate}>
+            {new Date(article.isoDate).toLocaleDateString("ja-JP")}
+          </time>
+        </div>
+        <h3 className="mb-2 line-clamp-2 font-semibold transition-colors group-hover:text-primary">
+          {article.title}
+        </h3>
+        {article.description && (
+          <p className="line-clamp-2 flex-1 text-sm text-muted-foreground">{article.description}</p>
+        )}
+      </div>
+    </Link>
+  );
+}

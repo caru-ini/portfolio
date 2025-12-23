@@ -1,6 +1,5 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useMemo } from "react";
@@ -15,38 +14,37 @@ type SkillType = {
 };
 
 const SvgIcon = ({ src, alt }: { src: string; alt: string }) => {
-  return <Image src={src} alt={alt} width={24} height={24} className="size-8" />;
+  return <Image src={src} alt={alt} width={24} height={24} className="size-5" />;
 };
 
 const skills: SkillType[] = [
   {
     name: "TypeScript",
-    icon: <Icon icon="logos:typescript-icon" className="size-8" />,
+    icon: <Icon icon="logos:typescript-icon" className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Next.js (App Router)",
-    icon: <Icon icon="logos:nextjs-icon" className="size-8" />,
+    icon: <Icon icon="logos:nextjs-icon" className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "React",
-    icon: <Icon icon="logos:react" className="size-8" />,
+    icon: <Icon icon="logos:react" className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
-
   {
     name: "Tailwind CSS",
-    icon: <Icon icon="logos:tailwindcss-icon" className="size-8" />,
+    icon: <Icon icon="logos:tailwindcss-icon" className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Hono",
-    icon: <Icon icon="logos:hono" className="size-8" />,
+    icon: <Icon icon="logos:hono" className="size-5" />,
     category: "バックエンド",
     involvement: "個人開発",
   },
@@ -58,13 +56,13 @@ const skills: SkillType[] = [
   },
   {
     name: "Prisma",
-    icon: <Icon icon="logos:prisma" className="size-8" />,
+    icon: <Icon icon="logos:prisma" className="size-5" />,
     category: "バックエンド",
     involvement: "個人開発",
   },
   {
     name: "OpenAI API",
-    icon: <Icon icon="logos:openai-icon" className="size-8" />,
+    icon: <Icon icon="logos:openai-icon" className="size-5" />,
     category: "その他",
     involvement: "個人開発",
   },
@@ -76,19 +74,19 @@ const skills: SkillType[] = [
   },
   {
     name: "AWS",
-    icon: <Icon icon="logos:aws" className="size-8" />,
+    icon: <Icon icon="logos:aws" className="size-5" />,
     category: "その他",
     involvement: "学習中",
   },
   {
     name: "Docker",
-    icon: <Icon icon="logos:docker-icon" className="size-8" />,
+    icon: <Icon icon="logos:docker-icon" className="size-5" />,
     category: "その他",
     involvement: "日常ツール",
   },
   {
     name: "Git",
-    icon: <Icon icon="logos:git-icon" className="size-8" />,
+    icon: <Icon icon="logos:git-icon" className="size-5" />,
     category: "その他",
     involvement: "日常ツール",
   },
@@ -104,14 +102,11 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section className="bg-muted/30 py-20" id="skills">
+    <section className="py-20" id="skills">
       <div className="container mx-auto max-w-5xl px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">スキル</h2>
-          <div className="mb-2 flex justify-center">
-            <span className="rounded-md bg-muted px-2 py-1 text-xs font-medium">現在作成中</span>
-          </div>
-          <div className="mx-auto max-w-2xl space-y-3 text-muted-foreground">
+          <div className="mx-auto max-w-2xl space-y-2 text-muted-foreground">
             <p>現在扱っているテクノロジーとツールの一覧です。</p>
             <p className="text-xs">
               個人開発=プロダクトで継続使用 / 日常ツール=日常的に活用 / 学習中=キャッチアップ段階
@@ -119,13 +114,13 @@ export function SkillsSection() {
           </div>
         </div>
 
-        <div className="space-y-12">
+        <div className="space-y-10">
           {groupedByInvolvement.map(({ band, items }) => (
             <div key={band}>
-              <h3 className="mb-6 text-xl font-semibold">{band}</h3>
-              <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <h3 className="mb-4 text-lg font-semibold text-muted-foreground">{band}</h3>
+              <div className="flex flex-wrap gap-3">
                 {items.map((skill) => (
-                  <SkillCard key={skill.name} skill={skill} />
+                  <SkillTag key={skill.name} skill={skill} />
                 ))}
               </div>
             </div>
@@ -136,15 +131,11 @@ export function SkillsSection() {
   );
 }
 
-function SkillCard({ skill }: { skill: SkillType }) {
+function SkillTag({ skill }: { skill: SkillType }) {
   return (
-    <Card className="overflow-hidden">
-      <CardContent className="flex h-full items-center gap-4 p-4">
-        <div className="shrink-0">{skill.icon}</div>
-        <div className="flex-1 space-y-1">
-          <p className="whitespace-nowrap font-medium">{skill.name}</p>
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex items-center gap-2 rounded-full border border-border/60 bg-background px-4 py-2 transition-all duration-200 hover:border-primary/50 hover:bg-primary/5 hover:rotate-[1deg] hover:scale-110">
+      {skill.icon}
+      <span className="text-sm font-medium">{skill.name}</span>
+    </div>
   );
 }

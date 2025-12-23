@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <main className="flex flex-1 flex-col">
       <Header />
-      <div className="container mx-auto flex flex-1 items-center justify-center px-4 pt-20">
+      <div className="container mx-auto flex max-w-5xl flex-1 items-center justify-center px-4 pt-20">
         <Card className="w-full max-w-md">
           <CardHeader className="text-center">
             <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-full bg-blue-400/10">

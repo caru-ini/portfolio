@@ -80,7 +80,7 @@ export default async function BlogDetailPage({ params }: Props) {
         <ArticleHeader article={article} />
 
         <article className="relative flex-1 py-4 md:py-6 lg:py-12">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto max-w-5xl px-4">
             <ArticleContent htmlContent={htmlContent} toc={toc} />
           </div>
         </article>

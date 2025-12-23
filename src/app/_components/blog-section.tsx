@@ -17,7 +17,7 @@ export const BlogSection = async () => {
 
   return (
     <section className="py-20" id="blog">
-      <div className="container mx-auto flex max-w-4xl flex-col items-center px-4">
+      <div className="container mx-auto flex max-w-5xl flex-col items-center px-4">
         <div className="mb-12 text-center">
           <div className="mb-4 inline-block">
             <div className="rounded-2xl bg-primary/10 p-3 backdrop-blur-sm">
@@ -34,7 +34,7 @@ export const BlogSection = async () => {
             <p className="text-lg text-muted-foreground">最初の記事をお楽しみに！</p>
           </div>
         ) : (
-          <div className="mx-auto flex max-w-4xl flex-col items-center gap-y-4">
+          <div className="grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3">
             {recentArticles.map((article) => (
               <BlogCard key={article.slug} article={article} />
             ))}

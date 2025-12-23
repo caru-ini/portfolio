@@ -19,7 +19,7 @@ export const Header = () => {
         isScrolled ? "py-2" : "py-2 md:py-3"
       )}
     >
-      <div className="container mx-auto flex max-w-2xl items-center justify-between rounded-xl border border-border bg-white/80 px-4 py-3 backdrop-blur-md">
+      <div className="container mx-auto flex max-w-5xl items-center justify-between rounded-xl border border-border bg-white/80 px-4 py-3 backdrop-blur-md">
         <BrandLogo />
         <nav className="flex items-center">
           <div className="flex items-center gap-1 rounded-full border border-border/60 bg-background/60 p-1 shadow-sm">

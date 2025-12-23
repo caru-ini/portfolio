@@ -1,18 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
+
+const cardBaseStyles =
+  "group overflow-hidden border border-border/50 bg-background transition-all duration-300 hover:ring-1 hover:ring-ring";
+const tagStyles = "rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground";
 
 type ProjectType = {
   id: string;
@@ -24,7 +21,7 @@ type ProjectType = {
   demo?: string;
 };
 
-const projects = [
+const projects: ProjectType[] = [
   {
     id: "portfolio",
     title: "ポートフォリオサイト",
@@ -51,7 +48,6 @@ const projects = [
       "Civitai API",
     ],
     github: "https://github.com/runa-devs/yoncomic-studio",
-    demo: "",
   },
   {
     id: "clothify",
@@ -71,12 +67,75 @@ const projects = [
     tags: ["TypeScript", "Docker", "Cognito", "API", "フレームワーク"],
     github: "https://github.com/frouriojs/magnito",
   },
-] satisfies ProjectType[];
+];
+
+function ProjectTags({ tags, maxCount = 5 }: { tags: string[]; maxCount?: number }) {
+  const visibleTags = tags.slice(0, maxCount);
+  const remainingCount = tags.length - maxCount;
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {visibleTags.map((tag) => (
+        <span key={tag} className={tagStyles}>
+          {tag}
+        </span>
+      ))}
+      {remainingCount > 0 && <span className={tagStyles}>+{remainingCount}</span>}
+    </div>
+  );
+}
+
+function ProjectLinks({
+  github,
+  demo,
+  size = "default",
+}: {
+  github?: string;
+  demo?: string;
+  size?: "default" | "compact";
+}) {
+  const isCompact = size === "compact";
+
+  return (
+    <div className="flex gap-2">
+      {github && (
+        <Button
+          variant={isCompact ? "ghost" : "outline"}
+          size="sm"
+          className={cn("gap-1.5", isCompact && "h-8 px-2")}
+          asChild
+        >
+          <Link href={github} target="_blank" rel="noopener noreferrer">
+            <SiGithub className={isCompact ? "size-3.5" : "size-4"} />
+            <span className={isCompact ? "text-xs" : undefined}>
+              {isCompact ? "Code" : "GitHub"}
+            </span>
+          </Link>
+        </Button>
+      )}
+      {demo && (
+        <Button
+          variant={isCompact ? "ghost" : undefined}
+          size="sm"
+          className={cn("gap-1.5", isCompact && "h-8 px-2")}
+          asChild
+        >
+          <Link href={demo} target="_blank" rel="noopener noreferrer">
+            <Icon icon="lucide:external-link" className={isCompact ? "size-3.5" : "size-4"} />
+            <span className={isCompact ? "text-xs" : undefined}>{isCompact ? "Demo" : "デモ"}</span>
+          </Link>
+        </Button>
+      )}
+    </div>
+  );
+}
 
 export function ProjectsSection() {
+  const [featured, ...others] = projects;
+
   return (
-    <section className="py-20" id="projects">
-      <div className="container mx-auto px-4">
+    <section className="bg-muted/20 py-20" id="projects">
+      <div className="container mx-auto max-w-5xl px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">プロジェクト</h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
@@ -84,9 +143,11 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+        <FeaturedProject project={featured} />
+
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {others.map((project) => (
+            <ProjectItem key={project.id} project={project} />
           ))}
         </div>
       </div>
@@ -94,52 +155,59 @@ export function ProjectsSection() {
   );
 }
 
-function ProjectCard({ project }: { project: ProjectType }) {
+function FeaturedProject({ project }: { project: ProjectType }) {
   return (
-    <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:ring-1 hover:ring-ring">
-      <div className="relative h-48 overflow-hidden">
+    <div className={cn(cardBaseStyles, "rounded-2xl")}>
+      <div className="grid md:grid-cols-2">
+        <div className="relative aspect-video md:aspect-auto">
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            quality={80}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+        <div className="flex flex-col justify-center p-6 md:p-8">
+          <div className="mb-2 text-xs font-medium uppercase tracking-wider text-primary">
+            Featured
+          </div>
+          <h3 className="mb-3 text-2xl font-bold">{project.title}</h3>
+          <p className="mb-4 text-muted-foreground">{project.description}</p>
+          <div className="mb-6">
+            <ProjectTags tags={project.tags} />
+          </div>
+          <ProjectLinks github={project.github} demo={project.demo} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectItem({ project }: { project: ProjectType }) {
+  return (
+    <div className={cn(cardBaseStyles, "flex flex-col rounded-xl")}>
+      <div className="relative h-40 overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, 33vw"
           quality={70}
-          className={`object-center transition-transform duration-300 ${
+          className={cn(
+            "transition-transform duration-300 group-hover:scale-105",
             project.id === "magnito" ? "object-contain" : "object-cover"
-          }`}
+          )}
         />
       </div>
-      <CardHeader>
-        <CardTitle>{project.title}</CardTitle>
-        <CardDescription>{project.description}</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-1">
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-secondary px-3 py-1 text-xs font-medium">
-              {tag}
-            </span>
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="flex gap-4">
-        {project.github && (
-          <Button variant="outline" size="sm" className="gap-2" asChild>
-            <Link href={project.github} target="_blank" rel="noopener noreferrer">
-              <SiGithub className="size-4" />
-              <span>GitHub</span>
-            </Link>
-          </Button>
-        )}
-        {project.demo && (
-          <Button size="sm" className="gap-2" asChild>
-            <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-              <Icon icon="lucide:external-link" className="size-4" />
-              <span>デモ</span>
-            </Link>
-          </Button>
-        )}
-      </CardFooter>
-    </Card>
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="mb-2 font-semibold">{project.title}</h3>
+        <p className="mb-3 line-clamp-2 flex-1 text-sm text-muted-foreground">
+          {project.description}
+        </p>
+        <ProjectLinks github={project.github} demo={project.demo} size="compact" />
+      </div>
+    </div>
   );
 }

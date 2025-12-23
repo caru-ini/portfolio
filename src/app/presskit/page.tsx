@@ -79,7 +79,7 @@ export default function PressKitPage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-blue-950 dark:via-gray-900 dark:to-purple-950">
-        <div className="container mx-auto max-w-6xl px-4 py-20 sm:py-24 lg:py-32">
+        <div className="container mx-auto max-w-5xl px-4 py-20 sm:py-24 lg:py-32">
           <div className="text-center">
             <div className="mb-6 inline-flex items-center rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">
               <Palette className="mr-2 size-4" />
@@ -106,7 +106,7 @@ export default function PressKitPage() {
         </div>
       </section>
 
-      <div className="container mx-auto max-w-6xl px-4 py-16">
+      <div className="container mx-auto max-w-5xl px-4 py-16">
         {/* Usage Guidelines Section */}
         <section className="mb-16" id="usage-conditions">
           <div className="mb-8 text-center">

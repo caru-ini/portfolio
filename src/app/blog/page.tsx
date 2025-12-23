@@ -38,7 +38,7 @@ export default async function BlogListPage() {
       <Header />
 
       <section className="relative overflow-hidden border-b border-border bg-gradient-to-br from-background via-muted/20 to-primary/5 pb-10 pt-24 md:pb-20">
-        <div className="container mx-auto max-w-2xl px-4">
+        <div className="container mx-auto max-w-5xl px-4">
           <div className="space-y-4">
             <div className="inline-block">
               <div className="rounded-2xl bg-primary/10 p-4 backdrop-blur-sm">
@@ -57,7 +57,7 @@ export default async function BlogListPage() {
       </section>
 
       <section className="flex-1 py-8 md:py-12">
-        <div className="container mx-auto max-w-2xl px-4">
+        <div className="container mx-auto max-w-5xl px-4">
           {articles.length === 0 ? (
             <div className="py-20 text-center">
               <div className="mb-6 inline-block rounded-2xl bg-muted/50 p-6 backdrop-blur-sm">
@@ -67,7 +67,7 @@ export default async function BlogListPage() {
               <p className="text-lg text-muted-foreground">最初の記事をお楽しみに！</p>
             </div>
           ) : (
-            <div className="flex flex-col items-center gap-y-4">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {articles.map((article) => (
                 <BlogCard key={article.slug} article={article} />
               ))}

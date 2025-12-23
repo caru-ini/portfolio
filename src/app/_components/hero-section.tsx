@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,22 +6,17 @@ import { SiGithub } from "react-icons/si";
 export function HeroSection() {
   return (
     <section className="relative flex h-svh w-full items-center justify-center overflow-hidden">
-      {/* Abstract background shapes */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div
-          className="blob-animation absolute -right-32 -top-32 size-96 rounded-full bg-primary/10"
-          style={{ animationDelay: "0s" }}
-        />
-        <div
-          className="blob-animation absolute -left-32 top-1/2 size-64 rounded-full bg-secondary"
-          style={{ animationDelay: "-2s" }}
-        />
-        <div
-          className="blob-animation absolute -bottom-32 right-1/3 size-80 rounded-full bg-accent"
-          style={{ animationDelay: "-4s" }}
-        />
-      </div>
-
+      {/* Grid pattern background */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+        }}
+      />
       <div className="container relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-center px-4 text-center">
         <Image
           src="/avatar.webp"
@@ -34,7 +27,6 @@ export function HeroSection() {
           priority
           className="mb-4 size-[200px] select-none rounded-full"
           draggable={false}
-          onContextMenu={(e) => e.preventDefault()}
         />
         <h1 className="mb-4 font-poppins text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
           Caru

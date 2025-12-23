@@ -25,8 +25,8 @@ export async function POST(request: NextRequest) {
 
     if (payload.ref === "refs/heads/main" && payload.repository) {
       console.log(`Revalidating cache for repository: ${payload.repository.full_name}`);
-      revalidateTag("posts");
-      revalidatePath("/");
+      revalidateTag("posts", "max");
+      revalidatePath("/", "layout");
 
       return NextResponse.json(
         {

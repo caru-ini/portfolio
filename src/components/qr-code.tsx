@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { Icon } from "@iconify/react";
+import { QrCode } from "lucide-react";
 import Image from "next/image";
 
 interface QRCodeProps {
@@ -21,7 +21,7 @@ export const QRCodeDisplay = ({
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" className={cn("flex items-center gap-2", className)}>
-          <Icon icon="lucide:qr-code" className="size-4" />
+          <QrCode className="size-4" />
           {buttonText}
         </Button>
       </DialogTrigger>

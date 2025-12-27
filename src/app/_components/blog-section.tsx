@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticlesList } from "@/lib/github-blog";
-import { Icon } from "@iconify/react";
+import { ArrowRight, NotebookPen } from "lucide-react";
 import Link from "next/link";
 
 export const BlogSection = async () => {
@@ -21,7 +21,7 @@ export const BlogSection = async () => {
         <div className="mb-12 text-center">
           <div className="mb-4 inline-block">
             <div className="rounded-2xl bg-primary/10 p-3 backdrop-blur-sm">
-              <Icon icon="lucide:notebook-pen" className="size-6 text-primary" />
+              <NotebookPen className="size-6 text-primary" />
             </div>
           </div>
           <h2 className="mb-4 text-center text-3xl font-bold">最新のブログ記事</h2>
@@ -45,7 +45,7 @@ export const BlogSection = async () => {
           <div className="ml-auto mt-8 inline-block w-full text-end">
             <Button variant={"ghost"} className="rounded-full" asChild>
               <Link href="/blog">
-                すべての記事をみる <Icon icon="lucide:arrow-right" className="size-4" />
+                すべての記事をみる <ArrowRight className="size-4" />
               </Link>
             </Button>
           </div>

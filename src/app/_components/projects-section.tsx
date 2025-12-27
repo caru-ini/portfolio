@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Icon } from "@iconify/react";
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -121,7 +121,7 @@ function ProjectLinks({
           asChild
         >
           <Link href={demo} target="_blank" rel="noopener noreferrer">
-            <Icon icon="lucide:external-link" className={isCompact ? "size-3.5" : "size-4"} />
+            <ExternalLink className={isCompact ? "size-3.5" : "size-4"} />
             <span className={isCompact ? "text-xs" : undefined}>{isCompact ? "Demo" : "デモ"}</span>
           </Link>
         </Button>

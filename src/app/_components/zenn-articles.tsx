@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { getZennArticles, ZennArticleItem } from "@/lib/zenn";
-import { Icon } from "@iconify/react";
+import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -47,7 +47,7 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
         <div className="mt-8 text-end">
           <Button variant="ghost" className="rounded-full" asChild>
             <Link href="https://zenn.dev/caru" target="_blank" rel="noopener noreferrer">
-              さらにみる <Icon icon="lucide:arrow-right" className="ml-1 size-4" />
+              さらにみる <ArrowRight className="ml-1 size-4" />
             </Link>
           </Button>
         </div>
@@ -66,7 +66,7 @@ function ArticleCard({ article }: { article: ZennArticleItem }) {
     >
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex items-center gap-2 text-sm text-muted-foreground">
-          <Icon icon="lucide:calendar" className="size-3.5" />
+          <Calendar className="size-3.5" />
           <time dateTime={article.isoDate}>
             {new Date(article.isoDate).toLocaleDateString("ja-JP")}
           </time>

@@ -1,6 +1,17 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import {
+  AmazonWebServicesLight,
+  Docker,
+  Git,
+  Hono,
+  Nextjs,
+  OpenAILight,
+  PrismaLight,
+  ReactLight,
+  TailwindCSS,
+  TypeScript,
+} from "@ridemountainpig/svgl-react";
 import Image from "next/image";
 import { useMemo } from "react";
 
@@ -20,31 +31,31 @@ const SvgIcon = ({ src, alt }: { src: string; alt: string }) => {
 const skills: SkillType[] = [
   {
     name: "TypeScript",
-    icon: <Icon icon="logos:typescript-icon" className="size-5" />,
+    icon: <TypeScript className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Next.js (App Router)",
-    icon: <Icon icon="logos:nextjs-icon" className="size-5" />,
+    icon: <Nextjs className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "React",
-    icon: <Icon icon="logos:react" className="size-5" />,
+    icon: <ReactLight className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Tailwind CSS",
-    icon: <Icon icon="logos:tailwindcss-icon" className="size-5" />,
+    icon: <TailwindCSS className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
   {
     name: "Hono",
-    icon: <Icon icon="logos:hono" className="size-5" />,
+    icon: <Hono className="size-5" />,
     category: "バックエンド",
     involvement: "個人開発",
   },
@@ -56,13 +67,13 @@ const skills: SkillType[] = [
   },
   {
     name: "Prisma",
-    icon: <Icon icon="logos:prisma" className="size-5" />,
+    icon: <PrismaLight className="size-5" />,
     category: "バックエンド",
     involvement: "個人開発",
   },
   {
     name: "OpenAI API",
-    icon: <Icon icon="logos:openai-icon" className="size-5" />,
+    icon: <OpenAILight className="size-5" />,
     category: "その他",
     involvement: "個人開発",
   },
@@ -74,19 +85,19 @@ const skills: SkillType[] = [
   },
   {
     name: "AWS",
-    icon: <Icon icon="logos:aws" className="size-5" />,
+    icon: <AmazonWebServicesLight className="size-5" />,
     category: "その他",
     involvement: "学習中",
   },
   {
     name: "Docker",
-    icon: <Icon icon="logos:docker-icon" className="size-5" />,
+    icon: <Docker className="size-5" />,
     category: "その他",
     involvement: "日常ツール",
   },
   {
     name: "Git",
-    icon: <Icon icon="logos:git-icon" className="size-5" />,
+    icon: <Git className="size-5" />,
     category: "その他",
     involvement: "日常ツール",
   },

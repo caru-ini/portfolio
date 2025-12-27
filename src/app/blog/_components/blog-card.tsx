@@ -1,5 +1,5 @@
 import { BlogArticleMeta } from "@/lib/github-blog";
-import { Icon } from "@iconify/react";
+import { Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 
 export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
@@ -17,14 +17,14 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-3 flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-1.5">
-            <Icon icon="lucide:calendar" className="size-3.5" />
+            <Calendar className="size-3.5" />
             <time dateTime={formattedDate} className="font-medium">
               {formattedDate}
             </time>
           </div>
           {article.readingTime && (
             <div className="flex items-center gap-1.5">
-              <Icon icon="lucide:clock" className="size-3.5" />
+              <Clock className="size-3.5" />
               <span className="font-medium">{article.readingTime}</span>
             </div>
           )}

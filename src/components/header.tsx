@@ -4,7 +4,7 @@ import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { cn } from "@/lib/utils";
-import { Icon } from "@iconify/react";
+import { NotebookPen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -25,7 +25,7 @@ export const Header = () => {
           <div className="flex items-center gap-1 rounded-full border border-border/60 bg-background/60 p-1 shadow-sm">
             <Button variant="ghost" size="sm" className="h-8 rounded-full px-2.5" asChild>
               <Link href="/blog" aria-label="Blog" className="flex items-center gap-1.5">
-                <Icon icon="lucide:notebook-pen" className="size-4" />
+                <NotebookPen className="size-4" />
                 <span className="hidden md:inline">Blog</span>
               </Link>
             </Button>

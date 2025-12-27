@@ -180,7 +180,7 @@ export function SkillsSection() {
 
 function SkillTag({ skill }: { skill: SkillType }) {
   return (
-    <div className="flex items-center gap-2 rounded-full border border-border/60 bg-background px-4 py-2 transition-all duration-200 hover:border-primary/50 hover:bg-primary/5 hover:rotate-[1deg] hover:scale-110">
+    <div className="flex items-center gap-2 rounded-full border border-border/60 bg-background px-4 py-2 transition-all duration-150 hover:border-primary/50 hover:bg-primary/5 hover:rotate-[1deg] hover:scale-110">
       {skill.icon}
       <span className="text-sm font-medium">{skill.name}</span>
     </div>

@@ -19,16 +19,30 @@ type ProjectType = {
   tags: string[];
   github?: string;
   demo?: string;
+  awards?: string[];
 };
 
 const projects: ProjectType[] = [
   {
-    id: "portfolio",
-    title: "ポートフォリオサイト",
-    description: "Next.js、TypeScript、Tailwind CSSを使用して構築した個人ポートフォリオサイト",
-    image: "/projects/portfolio.webp",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
-    github: "https://github.com/caru-ini/portfolio",
+    id: "clothify",
+    title: "Clothify",
+    description:
+      "FLUX.1(画像生成AI)を使用して高品質な服の試着ができるサービス。技育CAMPハッカソンで優秀賞を受賞。",
+    image: "/projects/clothify.webp",
+    tags: ["Next.js", "Auth.js", "Prisma", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "Docker"],
+    github: "https://github.com/runa-devs/clothify",
+    demo: "https://clothify.runa.dev",
+    awards: ["🏆 技育CAMPハッカソン 優秀賞", "🎖️技育博 DeNA賞, CARTA賞"],
+  },
+  {
+    id: "magnito",
+    title: "Magnito",
+    description:
+      "Amazon Cognitoのエミュレーター。インターネット接続なしでCognitoのエンドポイントとして使用できます。",
+    image: "/projects/magnito.svg",
+    tags: ["TypeScript", "Docker", "Cognito", "API", "フレームワーク"],
+    github: "https://github.com/frouriojs/magnito",
+    awards: ["⭐ 100+ Stars"],
   },
   {
     id: "yoncomic-studio",
@@ -48,24 +62,34 @@ const projects: ProjectType[] = [
       "Civitai API",
     ],
     github: "https://github.com/runa-devs/yoncomic-studio",
+    awards: ["🏆 技育CAMPハッカソン 努力賞"],
   },
   {
-    id: "clothify",
-    title: "Clothify",
-    description: "FLUX.1(画像生成AI)を使用して高品質な服の試着ができるサービス。現在継続開発中",
-    image: "/projects/clothify.webp",
-    tags: ["Next.js", "Auth.js", "Prisma", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "Docker"],
-    github: "https://github.com/runa-devs/clothify",
-    demo: "https://clothify.runa.dev",
-  },
-  {
-    id: "magnito",
-    title: "Magnito",
+    id: "novelai-sdk",
+    title: "NovelAI SDK",
     description:
-      "Amazon Cognitoのエミュレーター。インターネット接続なしでCognitoのエンドポイントとして使用できます。",
-    image: "/projects/magnito.svg",
-    tags: ["TypeScript", "Docker", "Cognito", "API", "フレームワーク"],
-    github: "https://github.com/frouriojs/magnito",
+      "NovelAI APIのPython SDK。完全な型ヒントとPydantic v2バリデーションで、型安全なAI画像生成を実現。",
+    image: "/projects/novelai-sdk.png",
+    tags: ["Python", "SDK", "NovelAI", "Pydantic", "API"],
+    github: "https://github.com/caru-ini/novelai-sdk",
+  },
+  {
+    id: "next-authjs-template",
+    title: "Next.js Auth Template",
+    description:
+      "Next.js 15 + Auth.js + Prisma + shadcn/uiのプロダクションレディなスターターキット。",
+    image: "/projects/next-authjs-template.png",
+    tags: ["Next.js", "Auth.js", "Prisma", "shadcn/ui", "Template"],
+    github: "https://github.com/caru-ini/next-authjs-template",
+    awards: ["⭐ 20+ Stars"],
+  },
+  {
+    id: "portfolio",
+    title: "ポートフォリオサイト",
+    description: "Next.js、TypeScript、Tailwind CSSを使用して構築した個人ポートフォリオサイト",
+    image: "/projects/portfolio.webp",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    github: "https://github.com/caru-ini/portfolio",
   },
 ];
 
@@ -174,6 +198,18 @@ function FeaturedProject({ project }: { project: ProjectType }) {
             Featured
           </div>
           <h3 className="mb-3 text-2xl font-bold">{project.title}</h3>
+          {project.awards && project.awards.length > 0 && (
+            <div className="mb-3 flex flex-wrap gap-2">
+              {project.awards.map((award) => (
+                <span
+                  key={award}
+                  className="rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 px-3 py-1 text-xs font-medium text-amber-600 dark:text-amber-400"
+                >
+                  {award}
+                </span>
+              ))}
+            </div>
+          )}
           <p className="mb-4 text-muted-foreground">{project.description}</p>
           <div className="mb-6">
             <ProjectTags tags={project.tags} />
@@ -202,10 +238,20 @@ function ProjectItem({ project }: { project: ProjectType }) {
         />
       </div>
       <div className="flex flex-1 flex-col p-4">
-        <h3 className="mb-2 font-semibold">{project.title}</h3>
-        <p className="mb-3 line-clamp-2 flex-1 text-sm text-muted-foreground">
-          {project.description}
-        </p>
+        <h3 className="mb-1 font-semibold">{project.title}</h3>
+        {project.awards && project.awards.length > 0 && (
+          <div className="mb-2 flex flex-wrap gap-1">
+            {project.awards.slice(0, 2).map((award) => (
+              <span
+                key={award}
+                className="rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 px-2 py-0.5 text-[10px] font-medium text-amber-600 dark:text-amber-400"
+              >
+                {award}
+              </span>
+            ))}
+          </div>
+        )}
+        <p className="mb-3 flex-1 text-sm text-muted-foreground">{project.description}</p>
         <ProjectLinks github={project.github} demo={project.demo} size="compact" />
       </div>
     </div>

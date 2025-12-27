@@ -2,14 +2,20 @@
 
 import {
   AmazonWebServicesLight,
+  Cloudflare,
+  CloudflareWorkers,
   Docker,
+  FastAPI,
   Git,
   Hono,
   Nextjs,
   OpenAILight,
   PrismaLight,
+  Python,
   ReactLight,
+  ShadcnUiLight,
   TailwindCSS,
+  TRPC,
   TypeScript,
 } from "@ridemountainpig/svgl-react";
 import Image from "next/image";
@@ -54,6 +60,24 @@ const skills: SkillType[] = [
     involvement: "個人開発",
   },
   {
+    name: "shadcn/ui",
+    icon: <ShadcnUiLight className="size-5" />,
+    category: "フロントエンド",
+    involvement: "個人開発",
+  },
+  {
+    name: "Python",
+    icon: <Python className="size-5" />,
+    category: "バックエンド",
+    involvement: "個人開発",
+  },
+  {
+    name: "FastAPI",
+    icon: <FastAPI className="size-5" />,
+    category: "バックエンド",
+    involvement: "個人開発",
+  },
+  {
     name: "Hono",
     icon: <Hono className="size-5" />,
     category: "バックエンド",
@@ -61,7 +85,7 @@ const skills: SkillType[] = [
   },
   {
     name: "tRPC",
-    icon: <SvgIcon src="/icons/trpc.svg" alt="tRPC" />,
+    icon: <TRPC className="size-5" />,
     category: "バックエンド",
     involvement: "学習中",
   },
@@ -70,6 +94,18 @@ const skills: SkillType[] = [
     icon: <PrismaLight className="size-5" />,
     category: "バックエンド",
     involvement: "個人開発",
+  },
+  {
+    name: "Cloudflare D1",
+    icon: <Cloudflare className="size-5" />,
+    category: "バックエンド",
+    involvement: "学習中",
+  },
+  {
+    name: "Cloudflare Workers",
+    icon: <CloudflareWorkers className="size-5" />,
+    category: "バックエンド",
+    involvement: "学習中",
   },
   {
     name: "OpenAI API",

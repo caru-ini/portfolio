@@ -7,10 +7,7 @@ export const env = createEnv({
    */
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]),
-    AUTH_SECRET: z.string().min(1),
     DATABASE_URL: z.string().url(),
-    AUTH_GITHUB_ID: z.string().min(1),
-    AUTH_GITHUB_SECRET: z.string().min(1),
     GITHUB_TOKEN: z.string().min(1),
     GITHUB_WEBHOOK_SECRET: z.string().min(1),
     GOOGLE_FONTS_API_KEY: z.string().min(1),

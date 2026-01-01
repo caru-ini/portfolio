@@ -229,7 +229,7 @@ function ProjectItem({ project }: { project: ProjectType }) {
           src={project.image}
           alt={project.title}
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
+          sizes="(max-width: 768px) 100vw, 320px"
           quality={70}
           className={cn(
             "transition-transform duration-300 group-hover:scale-105",

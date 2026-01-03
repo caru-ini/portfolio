@@ -35,9 +35,7 @@ export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
         </h3>
 
         {article.description && (
-          <p className="mb-3 line-clamp-2 flex-1 text-sm text-muted-foreground">
-            {article.description}
-          </p>
+          <p className="mb-3 flex-1 text-sm text-muted-foreground">{article.description}</p>
         )}
 
         {article.tags && article.tags.length > 0 && (

@@ -35,12 +35,20 @@ const SvgIcon = ({ src, alt }: { src: string; alt: string }) => {
 };
 
 const skills: SkillType[] = [
+  // Languages
   {
     name: "TypeScript",
     icon: <TypeScript className="size-5" />,
     category: "フロントエンド",
     involvement: "個人開発",
   },
+  {
+    name: "Python",
+    icon: <Python className="size-5" />,
+    category: "バックエンド",
+    involvement: "個人開発",
+  },
+  // Frontend Frameworks
   {
     name: "Next.js (App Router)",
     icon: <Nextjs className="size-5" />,
@@ -65,12 +73,7 @@ const skills: SkillType[] = [
     category: "フロントエンド",
     involvement: "個人開発",
   },
-  {
-    name: "Python",
-    icon: <Python className="size-5" />,
-    category: "バックエンド",
-    involvement: "個人開発",
-  },
+  // Backend Frameworks
   {
     name: "FastAPI",
     icon: <FastAPI className="size-5" />,
@@ -95,6 +98,7 @@ const skills: SkillType[] = [
     category: "バックエンド",
     involvement: "個人開発",
   },
+  // Cloud Services
   {
     name: "Cloudflare D1",
     icon: <Cloudflare className="size-5" />,
@@ -108,23 +112,19 @@ const skills: SkillType[] = [
     involvement: "学習中",
   },
   {
-    name: "OpenAI API",
-    icon: <OpenAILight className="size-5" />,
-    category: "その他",
-    involvement: "個人開発",
-  },
-  {
-    name: "Proxmox",
-    icon: <SvgIcon src="/icons/proxmox.svg" alt="Proxmox" />,
-    category: "その他",
-    involvement: "日常ツール",
-  },
-  {
     name: "AWS",
     icon: <AmazonWebServicesLight className="size-5" />,
     category: "その他",
     involvement: "学習中",
   },
+  // APIs
+  {
+    name: "OpenAI API",
+    icon: <OpenAILight className="size-5" />,
+    category: "その他",
+    involvement: "個人開発",
+  },
+  // Tools
   {
     name: "Docker",
     icon: <Docker className="size-5" />,
@@ -134,6 +134,12 @@ const skills: SkillType[] = [
   {
     name: "Git",
     icon: <Git className="size-5" />,
+    category: "その他",
+    involvement: "日常ツール",
+  },
+  {
+    name: "Proxmox",
+    icon: <SvgIcon src="/icons/proxmox.svg" alt="Proxmox" />,
     category: "その他",
     involvement: "日常ツール",
   },

@@ -2,11 +2,15 @@
 
 import {
   AmazonWebServicesLight,
+  Authjs,
+  BetterAuthLight,
   Cloudflare,
   CloudflareWorkers,
   Docker,
+  DrizzleORMLight,
   FastAPI,
   Git,
+  GoogleCloud,
   Hono,
   Nextjs,
   OpenAILight,
@@ -68,6 +72,18 @@ const skills: SkillType[] = [
     involvement: "個人開発",
   },
   {
+    name: "Auth.js (next-auth)",
+    icon: <Authjs className="size-5" />,
+    category: "フロントエンド",
+    involvement: "個人開発",
+  },
+  {
+    name: "Better-auth",
+    icon: <BetterAuthLight className="size-5" />,
+    category: "フロントエンド",
+    involvement: "個人開発",
+  },
+  {
     name: "shadcn/ui",
     icon: <ShadcnUiLight className="size-5" />,
     category: "フロントエンド",
@@ -98,6 +114,12 @@ const skills: SkillType[] = [
     category: "バックエンド",
     involvement: "個人開発",
   },
+  {
+    name: "DrizzleORM",
+    icon: <DrizzleORMLight className="size-5"/>,
+    category: "バックエンド",
+    involvement: "学習中"
+  },
   // Cloud Services
   {
     name: "Cloudflare D1",
@@ -114,6 +136,12 @@ const skills: SkillType[] = [
   {
     name: "AWS",
     icon: <AmazonWebServicesLight className="size-5" />,
+    category: "その他",
+    involvement: "学習中",
+  },
+  {
+    name: "GCP",
+    icon: <GoogleCloud className="size-5" />,
     category: "その他",
     involvement: "学習中",
   },

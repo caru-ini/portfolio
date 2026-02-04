@@ -1,4 +1,4 @@
-import { generateWithGemini } from "@/lib/ai";
+import { generateWithGLM } from "@/lib/ai";
 import { cache } from "react";
 import Parser from "rss-parser";
 
@@ -12,9 +12,9 @@ export interface ZennArticleItem {
 // Instantiate the parser
 const parser = new Parser<object, ZennArticleItem>();
 
-const generateWithGeminiCached = cache(async (input: string) => {
+const generateWithGLMCached = cache(async (input: string) => {
   return process.env.NODE_ENV === "production"
-    ? await generateWithGemini({
+    ? await generateWithGLM({
         instructions: `## Instructions
     以下の記事の技術的な詳細や重要なポイントについてまとめた簡潔な説明を書いてください。
     筆者について書く必要はありません。
@@ -46,7 +46,7 @@ export async function getZennArticles(feedUrl: string): Promise<ZennArticleItem[
     // Ensure items exist and map them, providing default values if needed
     const descriptions = await Promise.all(
       feed.items.map(async (item) => {
-        return item.contentSnippet ? await generateWithGeminiCached(item.contentSnippet) : "";
+        return item.contentSnippet ? await generateWithGLMCached(item.contentSnippet) : "";
       })
     );
     return (

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ExternalLinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -52,8 +53,8 @@ export function HeroSection() {
             </Link>
           </Button>
           <Button variant="outline" className="gap-2 bg-background" asChild>
-            <Link href="https://bento.me/caru-ini" target="_blank" rel="noopener noreferrer">
-              <Image src="/bento.svg" alt="Bento" width={20} height={20} />
+            <Link href="https://own.page/caru" target="_blank" rel="noopener noreferrer">
+              <ExternalLinkIcon className="size-4" />
               <span>リンク集</span>
             </Link>
           </Button>

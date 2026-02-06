@@ -2,7 +2,7 @@
 
 import { BrandLogo } from "@/components/brand-logo";
 import { QRCodeDisplay } from "@/components/qr-code";
-import { Heart, ImageIcon, Mail } from "lucide-react";
+import { ExternalLinkIcon, Heart, ImageIcon, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiDiscord, SiGithub, SiX } from "react-icons/si";
@@ -75,13 +75,13 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="https://bento.me/caru-ini"
+                  href="https://own.page/caru"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
                 >
-                  <Image src="/bento.svg" alt="Bento" width={16} height={16} />
-                  Bento
+                  <ExternalLinkIcon className="size-4" />
+                  Link集
                 </Link>
               </li>
               <li>

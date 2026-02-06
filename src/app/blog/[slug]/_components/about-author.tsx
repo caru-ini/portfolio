@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { ExternalLinkIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -50,9 +51,9 @@ export const AboutAuthor = () => {
                 </Link>
               </Button>
               <Button size="sm" variant="outline" className="gap-2 bg-background" asChild>
-                <Link href="https://bento.me/caru-ini" target="_blank" rel="noopener noreferrer">
-                  <Image src="/bento.svg" alt="Bento" width={16} height={16} />
-                  <span>Bento.me</span>
+                <Link href="https://own.page/caru" target="_blank" rel="noopener noreferrer">
+                  <ExternalLinkIcon className="size-4" />
+                  <span>Link集</span>
                 </Link>
               </Button>
             </div>

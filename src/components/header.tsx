@@ -4,7 +4,7 @@ import { BrandLogo } from "@/components/brand-logo";
 import { Button } from "@/components/ui/button";
 import { useScrollHeader } from "@/hooks/useScrollHeader";
 import { cn } from "@/lib/utils";
-import { NotebookPen } from "lucide-react";
+import { ExternalLinkIcon, NotebookPen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -53,16 +53,16 @@ export const Header = () => {
                 <span className="hidden md:inline">Runa.dev</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="sm" className="h-8 rounded-full px-2.5" asChild>
+            <Button variant="secondary" size="sm" className="h-8 rounded-full px-4" asChild>
               <Link
-                href="https://bento.me/caru-ini"
+                href="https://own.page/caru"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Bento"
-                className="flex items-center gap-1.5"
+                aria-label="Link集"
+                className="flex items-center gap-2"
               >
-                <Image src="/bento.svg" alt="Bento" width={20} height={20} />
-                <span className="hidden md:inline">Bento</span>
+                <ExternalLinkIcon className="size-4" />
+                <span className="hidden md:inline">Link集</span>
               </Link>
             </Button>
           </div>

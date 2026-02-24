@@ -1,6 +1,7 @@
 export const revalidate = 3600;
 
 import { BlogSection } from "@/app/_components/blog-section";
+import { BottomDivider } from "@/app/_components/bottom-divider";
 import { HeroSection } from "@/app/_components/hero-section";
 import { ProjectsSection } from "@/app/_components/projects-section";
 import { SkillsSection } from "@/app/_components/skills-section";
@@ -24,6 +25,7 @@ export default function Home() {
       <ProjectsSection />
       <ZennArticles feedUrl="https://zenn.dev/caru/feed" />
       <BlogSection />
+      <BottomDivider />
       <Footer />
     </main>
   );

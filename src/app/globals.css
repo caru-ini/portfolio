@@ -3,7 +3,14 @@
 @tailwind utilities;
 
 body {
-  font-family: var(--font-inter), var(--font-mPlus1p), Arial, Helvetica, sans-serif;
+  font-family: var(--font-base);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-code);
 }
 
 @layer utilities {
@@ -14,6 +21,9 @@ body {
 
 @layer base {
   :root {
+    --font-base: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo,
+      sans-serif, "Segoe UI Emoji";
+    --font-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace, "Segoe UI Emoji";
     --background: 0 0% 100%;
     --foreground: 210 40% 20%;
     --card: 0 0% 100%;

@@ -1,7 +1,7 @@
 import { ScrollToTopButton } from "@/components/scroll-to-top-button";
 import { ThemeProvider } from "@/components/theme-provider";
 import { env } from "@/env";
-import { inter, mPlus1p, poppins } from "@/lib/fonts";
+import { poppins } from "@/lib/fonts";
 import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -33,7 +33,7 @@ export default function RootLayout({
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${mPlus1p.variable} ${poppins.variable} ${inter.variable}`}
+      className={poppins.variable}
     >
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID ?? ""} />
       <body className="flex min-h-svh flex-col" suppressHydrationWarning>

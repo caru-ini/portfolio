@@ -20,7 +20,7 @@
 .prose code:not(pre code) {
   background-color: #0f111a;
   color: #babed8;
-  @apply rounded-[0.25rem] px-1 py-0.5 text-xs sm:text-sm;
+  @apply rounded-[0.25rem] px-1 py-1 text-xs sm:text-sm font-normal;
 }
 
 .prose h1,

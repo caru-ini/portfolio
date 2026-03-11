@@ -1,4 +1,4 @@
-export const revalidate = 3600;
+export const revalidate = 7200;
 
 import { BlogSection } from "@/app/_components/blog-section";
 import { BottomDivider } from "@/app/_components/bottom-divider";

@@ -1,208 +1,43 @@
-"use client";
+import { levelLabels, skillCategories, skills } from "@/constants/skills";
+import { cn } from "@/lib/utils";
+import type { Skill, SkillLevel } from "@/types/skills";
 
-import {
-  AmazonWebServicesLight,
-  Authjs,
-  BetterAuthLight,
-  Cloudflare,
-  CloudflareWorkers,
-  Docker,
-  DrizzleORMLight,
-  FastAPI,
-  Git,
-  GoogleCloud,
-  Hono,
-  Nextjs,
-  OpenAILight,
-  PrismaLight,
-  Python,
-  ReactLight,
-  ShadcnUiLight,
-  TailwindCSS,
-  TRPC,
-  TypeScript,
-} from "@ridemountainpig/svgl-react";
-import Image from "next/image";
-import { useMemo } from "react";
-
-type Involvement = "個人開発" | "日常ツール" | "学習中";
-
-type SkillType = {
-  name: string;
-  icon: React.ReactNode;
-  category: "フロントエンド" | "バックエンド" | "その他";
-  involvement: Involvement;
-};
-
-const SvgIcon = ({ src, alt }: { src: string; alt: string }) => {
-  return <Image src={src} alt={alt} width={24} height={24} className="size-5" />;
-};
-
-const skills: SkillType[] = [
-  // Languages
-  {
-    name: "TypeScript",
-    icon: <TypeScript className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "Python",
-    icon: <Python className="size-5" />,
-    category: "バックエンド",
-    involvement: "個人開発",
-  },
-  // Frontend Frameworks
-  {
-    name: "Next.js (App Router)",
-    icon: <Nextjs className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "React",
-    icon: <ReactLight className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: <TailwindCSS className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "Auth.js (next-auth)",
-    icon: <Authjs className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "Better-auth",
-    icon: <BetterAuthLight className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "shadcn/ui",
-    icon: <ShadcnUiLight className="size-5" />,
-    category: "フロントエンド",
-    involvement: "個人開発",
-  },
-  // Backend Frameworks
-  {
-    name: "FastAPI",
-    icon: <FastAPI className="size-5" />,
-    category: "バックエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "Hono",
-    icon: <Hono className="size-5" />,
-    category: "バックエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "tRPC",
-    icon: <TRPC className="size-5" />,
-    category: "バックエンド",
-    involvement: "学習中",
-  },
-  {
-    name: "Prisma",
-    icon: <PrismaLight className="size-5" />,
-    category: "バックエンド",
-    involvement: "個人開発",
-  },
-  {
-    name: "DrizzleORM",
-    icon: <DrizzleORMLight className="size-5"/>,
-    category: "バックエンド",
-    involvement: "学習中"
-  },
-  // Cloud Services
-  {
-    name: "Cloudflare D1",
-    icon: <Cloudflare className="size-5" />,
-    category: "バックエンド",
-    involvement: "学習中",
-  },
-  {
-    name: "Cloudflare Workers",
-    icon: <CloudflareWorkers className="size-5" />,
-    category: "バックエンド",
-    involvement: "学習中",
-  },
-  {
-    name: "AWS",
-    icon: <AmazonWebServicesLight className="size-5" />,
-    category: "その他",
-    involvement: "学習中",
-  },
-  {
-    name: "GCP",
-    icon: <GoogleCloud className="size-5" />,
-    category: "その他",
-    involvement: "学習中",
-  },
-  // APIs
-  {
-    name: "OpenAI API",
-    icon: <OpenAILight className="size-5" />,
-    category: "その他",
-    involvement: "個人開発",
-  },
-  // Tools
-  {
-    name: "Docker",
-    icon: <Docker className="size-5" />,
-    category: "その他",
-    involvement: "日常ツール",
-  },
-  {
-    name: "Git",
-    icon: <Git className="size-5" />,
-    category: "その他",
-    involvement: "日常ツール",
-  },
-  {
-    name: "Proxmox",
-    icon: <SvgIcon src="/icons/proxmox.svg" alt="Proxmox" />,
-    category: "その他",
-    involvement: "日常ツール",
-  },
-];
+function SampleSkillIcon({ className }: { className?: string }) {
+  return <div className={cn("rounded-full bg-muted", className)} />;
+}
 
 export function SkillsSection() {
-  const groupedByInvolvement = useMemo(() => {
-    const bands: Involvement[] = ["個人開発", "日常ツール", "学習中"];
-    return bands.map((band) => ({
-      band,
-      items: skills.filter((s) => s.involvement === band),
-    }));
-  }, []);
-
   return (
-    <section className="py-20" id="skills">
-      <div className="container mx-auto max-w-5xl px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">スキル</h2>
-          <div className="mx-auto max-w-2xl space-y-2 text-muted-foreground">
-            <p>現在扱っているテクノロジーとツールの一覧です。</p>
-            <p className="text-xs">
-              個人開発=プロダクトで継続使用 / 日常ツール=日常的に活用 / 学習中=キャッチアップ段階
+    <section className="bg-muted/20 py-20" id="skills">
+      <div className="container mx-auto max-w-5xl px-2">
+        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-2xl">
+            <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold  sm:text-4xl">
+              技術スタック
+            </h2>
+            <p className="leading-7 text-muted-foreground">
+              実務や個人開発で特に使う言語、フレームワーク、ツールを中心に3段階のスキルレベルで整理しました。スキルのレベルは目安です。スペースや規模の関係で記載できていない項目もあります。
             </p>
           </div>
+
+          <SkillLegend />
         </div>
 
         <div className="space-y-10">
-          {groupedByInvolvement.map(({ band, items }) => (
-            <div key={band}>
-              <h3 className="mb-4 text-lg font-semibold text-muted-foreground">{band}</h3>
+          {skillCategories.map((category) => (
+            <div key={category.key} className="space-y-4">
+              <div className="space-y-3">
+                <h3 className={cn("inline-flex rounded-sm py-2 text-base font-bold sm:text-lg")}>
+                  {category.label}
+                </h3>
+              </div>
+
               <div className="flex flex-wrap gap-3">
-                {items.map((skill) => (
-                  <SkillTag key={skill.name} skill={skill} />
-                ))}
+                {skills
+                  .filter((skill) => skill.category === category.key)
+                  .map((skill) => (
+                    <SkillTag key={skill.name} skill={skill} />
+                  ))}
               </div>
             </div>
           ))}
@@ -212,11 +47,71 @@ export function SkillsSection() {
   );
 }
 
-function SkillTag({ skill }: { skill: SkillType }) {
+function SkillLegend() {
   return (
-    <div className="flex items-center gap-2 rounded-full border border-border/60 bg-background px-4 py-2 transition-all duration-150 hover:border-primary/50 hover:bg-primary/5 hover:rotate-[1deg] hover:scale-110">
-      {skill.icon}
-      <span className="text-sm font-medium">{skill.name}</span>
+    <div className="w-fit rounded-2xl border border-border/70 bg-background/95 p-4 backdrop-blur">
+      <div className="flex flex-col gap-4">
+        <div className="shrink-0">
+          <SkillTag
+            skill={{
+              name: "サンプル",
+              icon: SampleSkillIcon,
+              category: "frontend",
+              level: 3,
+            }}
+          />
+        </div>
+
+        <div className="space-y-1 text-sm text-muted-foreground">
+          <p className="font-semibold text-foreground">凡例</p>
+          {Object.entries(levelLabels).map(([k, v]) => (
+            <p key={k}>
+              レベル{k}: {v}
+            </p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SkillTag({ skill }: { skill: Skill }) {
+  const Icon = skill.icon;
+
+  return (
+    <div className="group flex items-center justify-between gap-2.5 rounded-full border border-border/70 hover:border-primary duration-200 bg-background px-3.5 py-1.5 sm:justify-start sm:gap-3 sm:px-4 sm:py-2">
+      <div className="shrink-0">
+        <Icon className="size-5 sm:size-6" />
+      </div>
+      <span className="min-w-0 flex-1 text-sm font-medium leading-none text-foreground/80 sm:flex-none sm:text-base md:text-lg">
+        {skill.name}
+      </span>
+      <LevelBars level={skill.level} label={levelLabels[skill.level]} />
+    </div>
+  );
+}
+
+function LevelBars({ level, label }: { level: SkillLevel; label: string }) {
+  return (
+    <div
+      className="ml-1 flex items-center gap-1"
+      aria-label={`レベル${level}: ${label}`}
+      role="img"
+    >
+      {Array.from({ length: 3 }, (_, index) => {
+        const active = index < level;
+
+        return (
+          <span
+            key={index}
+            aria-hidden="true"
+            className={cn(
+              "h-5 w-1 -skew-x-12 rounded-full sm:h-6",
+              active ? "bg-sky-500" : "bg-sky-100"
+            )}
+          />
+        );
+      })}
     </div>
   );
 }

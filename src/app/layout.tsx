@@ -30,11 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="ja"
-      suppressHydrationWarning
-      className={poppins.variable}
-    >
+    <html lang="ja" suppressHydrationWarning className={poppins.variable}>
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID ?? ""} />
       <body className="flex min-h-svh flex-col" suppressHydrationWarning>
         <ThemeProvider>

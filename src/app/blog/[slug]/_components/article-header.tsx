@@ -1,13 +1,17 @@
-import { BlogArticleMeta } from "@/lib/github-blog";
+import type { BlogArticleMeta } from "@/lib/github-blog";
 import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
 import Link from "next/link";
 
 export const ArticleHeader = ({ article }: { article: BlogArticleMeta }) => {
-  const formattedDate = Intl.DateTimeFormat("ja-JP", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(article.date));
+  const parsedDate = article.date ? new Date(article.date) : null;
+  const formattedDate =
+    parsedDate && !Number.isNaN(parsedDate.getTime())
+      ? Intl.DateTimeFormat("ja-JP", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }).format(parsedDate)
+      : "";
 
   return (
     <section className="relative overflow-hidden border-b bg-gradient-to-br from-background via-muted/20 to-primary/5 py-3 pt-20 sm:py-4 sm:pt-24 md:py-8 md:pt-32">

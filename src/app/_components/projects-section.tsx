@@ -156,6 +156,7 @@ function ProjectLinks({
 
 export function ProjectsSection() {
   const [featured, ...others] = projects;
+  if (!featured) return null;
 
   return (
     <section className="bg-muted/20 py-20" id="projects">

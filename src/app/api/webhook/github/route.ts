@@ -1,7 +1,17 @@
 import { env } from "@/env";
-import crypto from "crypto";
+import crypto from "node:crypto";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+
+const webhookPayloadSchema = z.object({
+  ref: z.string().optional(),
+  repository: z
+    .object({
+      full_name: z.string(),
+    })
+    .optional(),
+});
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,7 +31,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }
 
-    const payload = JSON.parse(body);
+    const payload = webhookPayloadSchema.parse(JSON.parse(body));
 
     if (payload.ref === "refs/heads/main" && payload.repository) {
       console.log(`Revalidating cache for repository: ${payload.repository.full_name}`);

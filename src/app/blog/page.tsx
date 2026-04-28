@@ -5,7 +5,7 @@ import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticlesList } from "@/lib/github-blog";
 import { NotebookPen } from "lucide-react";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog | Caru",

@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
   "printWidth": 100,
   "singleQuote": false,
   "trailingComma": "es5",
@@ -6,5 +7,9 @@
   "semi": true,
   "bracketSpacing": true,
   "endOfLine": "lf",
-  "plugins": ["prettier-plugin-organize-imports"]
+  "ignorePatterns": [
+    "*",
+    "!src/",
+    "!src/**/*"
+  ]
 }

@@ -1,8 +1,8 @@
-import { BlogArticle } from "@/lib/github-blog";
+import type { BlogArticle } from "@/lib/github-blog";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
 import { transformerNotationDiff } from "@shikijs/transformers";
 import type { Heading } from "mdast";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";

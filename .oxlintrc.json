@@ -1,0 +1,50 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "nextjs"],
+  "jsPlugins": [
+    {
+      "name": "better-tailwindcss",
+      "specifier": "eslint-plugin-better-tailwindcss"
+    }
+  ],
+  "categories": {
+    "correctness": "error"
+  },
+  "options": {
+    "typeAware": true
+  },
+  "settings": {
+    "better-tailwindcss": {
+      "tailwindConfig": "tailwind.config.ts"
+    }
+  },
+  "rules": {
+    "typescript/no-unnecessary-type-assertion": "error",
+    "typescript/no-unnecessary-boolean-literal-compare": "error",
+    "typescript/no-unnecessary-template-expression": "error",
+    "typescript/no-unnecessary-type-arguments": "error",
+    "typescript/no-unsafe-enum-comparison": "error",
+    "typescript/no-confusing-non-null-assertion": "error",
+    "typescript/no-non-null-asserted-nullish-coalescing": "error",
+    "typescript/no-import-type-side-effects": "error",
+    "typescript/use-unknown-in-catch-callback-variable": "error",
+    "typescript/no-unsafe-assignment": "error",
+    "eslint/no-shadow": "error",
+    "eslint/no-unneeded-ternary": "error",
+    "eslint/preserve-caught-error": "error",
+    "promise/no-multiple-resolved": "error",
+    "react/button-has-type": "error",
+    "react/jsx-no-script-url": "error",
+    "unicorn/prefer-node-protocol": "error",
+    "better-tailwindcss/enforce-consistent-class-order": [
+      "warn",
+      { "callees": ["clsx", "cn", "twMerge", "cva"] }
+    ],
+    "better-tailwindcss/enforce-consistent-line-wrapping": "off",
+    "better-tailwindcss/no-unknown-classes": "off"
+  },
+  "env": {
+    "builtin": true
+  },
+  "ignorePatterns": [".next/**", "node_modules/**", "public/**"]
+}

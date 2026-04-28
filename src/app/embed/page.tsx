@@ -1,5 +1,5 @@
 import metaFetcher from "meta-fetcher";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { EmbedCard } from "./_components/embed-card";
 import { ErrorCard } from "./_components/error-card";

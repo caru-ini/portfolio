@@ -2,7 +2,7 @@
 
 import { useActiveHeading } from "@/hooks/use-active-heading";
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll";
-import { TocItem } from "@/lib/markdown";
+import type { TocItem } from "@/lib/markdown";
 import { cn } from "@/lib/utils";
 
 export const ArticleToc = ({ items }: { items: TocItem[] }) => {

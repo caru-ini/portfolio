@@ -1,7 +1,7 @@
 import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticlesList } from "@/lib/github-blog";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = BLOG_CONFIG.SITE_URL;

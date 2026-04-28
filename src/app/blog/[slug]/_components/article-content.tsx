@@ -1,6 +1,6 @@
 import { AboutAuthor } from "@/app/blog/[slug]/_components/about-author";
 import { ArticleToc } from "@/app/blog/[slug]/_components/article-toc";
-import { TocItem } from "@/lib/markdown";
+import type { TocItem } from "@/lib/markdown";
 import { cn } from "@/lib/utils";
 
 const proseClasses = {

@@ -227,7 +227,7 @@ export default function PressKitPage() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2 text-xs text-gray-500">
                           <ImageIcon className="size-3" />
-                          {avatar.filename.split(".")[1].toUpperCase()}形式
+                          {avatar.filename.split(".").pop()?.toUpperCase()}形式
                         </div>
                         <div className="text-xs font-medium text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
                           クリックでダウンロード

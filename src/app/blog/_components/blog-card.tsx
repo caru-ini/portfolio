@@ -1,13 +1,17 @@
-import { BlogArticleMeta } from "@/lib/github-blog";
+import type { BlogArticleMeta } from "@/lib/github-blog";
 import { Calendar, Clock } from "lucide-react";
 import Link from "next/link";
 
 export const BlogCard = ({ article }: { article: BlogArticleMeta }) => {
-  const formattedDate = Intl.DateTimeFormat("ja-JP", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(article.date));
+  const parsedDate = article.date ? new Date(article.date) : null;
+  const formattedDate =
+    parsedDate && !Number.isNaN(parsedDate.getTime())
+      ? Intl.DateTimeFormat("ja-JP", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        }).format(parsedDate)
+      : "";
 
   return (
     <Link

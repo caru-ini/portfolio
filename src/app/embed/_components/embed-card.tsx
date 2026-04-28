@@ -15,17 +15,8 @@ export const EmbedCard = async ({ url, metadata }: EmbedCardProps) => {
   const domain = new URL(url).hostname;
   const faviconUrl = `https://s2.googleusercontent.com/s2/favicons?domain=${domain}&sz=32`;
 
-  const getFaviconUrl = async (url: string) => {
-    const res = await fetch(url, {
-      cache: "force-cache",
-    });
-    const buffer = await res.arrayBuffer();
-    const base64 = Buffer.from(buffer).toString("base64");
-    return `data:image/png;base64,${base64}`;
-  };
-
-  const getBannerDataUrl = async (url: string) => {
-    const res = await fetch(url, {
+  const fetchAsDataUrl = async (target: string) => {
+    const res = await fetch(target, {
       cache: "force-cache",
     });
     const buffer = await res.arrayBuffer();
@@ -52,7 +43,7 @@ export const EmbedCard = async ({ url, metadata }: EmbedCardProps) => {
           <div className="flex items-center gap-2 text-xs text-muted-foreground/70">
             <div className="relative size-4 overflow-hidden rounded-full ring-1 ring-border/50">
               <Image
-                src={await getFaviconUrl(faviconUrl)}
+                src={await fetchAsDataUrl(faviconUrl)}
                 alt={`${domain} favicon`}
                 fill
                 className="object-cover"
@@ -64,7 +55,7 @@ export const EmbedCard = async ({ url, metadata }: EmbedCardProps) => {
         {metadata.banner && (
           <div className="relative h-[120px] w-full max-w-[230px] grow-0 overflow-hidden">
             <Image
-              src={await getBannerDataUrl(metadata.banner)}
+              src={await fetchAsDataUrl(metadata.banner)}
               alt={metadata.title ?? ""}
               fill
               className="size-full object-cover"

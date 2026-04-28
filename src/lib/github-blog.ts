@@ -1,8 +1,32 @@
 import { graphql } from "@octokit/graphql";
 import matter from "gray-matter";
 import getReadingTime from "reading-time";
+import { z } from "zod";
 
 import { unstable_cache as cache } from "next/cache";
+
+const frontmatterSchema = z
+  .object({
+    title: z.string().optional(),
+    date: z.union([z.string(), z.date()]).optional(),
+    tags: z.array(z.string()).optional(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+  })
+  .passthrough();
+
+const parseFrontmatter = (data: unknown, slug: string) => {
+  const parsed = frontmatterSchema.safeParse(data);
+  const f = parsed.success ? parsed.data : {};
+  const date = f.date instanceof Date ? f.date.toISOString() : (f.date ?? "");
+  return {
+    title: f.title ?? slug,
+    date,
+    tags: f.tags ?? [],
+    description: f.description ?? "",
+    image: f.image,
+  };
+};
 
 const createGraphQLClient = (githubToken: string) => {
   return graphql.defaults({
@@ -84,11 +108,7 @@ const queryArticlesList = async ({
         const { data, content: mdContent } = matter(entry.object.text);
         return {
           slug,
-          title: data.title ?? slug,
-          date: data.date ?? "",
-          tags: data.tags ?? [],
-          description: data.description ?? "",
-          image: data.image ?? undefined,
+          ...parseFrontmatter(data, slug),
           readingTime: mdContent ? getReadingTime(mdContent).text : undefined,
         } satisfies BlogArticleMeta;
       });
@@ -211,11 +231,7 @@ export const getArticle = async ({
   const { data, content: mdContent } = matter(content);
   return {
     slug,
-    title: data.title ?? slug,
-    date: data.date ?? "",
-    tags: data.tags ?? [],
-    description: data.description ?? "",
-    image: data.image ?? undefined,
+    ...parseFrontmatter(data, slug),
     content: mdContent,
     readingTime: mdContent ? getReadingTime(mdContent).text : undefined,
   } satisfies BlogArticle;

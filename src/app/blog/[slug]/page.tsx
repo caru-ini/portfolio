@@ -6,7 +6,7 @@ import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticle } from "@/lib/github-blog";
 import { getPageMeta, markdownToHtml } from "@/lib/markdown";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import "./shiki.css";

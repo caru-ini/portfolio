@@ -12,7 +12,7 @@ export function SkillsSection() {
       <div className="container mx-auto max-w-5xl px-2">
         <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-2xl">
-            <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold  sm:text-4xl">
+            <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
               技術スタック
             </h2>
             <p className="leading-7 text-muted-foreground">
@@ -79,7 +79,7 @@ function SkillTag({ skill }: { skill: Skill }) {
   const Icon = skill.icon;
 
   return (
-    <div className="group flex items-center justify-between gap-2.5 rounded-full border border-border/70 hover:border-primary duration-200 bg-background px-3.5 py-1.5 sm:justify-start sm:gap-3 sm:px-4 sm:py-2">
+    <div className="group flex items-center justify-between gap-2.5 rounded-full border border-border/70 bg-background px-3.5 py-1.5 duration-200 hover:border-primary sm:justify-start sm:gap-3 sm:px-4 sm:py-2">
       <div className="shrink-0">
         <Icon className="size-5 sm:size-6" />
       </div>

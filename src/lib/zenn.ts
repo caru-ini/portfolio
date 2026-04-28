@@ -53,8 +53,8 @@ export async function getZennArticles(feedUrl: string): Promise<ZennArticleItem[
       feed.items?.map((item, index) => ({
         title: item.title ?? "タイトルなし",
         link: item.link ?? "https://zenn.dev/caru",
-        isoDate: item.isoDate,
-        description: descriptions[index],
+        isoDate: item.isoDate ?? "",
+        description: descriptions[index] ?? "",
         image: item.enclosure?.url ?? "",
       })) || []
     );

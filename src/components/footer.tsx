@@ -158,8 +158,8 @@ export const Footer = () => {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 text-center text-sm text-muted-foreground md:flex-row">
           <div>
-            &copy; {currentYear} Caru. Made with <Heart className="inline size-3 text-red-500" /> in
-            Tokyo.
+            &copy; {currentYear} Caru. Made with{" "}
+            <Heart className="inline size-3 text-destructive" /> in Tokyo.
           </div>
           <div>
             <QRCodeDisplay buttonText="サイトQRコード" modalTitle="このサイトのQRコード" />

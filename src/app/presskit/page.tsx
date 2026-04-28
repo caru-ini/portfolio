@@ -85,10 +85,10 @@ export default function PressKitPage() {
               <Palette className="mr-2 size-4" />
               Press Kit
             </div>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Caru Press Kit
             </h1>
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300 sm:text-xl">
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-muted-foreground sm:text-xl">
               メディア掲載やイベント資料作成にご利用いただける
               <br />
               公式素材をまとめたプレスキットです
@@ -100,7 +100,7 @@ export default function PressKitPage() {
                   プレスキットをダウンロード
                 </Link>
               </Button>
-              <p className="text-sm text-gray-500 dark:text-gray-400">ZIP形式 • 全素材同梱</p>
+              <p className="text-sm text-muted-foreground">ZIP形式 • 全素材同梱</p>
             </div>
           </div>
         </div>
@@ -110,10 +110,8 @@ export default function PressKitPage() {
         {/* Usage Guidelines Section */}
         <section className="mb-16" id="usage-conditions">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
-              利用ガイドライン
-            </h2>
-            <p className="mx-auto max-w-2xl text-gray-600 dark:text-gray-300">
+            <h2 className="mb-4 text-3xl font-bold text-foreground">利用ガイドライン</h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
               本プレスキットに含まれる素材をご利用いただくにあたり、以下の条件をご確認ください
             </p>
           </div>
@@ -175,8 +173,8 @@ export default function PressKitPage() {
         {/* Avatar Gallery Section */}
         <section className="mb-16" id="avatars">
           <div className="mb-8 text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">アバター画像</h2>
-            <p className="mx-auto max-w-2xl text-gray-600 dark:text-gray-300">
+            <h2 className="mb-4 text-3xl font-bold text-foreground">アバター画像</h2>
+            <p className="mx-auto max-w-2xl text-muted-foreground">
               用途に応じて選択できる、様々なバリエーションのアバター画像をご用意しています
             </p>
           </div>
@@ -190,19 +188,19 @@ export default function PressKitPage() {
                 <Link href={`/avatars/dist/${avatar.filename}`} download className="block">
                   <CardHeader className="pb-3">
                     <div className="flex items-center justify-between">
-                      <CardTitle className="text-lg transition-colors group-hover:text-blue-600">
+                      <CardTitle className="text-lg transition-colors group-hover:text-primary">
                         {avatar.label}
                       </CardTitle>
                       <div className="flex items-center gap-3">
                         <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">
                           {avatar.category}
                         </span>
-                        <Download className="size-4 text-blue-600" />
+                        <Download className="size-4 text-primary" />
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <div className="relative aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
+                    <div className="relative aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-muted to-muted/50">
                       <Image
                         src={`/avatars/dist/${avatar.filename}`}
                         alt={avatar.label}
@@ -214,22 +212,22 @@ export default function PressKitPage() {
                           }
                         )}
                       />
-                      <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-blue-600/10 opacity-0 transition-opacity group-hover:opacity-100">
-                        <div className="rounded-full bg-white/90 p-3 shadow-lg dark:bg-gray-800/90">
-                          <Download className="size-6 text-blue-600" />
+                      <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-primary/10 opacity-0 transition-opacity group-hover:opacity-100">
+                        <div className="rounded-full bg-background/90 p-3 shadow-lg">
+                          <Download className="size-6 text-primary" />
                         </div>
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-sm text-gray-600 transition-colors group-hover:text-gray-800 dark:text-gray-400 dark:group-hover:text-gray-200">
+                      <p className="text-sm text-muted-foreground transition-colors group-hover:text-foreground">
                         {avatar.description}
                       </p>
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground">
                           <ImageIcon className="size-3" />
                           {avatar.filename.split(".").pop()?.toUpperCase()}形式
                         </div>
-                        <div className="text-xs font-medium text-blue-600 opacity-0 transition-opacity group-hover:opacity-100">
+                        <div className="text-xs font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
                           クリックでダウンロード
                         </div>
                       </div>

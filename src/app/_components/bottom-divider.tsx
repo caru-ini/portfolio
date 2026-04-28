@@ -3,7 +3,7 @@ export function BottomDivider() {
     <div className="flex h-2 w-full">
       <div className="flex-1 bg-foreground" />
       <div className="w-16 bg-primary" />
-      <div className="w-10 bg-pink-300" />
+      <div className="bg-brand-pink w-10" />
     </div>
   );
 }

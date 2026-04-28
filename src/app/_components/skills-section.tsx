@@ -107,7 +107,7 @@ function LevelBars({ level, label }: { level: SkillLevel; label: string }) {
             aria-hidden="true"
             className={cn(
               "h-5 w-1 -skew-x-12 rounded-full sm:h-6",
-              active ? "bg-sky-500" : "bg-sky-100"
+              active ? "bg-primary" : "bg-primary/20"
             )}
           />
         );

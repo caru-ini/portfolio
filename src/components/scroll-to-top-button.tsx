@@ -21,7 +21,7 @@ export const ScrollToTopButton = () => {
       variant="outline"
       size="icon"
       className={cn(
-        "fixed bottom-6 right-6 z-50 size-12 rounded-full bg-white/80 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-white/90",
+        "fixed bottom-6 right-6 z-50 size-12 rounded-full bg-background/80 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-background/90",
         isScrolled ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       )}
       aria-label="ページの上部に戻る"

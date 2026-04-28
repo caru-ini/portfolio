@@ -135,11 +135,7 @@ export default function DesignsPage() {
           <div className="grid grid-cols-5 gap-3">
             {charts.map((c) => (
               <div key={c} className="overflow-hidden rounded-lg border border-border">
-                <div
-                  className="h-16"
-                  style={{ backgroundColor: `hsl(var(--${c}))` }}
-                  aria-hidden
-                />
+                <div className="h-16" style={{ backgroundColor: `hsl(var(--${c}))` }} aria-hidden />
                 <div className="bg-card p-2">
                   <code className="font-mono text-xs">--{c}</code>
                 </div>

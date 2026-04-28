@@ -52,6 +52,10 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        brandPink: {
+          DEFAULT: "hsl(var(--brand-pink))",
+          foreground: "hsl(var(--brand-pink-foreground))",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)"],

@@ -49,6 +49,8 @@ pre {
     --chart-3: 220 70% 50%;
     --chart-4: 190 90% 50%;
     --chart-5: 180 80% 45%;
+    --brand-pink: 327 87% 82%;
+    --brand-pink-foreground: 327 50% 15%;
     --radius: 0.75rem;
   }
   .dark {
@@ -76,6 +78,8 @@ pre {
     --chart-3: 220 90% 60%;
     --chart-4: 190 90% 60%;
     --chart-5: 180 80% 60%;
+    --brand-pink: 327 90% 78%;
+    --brand-pink-foreground: 327 60% 12%;
   }
 }
 
@@ -89,7 +93,8 @@ pre {
 }
 
 .blob-animation {
-  animation: blob-move 8s ease-in-out infinite;
+  animation: blob-move 12s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes blob-move {
@@ -104,5 +109,19 @@ pre {
   }
   100% {
     transform: translate(0, 0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob-animation {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

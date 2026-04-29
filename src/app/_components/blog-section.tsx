@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { env } from "@/env";
 import { BLOG_CONFIG } from "@/lib/config";
 import { getArticlesList } from "@/lib/github-blog";
-import { ArrowRight, NotebookPen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export const BlogSection = async () => {
@@ -17,15 +17,14 @@ export const BlogSection = async () => {
 
   return (
     <section className="py-20" id="blog">
-      <div className="container mx-auto flex max-w-5xl flex-col items-center px-4">
-        <div className="mb-12 text-center">
-          <div className="mb-4 inline-block">
-            <div className="rounded-2xl bg-primary/10 p-3 backdrop-blur-sm">
-              <NotebookPen className="size-6 text-primary" />
-            </div>
-          </div>
-          <h2 className="mb-4 text-center text-3xl font-bold">最新のブログ記事</h2>
-          <p className="text-muted-foreground">技術的な学びや日々の気づきを記録しています。</p>
+      <div className="container mx-auto max-w-5xl px-2">
+        <div className="mb-8 max-w-2xl px-2 sm:mb-12">
+          <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
+            最新のブログ記事
+          </h2>
+          <p className="leading-7 text-muted-foreground">
+            技術的な学びや日々の気づきを記録しています。
+          </p>
         </div>
 
         {recentArticles.length === 0 ? (

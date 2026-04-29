@@ -160,10 +160,12 @@ export function ProjectsSection() {
 
   return (
     <section className="bg-muted/20 py-20" id="projects">
-      <div className="container mx-auto max-w-5xl px-4">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight sm:text-4xl">プロジェクト</h2>
-          <p className="mx-auto max-w-2xl text-muted-foreground">
+      <div className="container mx-auto max-w-5xl px-2">
+        <div className="mb-8 max-w-2xl px-2 sm:mb-12">
+          <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
+            プロジェクト
+          </h2>
+          <p className="leading-7 text-muted-foreground">
             これまでに手がけた主なプロジェクトをご紹介します。
           </p>
         </div>

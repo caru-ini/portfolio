@@ -1,26 +1,31 @@
+import { Frourio } from "@/components/icons/frourio";
 import type { Skill, SkillCategoryItem, SkillLevel } from "@/types/skills";
 import {
   Authjs,
   BetterAuthLight,
   ClaudeAI,
+  Cloudflare,
   CloudflareWorkers,
   Docker,
   DrizzleORMLight,
   FastAPI,
+  FastifyLight,
   Git,
   GoogleCloud,
   Hono,
   Nextjs,
   OpenAILight,
+  PnpmLight,
   PostgreSQL,
   PrismaLight,
   Python,
   ReactLight,
   ShadcnUiLight,
   TailwindCSS,
+  TurborepoLight,
   TypeScript,
 } from "@ridemountainpig/svgl-react";
-import { SiPydantic } from "react-icons/si";
+import { SiModal, SiPydantic } from "react-icons/si";
 
 export const levelLabels: Record<SkillLevel, string> = {
   1: "触ったことがある",
@@ -84,6 +89,18 @@ export const skills: Skill[] = [
     level: 2,
   },
   {
+    name: "Fastify",
+    icon: FastifyLight,
+    category: "backend",
+    level: 2,
+  },
+  {
+    name: "Frourio",
+    icon: Frourio,
+    category: "backend",
+    level: 2,
+  },
+  {
     name: "Python",
     icon: Python,
     category: "backend",
@@ -126,6 +143,18 @@ export const skills: Skill[] = [
     level: 2,
   },
   {
+    name: "pnpm workspace",
+    icon: PnpmLight,
+    category: "tools-ai",
+    level: 2,
+  },
+  {
+    name: "Turborepo",
+    icon: TurborepoLight,
+    category: "tools-ai",
+    level: 2,
+  },
+  {
     name: "Docker",
     icon: Docker,
     category: "database-infra",
@@ -138,10 +167,22 @@ export const skills: Skill[] = [
     level: 3,
   },
   {
+    name: "Cloudflare D1",
+    icon: Cloudflare,
+    category: "database-infra",
+    level: 2,
+  },
+  {
     name: "GCP",
     icon: GoogleCloud,
     category: "database-infra",
     level: 1,
+  },
+  {
+    name: "Modal",
+    icon: SiModal,
+    category: "database-infra",
+    level: 2,
   },
   {
     name: "Claude Code",

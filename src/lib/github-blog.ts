@@ -7,11 +7,11 @@ import { unstable_cache as cache } from "next/cache";
 
 const frontmatterSchema = z
   .object({
-    title: z.string().optional(),
-    date: z.union([z.string(), z.date()]).optional(),
-    tags: z.array(z.string()).optional(),
-    description: z.string().optional(),
-    image: z.string().optional(),
+    title: z.string().optional().catch(undefined),
+    date: z.union([z.string(), z.date()]).optional().catch(undefined),
+    tags: z.array(z.string()).optional().catch(undefined),
+    description: z.string().optional().catch(undefined),
+    image: z.string().optional().catch(undefined),
   })
   .passthrough();
 

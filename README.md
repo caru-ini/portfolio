@@ -21,7 +21,7 @@ This project is a web application template with authentication features, using N
    With create-next-app
 
    ```bash
-   pnpm create next-app -e https://github.com/caru-ini/next-authjs-template
+   bun create next-app -e https://github.com/caru-ini/next-authjs-template
    ```
 
    or using GitHub CLI
@@ -33,13 +33,13 @@ This project is a web application template with authentication features, using N
 2. Install dependencies:
 
    ```bash
-   pnpm i
+   bun install
    ```
 
 3. Generate auth.js secret
 
    ```bash
-   pnpm dlx auth@latest secret
+   bunx auth@latest secret
    ```
 
 4. Set up environment variables:
@@ -62,13 +62,13 @@ This project is a web application template with authentication features, using N
 6. Run Prisma migrations:
 
    ```bash
-   pnpm prisma:migrate
+   bun run db:migrate
    ```
 
 7. Start the development server:
 
    ```bash
-   pnpm dev
+   bun run dev
    ```
 
 ## Deployment

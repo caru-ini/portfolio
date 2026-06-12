@@ -1,45 +1,69 @@
-import { levelLabels, skillCategories, skills } from "@/constants/skills";
+"use client";
+
+import { SectionHeader } from "@/app/_components/section-header";
+import { levelLabels, skillPositions, skills } from "@/constants/skills";
 import { cn } from "@/lib/utils";
-import type { Skill, SkillLevel } from "@/types/skills";
+import type { Skill, SkillLevel, SkillPositionItem } from "@/types/skills";
+import { useState } from "react";
 
 function SampleSkillIcon({ className }: { className?: string }) {
-  return <div className={cn("rounded-full bg-muted", className)} />;
+  return <div className={cn("rounded-full bg-slate-500", className)} />;
 }
 
 export function SkillsSection() {
+  const [activeKey, setActiveKey] = useState<SkillPositionItem["key"]>("all");
+
+  const visibleSkills =
+    activeKey === "all" ? skills : skills.filter((skill) => skill.positions.includes(activeKey));
+
   return (
-    <section className="bg-muted/20 py-20" id="skills">
+    <section className="scroll-mt-20 py-20" id="skills">
       <div className="container mx-auto max-w-5xl px-2">
-        <div className="mb-12 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-          <div className="max-w-2xl">
-            <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
-              技術スタック
-            </h2>
-            <p className="leading-7 text-muted-foreground">
-              実務や個人開発で特に使う言語、フレームワーク、ツールを中心に3段階のスキルレベルで整理しました。スキルのレベルは目安です。スペースや規模の関係で記載できていない項目もあります。
-            </p>
-          </div>
+        <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <SectionHeader
+            title="技術スタック"
+            description="実務や個人開発で特に使う言語、フレームワーク、ツールを中心に3段階のスキルレベルで整理しました。スキルのレベルは目安です。スペースや規模の関係で記載できていない項目もあります。"
+            className="mb-0"
+          />
 
           <SkillLegend />
         </div>
 
-        <div className="space-y-10">
-          {skillCategories.map((category) => (
-            <div key={category.key} className="space-y-4">
-              <div className="space-y-3">
-                <h3 className={cn("inline-flex rounded-sm py-2 text-base font-bold sm:text-lg")}>
-                  {category.label}
-                </h3>
-              </div>
+        <div className="mb-6 flex flex-wrap gap-2">
+          {skillPositions.map((position) => {
+            const isActive = position.key === activeKey;
+            const Icon = position.icon;
 
-              <div className="flex flex-wrap gap-3">
-                {skills
-                  .filter((skill) => skill.category === category.key)
-                  .map((skill) => (
-                    <SkillTag key={skill.name} skill={skill} />
-                  ))}
-              </div>
-            </div>
+            return (
+              <button
+                key={position.key}
+                type="button"
+                aria-pressed={isActive}
+                onClick={() => setActiveKey(position.key)}
+                className={cn(
+                  "flex cursor-pointer items-center gap-2.5 rounded-full border py-1.5 pl-2 pr-4 text-sm font-medium transition-colors sm:pr-5 sm:text-base",
+                  isActive
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-border/70 bg-background text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                )}
+              >
+                <span
+                  className={cn(
+                    "flex size-8 shrink-0 items-center justify-center rounded-full",
+                    isActive ? "bg-primary-foreground/15" : "bg-muted"
+                  )}
+                >
+                  <Icon className="size-4" />
+                </span>
+                {position.label}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="flex flex-wrap gap-3">
+          {visibleSkills.map((skill) => (
+            <SkillTag key={skill.name} skill={skill} />
           ))}
         </div>
       </div>
@@ -56,7 +80,7 @@ function SkillLegend() {
             skill={{
               name: "サンプル",
               icon: SampleSkillIcon,
-              category: "frontend",
+              positions: [],
               level: 3,
             }}
           />
@@ -81,7 +105,7 @@ function SkillTag({ skill }: { skill: Skill }) {
   return (
     <div className="group flex items-center justify-between gap-2.5 rounded-full border border-border/70 bg-background px-3.5 py-1.5 duration-200 hover:border-primary sm:justify-start sm:gap-3 sm:px-4 sm:py-2">
       <div className="shrink-0">
-        <Icon className="size-5 sm:size-6" />
+        <Icon className="size-6" />
       </div>
       <span className="min-w-0 flex-1 text-sm font-medium leading-none text-foreground/80 sm:flex-none sm:text-base md:text-lg">
         {skill.name}

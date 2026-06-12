@@ -26,58 +26,58 @@ pre {
       sans-serif, "Segoe UI Emoji";
     --font-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace, "Segoe UI Emoji";
     --background: 0 0% 100%;
-    --foreground: 210 40% 20%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 210 40% 20%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 20%;
-    --primary: 196 100% 47%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 196 83% 94%;
-    --secondary-foreground: 196 100% 40%;
-    --muted: 196 30% 96%;
-    --muted-foreground: 210 20% 60%;
-    --accent: 196 83% 94%;
-    --accent-foreground: 196 100% 40%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 94%;
+    --secondary-foreground: 222 47% 16%;
+    --muted: 220 20% 96%;
+    --muted-foreground: 215 16% 44%;
+    --accent: 220 20% 94%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 10% 90%;
-    --input: 210 10% 90%;
-    --ring: 196 100% 47%;
-    --chart-1: 196 100% 47%;
-    --chart-2: 210 100% 60%;
-    --chart-3: 220 70% 50%;
-    --chart-4: 190 90% 50%;
-    --chart-5: 180 80% 45%;
+    --border: 216 16% 88%;
+    --input: 216 16% 88%;
+    --ring: 221 83% 53%;
+    --chart-1: 221 83% 53%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 224 76% 48%;
+    --chart-4: 213 94% 68%;
+    --chart-5: 226 71% 40%;
     --brand-pink: 327 87% 82%;
     --brand-pink-foreground: 327 50% 15%;
     --radius: 0.75rem;
   }
   .dark {
-    --background: 210 40% 10%;
-    --foreground: 0 0% 98%;
-    --card: 210 40% 10%;
-    --card-foreground: 0 0% 98%;
-    --popover: 210 40% 10%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 196 100% 47%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 196 100% 25%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 210 30% 20%;
-    --muted-foreground: 210 10% 70%;
-    --accent: 196 100% 25%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --background: 222 24% 7%;
+    --foreground: 210 25% 96%;
+    --card: 222 24% 7%;
+    --card-foreground: 210 25% 96%;
+    --popover: 222 24% 9%;
+    --popover-foreground: 210 25% 96%;
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 220 18% 16%;
+    --secondary-foreground: 210 25% 96%;
+    --muted: 220 18% 14%;
+    --muted-foreground: 217 12% 68%;
+    --accent: 220 18% 16%;
+    --accent-foreground: 210 25% 96%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 20% 25%;
-    --input: 210 20% 25%;
-    --ring: 196 100% 47%;
-    --chart-1: 196 100% 60%;
-    --chart-2: 210 100% 70%;
-    --chart-3: 220 90% 60%;
-    --chart-4: 190 90% 60%;
-    --chart-5: 180 80% 60%;
+    --border: 219 15% 20%;
+    --input: 219 15% 20%;
+    --ring: 217 91% 65%;
+    --chart-1: 217 91% 65%;
+    --chart-2: 213 94% 68%;
+    --chart-3: 221 83% 53%;
+    --chart-4: 212 96% 78%;
+    --chart-5: 224 76% 48%;
     --brand-pink: 327 90% 78%;
     --brand-pink-foreground: 327 60% 12%;
   }
@@ -92,30 +92,29 @@ pre {
   }
 }
 
-.blob-animation {
-  animation: blob-move 12s ease-in-out infinite;
-  will-change: transform;
+.hero-grid {
+  background-image:
+    linear-gradient(to right, hsl(var(--foreground) / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent);
+  mask-image: linear-gradient(to bottom, black 55%, transparent);
 }
 
-@keyframes blob-move {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(50px, -20px) scale(1.05);
-  }
-  66% {
-    transform: translate(-30px, 20px) scale(0.95);
-  }
-  100% {
-    transform: translate(0, 0) scale(1);
+/*
+ * 4Kなど高精細環境では1px・5%のヘアラインが物理的に細く薄くなり見えなくなる。
+ * min-device-width はウィンドウを最大化していない4Kスクリーンも拾うための条件。
+ */
+@media (min-width: 2048px), (min-device-width: 2048px) {
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--foreground) / 0.1) 2px, transparent 2px),
+      linear-gradient(to bottom, hsl(var(--foreground) / 0.1) 2px, transparent 2px);
+    background-size: 64px 64px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .blob-animation {
-    animation: none;
-  }
   *,
   *::before,
   *::after {

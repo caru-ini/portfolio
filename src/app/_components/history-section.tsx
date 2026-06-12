@@ -1,3 +1,4 @@
+import { SectionHeader } from "@/app/_components/section-header";
 import { cn } from "@/lib/utils";
 import {
   Briefcase,
@@ -14,13 +15,18 @@ import Link from "next/link";
 
 type Variant = "primary" | "amber" | "pink" | "muted";
 
+/** ブロックカードの色味。achievement: 受賞・実績 / work: 実務 (インターン・就業) */
+type HighlightTone = "achievement" | "work";
+
 type HistoryItem = {
   date: string;
   icon: React.ComponentType<{ className?: string }>;
   variant?: Variant;
   title: string;
   description?: string;
-  link?: { href: string; label: string };
+  links?: { href: string; label: string }[];
+  /** アピールしたい項目。タイムライン内で大きなブロックカードとして表示する。 */
+  highlight?: HighlightTone;
 };
 
 const items: HistoryItem[] = [
@@ -47,11 +53,18 @@ const items: HistoryItem[] = [
   {
     date: "2024.5",
     icon: Mic,
-    title: "貢献したOSS(Magnito)の解説を技術イベントで登壇し発表",
-    link: {
-      href: "https://zenn.dev/caru/articles/0e063d368484ce",
-      label: "参考記事",
-    },
+    title: "貢献したOSS(Magnito)の解説をTechTalkフェスで登壇し発表",
+    highlight: "achievement",
+    links: [
+      {
+        href: "https://progate.connpass.com/event/319415/",
+        label: "イベントページ",
+      },
+      {
+        href: "https://zenn.dev/caru/articles/0e063d368484ce",
+        label: "参考記事",
+      },
+    ],
   },
   {
     date: "2024.10",
@@ -70,32 +83,41 @@ const items: HistoryItem[] = [
     icon: Trophy,
     title: "技育CAMPハッカソン 優秀賞",
     description: "Clothify - 画像生成AIを活用した、服を着ずに試着できるアプリ",
+    highlight: "achievement",
   },
   {
     date: "2025.5",
     icon: Trophy,
     title: "技育博 企業賞を2つ受賞 (DeNA賞 / CARTA賞)",
     description: "Clothify - 画像生成AIを活用した、服を着ずに試着できるアプリ",
+    highlight: "achievement",
   },
   {
     date: "2025.6",
     icon: GraduationCap,
     variant: "amber",
     title: "情報連携学部 2024年度 学業成績最優秀者に選出",
-    link: {
-      href: "https://www.iniad.org/blog/2025/06/25/post-3300/",
-      label: "INIAD 公式ブログ",
-    },
+    highlight: "achievement",
+    links: [
+      {
+        href: "https://www.iniad.org/blog/2025/06/25/post-3300/",
+        label: "INIAD 公式ブログ",
+      },
+    ],
   },
   {
     date: "2026.2",
     icon: Briefcase,
     title: "株式会社ブルーメンヘラ 入社 (インターン)",
+    description: "フルスタックエンジニア。Next.jsを使った開発を担当。",
+    highlight: "work",
   },
   {
     date: "2026.3",
     icon: Briefcase,
     title: "株式会社アライア 入社 (インターン)",
+    description: "フルスタックエンジニア。Next.js・Fastifyを使った開発を担当。",
+    highlight: "work",
   },
   {
     date: "2026.4",
@@ -112,16 +134,20 @@ const variantClasses: Record<Variant, string> = {
   muted: "bg-muted text-muted-foreground",
 };
 
+const highlightCardClasses: Record<HighlightTone, string> = {
+  achievement: "border-border/70 bg-muted/40",
+  work: "border-primary/20 bg-primary/5",
+};
+
 export function HistorySection() {
   return (
-    <section className="bg-muted/20 py-20" id="history">
+    <section className="scroll-mt-20 bg-muted/20 py-20" id="history">
       <div className="container mx-auto max-w-5xl px-2">
-        <div className="mb-8 max-w-2xl px-2 sm:mb-12">
-          <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">経歴</h2>
-          <p className="leading-7 text-muted-foreground">
-            プログラミングをはじめてから、現在に至るまでの歩み。
-          </p>
-        </div>
+        <SectionHeader
+          title="経歴"
+          description="プログラミングをはじめてから、現在に至るまでの歩み。"
+          className="px-2"
+        />
 
         <ol className="relative rounded-2xl border border-border/70 bg-background p-4 sm:p-6">
           <span
@@ -136,35 +162,75 @@ export function HistorySection() {
                 key={`${item.date}-${idx}`}
                 className="relative flex items-start gap-3 py-2 sm:gap-4 sm:py-2.5"
               >
-                <span className="w-14 shrink-0 pt-1 text-right font-mono text-xs tabular-nums text-muted-foreground sm:w-[4.5rem] sm:text-sm">
+                <span
+                  className={cn(
+                    "w-14 shrink-0 text-right font-mono text-xs tabular-nums text-muted-foreground sm:w-[4.5rem] sm:text-sm",
+                    item.highlight ? "pt-6 sm:pt-7" : "pt-1"
+                  )}
+                >
                   {item.date}
                 </span>
                 <span
                   className={cn(
-                    "relative z-10 mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full",
+                    "relative z-10 flex size-7 shrink-0 items-center justify-center rounded-full",
+                    item.highlight ? "mt-5 sm:mt-6" : "mt-0.5",
                     variantClasses[variant]
                   )}
                   aria-hidden
                 >
                   <Icon className="size-3.5" />
                 </span>
-                <div className="min-w-0 pt-0.5">
-                  <h3 className="text-sm font-semibold leading-snug sm:text-base">{item.title}</h3>
+                <div
+                  className={cn(
+                    "min-w-0",
+                    item.highlight
+                      ? cn(
+                          "my-1 flex-1 rounded-xl border p-4 sm:p-5",
+                          highlightCardClasses[item.highlight]
+                        )
+                      : "pt-0.5"
+                  )}
+                >
+                  <h3
+                    className={cn(
+                      "leading-snug",
+                      item.highlight
+                        ? "text-base font-bold sm:text-lg"
+                        : "text-sm font-semibold sm:text-base"
+                    )}
+                  >
+                    {item.title}
+                  </h3>
                   {item.description && (
-                    <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                    <p
+                      className={cn(
+                        "mt-0.5 leading-relaxed text-muted-foreground",
+                        item.highlight ? "mt-1.5 text-sm sm:text-base" : "text-xs sm:text-sm"
+                      )}
+                    >
                       {item.description}
                     </p>
                   )}
-                  {item.link && (
-                    <Link
-                      href={item.link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 inline-flex items-center gap-1 text-xs text-primary underline-offset-4 hover:underline sm:text-sm"
+                  {item.links && item.links.length > 0 && (
+                    <div
+                      className={cn(
+                        "mt-1 flex flex-wrap gap-x-4 gap-y-1",
+                        item.highlight && "mt-2"
+                      )}
                     >
-                      {item.link.label}
-                      <ExternalLink className="size-3" aria-hidden />
-                    </Link>
+                      {item.links.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-primary underline-offset-4 hover:underline sm:text-sm"
+                        >
+                          {link.label}
+                          <ExternalLink className="size-3" aria-hidden />
+                        </Link>
+                      ))}
+                    </div>
                   )}
                 </div>
               </li>

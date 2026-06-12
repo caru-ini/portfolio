@@ -20,7 +20,29 @@ export const Header = () => {
       )}
     >
       <div className="container mx-auto flex max-w-5xl items-center justify-between rounded-xl border border-border bg-background/80 px-4 py-3 backdrop-blur-md">
-        <BrandLogo />
+        <div className="flex items-center gap-6">
+          <BrandLogo />
+          <nav className="hidden items-center gap-4 lg:flex">
+            <Link
+              href="/#projects"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              プロジェクト
+            </Link>
+            <Link
+              href="/#skills"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              スキル
+            </Link>
+            <Link
+              href="/#history"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+            >
+              経歴
+            </Link>
+          </nav>
+        </div>
         <nav className="flex items-center">
           <div className="flex items-center gap-1 rounded-full border border-border/60 bg-background/60 p-1 shadow-sm">
             <Button variant="ghost" size="sm" className="h-8 rounded-full px-2.5" asChild>

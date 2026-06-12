@@ -1,3 +1,4 @@
+import { SectionHeader } from "@/app/_components/section-header";
 import { BlogCard } from "@/app/blog/_components/blog-card";
 import { Button } from "@/components/ui/button";
 import { env } from "@/env";
@@ -16,16 +17,13 @@ export const BlogSection = async () => {
   const recentArticles = articles.slice(0, 3);
 
   return (
-    <section className="py-20" id="blog">
+    <section className="scroll-mt-20 bg-muted/20 py-20" id="blog">
       <div className="container mx-auto max-w-5xl px-2">
-        <div className="mb-8 max-w-2xl px-2 sm:mb-12">
-          <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
-            最新のブログ記事
-          </h2>
-          <p className="leading-7 text-muted-foreground">
-            技術的な学びや日々の気づきを記録しています。
-          </p>
-        </div>
+        <SectionHeader
+          title="最新のブログ記事"
+          description="技術的な学びや日々の気づきを記録しています。"
+          className="px-2"
+        />
 
         {recentArticles.length === 0 ? (
           <div className="py-20 text-center">

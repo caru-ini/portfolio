@@ -58,9 +58,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-base)"],
         poppins: ["var(--font-poppins)"],
-        dotGothic: ["var(--font-dot-gothic16)"],
       },
       borderRadius: {
         lg: "var(--radius)",

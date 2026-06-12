@@ -1,3 +1,4 @@
+import { SectionHeader } from "@/app/_components/section-header";
 import { Button } from "@/components/ui/button";
 import { getZennArticles, type ZennArticleItem } from "@/lib/zenn";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -16,29 +17,30 @@ export const ZennArticles = async ({ feedUrl }: ZennArticlesProps) => {
   }
 
   return (
-    <section className="py-20" id="zenn-articles">
+    <section className="scroll-mt-20 py-20" id="zenn-articles">
       <div className="container mx-auto max-w-5xl px-2">
-        <div className="mb-8 max-w-2xl px-2 sm:mb-12">
-          <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
-            最新の記事
-          </h2>
-          <p className="leading-7 text-muted-foreground">
-            <Link
-              href="https://zenn.dev/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mr-1 inline-flex items-center align-middle"
-            >
-              <Image
-                src="https://static.zenn.studio/images/logo.png"
-                alt="Zenn"
-                width={65}
-                height={13}
-              />
-            </Link>
-            からの新鮮な記事をお届けします。
-          </p>
-        </div>
+        <SectionHeader
+          title="最新の記事"
+          description={
+            <>
+              <Link
+                href="https://zenn.dev/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mr-1 inline-flex items-center align-middle"
+              >
+                <Image
+                  src="https://static.zenn.studio/images/logo.png"
+                  alt="Zenn"
+                  width={65}
+                  height={13}
+                />
+              </Link>
+              からの新鮮な記事をお届けします。
+            </>
+          }
+          className="px-2"
+        />
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (

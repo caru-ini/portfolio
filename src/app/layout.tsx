@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "caru-ini",
+  title: "Caru | Portfolio",
   description: "Caru's Portfolio.",
   icons: {
     icon: "/avatar.webp",
@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning className={poppins.variable}>
+    <html lang="ja" suppressHydrationWarning className={`${poppins.variable} scroll-smooth`}>
       <GoogleTagManager gtmId={env.NEXT_PUBLIC_GTM_ID ?? ""} />
       <body className="flex min-h-svh flex-col" suppressHydrationWarning>
         <ThemeProvider>

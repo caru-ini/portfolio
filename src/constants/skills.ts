@@ -1,5 +1,5 @@
 import { Frourio } from "@/components/icons/frourio";
-import type { Skill, SkillCategoryItem, SkillLevel } from "@/types/skills";
+import type { Skill, SkillLevel, SkillPositionItem } from "@/types/skills";
 import {
   Authjs,
   BetterAuthLight,
@@ -25,6 +25,7 @@ import {
   TurborepoLight,
   TypeScript,
 } from "@ridemountainpig/svgl-react";
+import { Cloud, LayoutGrid, Layers, Monitor, Server } from "lucide-react";
 import { SiModal, SiPydantic } from "react-icons/si";
 
 export const levelLabels: Record<SkillLevel, string> = {
@@ -37,182 +38,191 @@ export const skills: Skill[] = [
   {
     name: "TypeScript",
     icon: TypeScript,
-    category: "frontend",
+    positions: ["fullstack", "frontend", "backend"],
     level: 3,
   },
   {
     name: "Next.js",
     icon: Nextjs,
-    category: "frontend",
+    positions: ["fullstack", "frontend"],
     level: 3,
   },
   {
     name: "React",
     icon: ReactLight,
-    category: "frontend",
+    positions: ["fullstack", "frontend"],
     level: 3,
   },
   {
     name: "Auth.js",
     icon: Authjs,
-    category: "backend",
+    positions: ["fullstack", "backend"],
     level: 2,
   },
   {
     name: "Better Auth",
     icon: BetterAuthLight,
-    category: "backend",
+    positions: ["fullstack", "backend"],
     level: 2,
   },
   {
     name: "Prisma",
     icon: PrismaLight,
-    category: "database-infra",
+    positions: ["fullstack", "backend"],
     level: 3,
   },
   {
     name: "Tailwind CSS",
     icon: TailwindCSS,
-    category: "frontend",
+    positions: ["fullstack", "frontend"],
     level: 3,
   },
   {
     name: "shadcn/ui",
     icon: ShadcnUiLight,
-    category: "frontend",
+    positions: ["fullstack", "frontend"],
     level: 2,
   },
   {
     name: "Hono",
     icon: Hono,
-    category: "backend",
+    positions: ["fullstack", "backend"],
     level: 2,
   },
   {
     name: "Fastify",
     icon: FastifyLight,
-    category: "backend",
+    positions: ["fullstack", "backend"],
     level: 2,
   },
   {
     name: "Frourio",
     icon: Frourio,
-    category: "backend",
+    positions: ["fullstack", "backend"],
     level: 2,
   },
   {
     name: "Python",
     icon: Python,
-    category: "backend",
+    positions: ["backend"],
     level: 3,
   },
   {
     name: "FastAPI",
     icon: FastAPI,
-    category: "backend",
+    positions: ["backend"],
     level: 2,
   },
   {
     name: "Pydantic",
     icon: SiPydantic,
-    category: "backend",
+    positions: ["backend"],
     level: 2,
   },
   {
     name: "PostgreSQL",
     icon: PostgreSQL,
-    category: "database-infra",
+    positions: ["fullstack", "backend", "infra"],
     level: 2,
   },
   {
     name: "Drizzle ORM",
     icon: DrizzleORMLight,
-    category: "database-infra",
+    positions: ["fullstack", "backend"],
     level: 2,
   },
   {
     name: "OpenAI API",
     icon: OpenAILight,
-    category: "backend",
+    positions: ["backend"],
     level: 2,
   },
   {
     name: "Git",
     icon: Git,
-    category: "tools-ai",
+    positions: [],
     level: 2,
   },
   {
     name: "pnpm workspace",
     icon: PnpmLight,
-    category: "tools-ai",
+    positions: [],
     level: 2,
   },
   {
     name: "Turborepo",
     icon: TurborepoLight,
-    category: "tools-ai",
+    positions: ["fullstack"],
     level: 2,
   },
   {
     name: "Docker",
     icon: Docker,
-    category: "database-infra",
+    positions: ["fullstack", "backend", "infra"],
     level: 3,
   },
   {
     name: "Cloudflare Workers",
     icon: CloudflareWorkers,
-    category: "database-infra",
+    positions: ["fullstack", "backend", "infra"],
     level: 3,
   },
   {
     name: "Cloudflare D1",
     icon: Cloudflare,
-    category: "database-infra",
+    positions: ["backend", "infra"],
     level: 2,
   },
   {
     name: "GCP",
     icon: GoogleCloud,
-    category: "database-infra",
+    positions: ["infra"],
     level: 1,
   },
   {
     name: "Modal",
     icon: SiModal,
-    category: "database-infra",
+    positions: ["infra"],
     level: 2,
   },
   {
     name: "Claude Code",
     icon: ClaudeAI,
-    category: "tools-ai",
+    positions: [],
     level: 3,
   },
   {
     name: "Codex",
     icon: OpenAILight,
-    category: "tools-ai",
+    positions: [],
     level: 3,
   },
 ];
 
-export const skillCategories: SkillCategoryItem[] = [
+export const skillPositions: SkillPositionItem[] = [
+  {
+    key: "all",
+    label: "すべて",
+    icon: LayoutGrid,
+  },
+  {
+    key: "fullstack",
+    label: "フルスタック",
+    icon: Layers,
+  },
   {
     key: "frontend",
-    label: "フロントエンド",
+    label: "フロント",
+    icon: Monitor,
   },
   {
     key: "backend",
-    label: "サーバー・API",
+    label: "バックエンド",
+    icon: Server,
   },
   {
-    key: "database-infra",
-    label: "DB・インフラ",
-  },
-  {
-    key: "tools-ai",
-    label: "ツール・AI",
+    key: "infra",
+    label: "インフラ",
+    icon: Cloud,
   },
 ];

@@ -1,8 +1,8 @@
-"use client";
-
+import { SectionHeader } from "@/app/_components/section-header";
 import { Button } from "@/components/ui/button";
+import { getRepoStars } from "@/lib/github";
 import { cn } from "@/lib/utils";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Star, Trophy } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiGithub } from "react-icons/si";
@@ -20,6 +20,8 @@ type ProjectType = {
   github?: string;
   demo?: string;
   awards?: string[];
+  /** GitHub APIから取得したスター数をバッジ表示する */
+  showStars?: boolean;
 };
 
 const projects: ProjectType[] = [
@@ -32,7 +34,7 @@ const projects: ProjectType[] = [
     tags: ["Next.js", "Auth.js", "Prisma", "PostgreSQL", "Tailwind CSS", "shadcn/ui", "Docker"],
     github: "https://github.com/runa-devs/clothify",
     demo: "https://clothify.runa.dev",
-    awards: ["🏆 技育CAMPハッカソン 優秀賞", "🎖️技育博 DeNA賞, CARTA賞"],
+    awards: ["技育CAMPハッカソン 優秀賞", "技育博 DeNA賞・CARTA賞"],
   },
   {
     id: "magnito",
@@ -41,8 +43,8 @@ const projects: ProjectType[] = [
       "Amazon Cognitoのエミュレーター。インターネット接続なしでCognitoのエンドポイントとして使用できます。",
     image: "/projects/magnito.svg",
     tags: ["TypeScript", "Docker", "Cognito", "API", "フレームワーク"],
-    github: "https://github.com/frouriojs/magnito",
-    awards: ["⭐ 100+ Stars"],
+    github: "https://github.com/frourios/magnito",
+    showStars: true,
   },
   {
     id: "yoncomic-studio",
@@ -62,7 +64,7 @@ const projects: ProjectType[] = [
       "Civitai API",
     ],
     github: "https://github.com/runa-devs/yoncomic-studio",
-    awards: ["🏆 技育CAMPハッカソン 努力賞"],
+    awards: ["技育CAMPハッカソン 努力賞"],
   },
   {
     id: "novelai-sdk",
@@ -81,7 +83,7 @@ const projects: ProjectType[] = [
     image: "/projects/next-authjs-template.png",
     tags: ["Next.js", "Auth.js", "Prisma", "shadcn/ui", "Template"],
     github: "https://github.com/caru-ini/next-authjs-template",
-    awards: ["⭐ 20+ Stars"],
+    showStars: true,
   },
   {
     id: "portfolio",
@@ -92,6 +94,43 @@ const projects: ProjectType[] = [
     github: "https://github.com/caru-ini/portfolio",
   },
 ];
+
+function AwardBadge({ award, compact = false }: { award: string; compact?: boolean }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 font-medium text-foreground/80",
+        compact ? "text-xs" : "text-sm"
+      )}
+    >
+      <Trophy
+        className={cn("text-amber-500 dark:text-amber-400", compact ? "size-3" : "size-3.5")}
+        aria-hidden
+      />
+      {award}
+    </span>
+  );
+}
+
+function StarBadge({ count, compact = false }: { count: number; compact?: boolean }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 font-medium text-foreground/80",
+        compact ? "text-xs" : "text-sm"
+      )}
+    >
+      <Star
+        className={cn(
+          "fill-amber-500 text-amber-500 dark:fill-amber-400 dark:text-amber-400",
+          compact ? "size-3" : "size-3.5"
+        )}
+        aria-hidden
+      />
+      {count.toLocaleString("en-US")} Stars
+    </span>
+  );
+}
 
 function ProjectTags({ tags, maxCount = 5 }: { tags: string[]; maxCount?: number }) {
   const visibleTags = tags.slice(0, maxCount);
@@ -154,27 +193,33 @@ function ProjectLinks({
   );
 }
 
-export function ProjectsSection() {
+export async function ProjectsSection() {
   const [featured, ...others] = projects;
   if (!featured) return null;
 
-  return (
-    <section className="bg-muted/20 py-20" id="projects">
-      <div className="container mx-auto max-w-5xl px-2">
-        <div className="mb-8 max-w-2xl px-2 sm:mb-12">
-          <h2 className="mb-4 inline-flex rounded-sm py-2 text-3xl font-bold sm:text-4xl">
-            プロジェクト
-          </h2>
-          <p className="leading-7 text-muted-foreground">
-            これまでに手がけた主なプロジェクトをご紹介します。
-          </p>
-        </div>
+  const starEntries = await Promise.all(
+    projects
+      .filter((project): project is ProjectType & { github: string } =>
+        Boolean(project.showStars && project.github)
+      )
+      .map(async (project) => [project.id, await getRepoStars(project.github)] as const)
+  );
+  const starsById = new Map(starEntries);
 
-        <FeaturedProject project={featured} />
+  return (
+    <section className="scroll-mt-20 bg-muted/20 py-20" id="projects">
+      <div className="container mx-auto max-w-5xl px-2">
+        <SectionHeader
+          title="プロジェクト"
+          description="これまでに手がけた主なプロジェクトをご紹介します。"
+          className="px-2"
+        />
+
+        <FeaturedProject project={featured} stars={starsById.get(featured.id)} />
 
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {others.map((project) => (
-            <ProjectItem key={project.id} project={project} />
+            <ProjectItem key={project.id} project={project} stars={starsById.get(project.id)} />
           ))}
         </div>
       </div>
@@ -182,7 +227,7 @@ export function ProjectsSection() {
   );
 }
 
-function FeaturedProject({ project }: { project: ProjectType }) {
+function FeaturedProject({ project, stars }: { project: ProjectType; stars?: number | null }) {
   return (
     <div className={cn(cardBaseStyles, "rounded-2xl")}>
       <div className="grid md:grid-cols-2">
@@ -197,19 +242,12 @@ function FeaturedProject({ project }: { project: ProjectType }) {
           />
         </div>
         <div className="flex flex-col justify-center p-6 md:p-8">
-          <div className="mb-2 text-xs font-medium uppercase tracking-wider text-primary">
-            Featured
-          </div>
           <h3 className="mb-3 text-2xl font-bold">{project.title}</h3>
-          {project.awards && project.awards.length > 0 && (
-            <div className="mb-3 flex flex-wrap gap-2">
-              {project.awards.map((award) => (
-                <span
-                  key={award}
-                  className="rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 px-3 py-1 text-xs font-medium text-amber-600 dark:text-amber-400"
-                >
-                  {award}
-                </span>
+          {(stars != null || (project.awards && project.awards.length > 0)) && (
+            <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1">
+              {stars != null && <StarBadge count={stars} />}
+              {project.awards?.map((award) => (
+                <AwardBadge key={award} award={award} />
               ))}
             </div>
           )}
@@ -224,7 +262,7 @@ function FeaturedProject({ project }: { project: ProjectType }) {
   );
 }
 
-function ProjectItem({ project }: { project: ProjectType }) {
+function ProjectItem({ project, stars }: { project: ProjectType; stars?: number | null }) {
   return (
     <div className={cn(cardBaseStyles, "flex flex-col rounded-xl")}>
       <div className="relative h-40 overflow-hidden">
@@ -242,15 +280,11 @@ function ProjectItem({ project }: { project: ProjectType }) {
       </div>
       <div className="flex flex-1 flex-col p-4">
         <h3 className="mb-1 font-semibold">{project.title}</h3>
-        {project.awards && project.awards.length > 0 && (
-          <div className="mb-2 flex flex-wrap gap-1">
-            {project.awards.slice(0, 2).map((award) => (
-              <span
-                key={award}
-                className="rounded-full bg-gradient-to-r from-amber-500/20 to-yellow-500/20 px-2 py-0.5 text-[10px] font-medium text-amber-600 dark:text-amber-400"
-              >
-                {award}
-              </span>
+        {(stars != null || (project.awards && project.awards.length > 0)) && (
+          <div className="mb-2 flex flex-wrap gap-x-3 gap-y-0.5">
+            {stars != null && <StarBadge count={stars} compact />}
+            {project.awards?.slice(0, 2).map((award) => (
+              <AwardBadge key={award} award={award} compact />
             ))}
           </div>
         )}

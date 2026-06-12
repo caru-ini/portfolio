@@ -21,9 +21,9 @@ export default function Home() {
     <main className="flex flex-1 flex-col">
       <Header />
       <HeroSection />
-      <HistorySection />
-      <SkillsSection />
       <ProjectsSection />
+      <SkillsSection />
+      <HistorySection />
       <ZennArticles feedUrl="https://zenn.dev/caru/feed" />
       <BlogSection />
       <Footer />

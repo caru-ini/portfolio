@@ -2,7 +2,7 @@
 
 import { BrandLogo } from "@/components/brand-logo";
 import { QRCodeDisplay } from "@/components/qr-code";
-import { ExternalLinkIcon, Heart, ImageIcon, Mail } from "lucide-react";
+import { ExternalLinkIcon, Heart, Mail } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { SiDiscord, SiGithub, SiX } from "react-icons/si";
@@ -95,17 +95,6 @@ export const Footer = () => {
                   Runa.dev
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/presskit"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary"
-                >
-                  <ImageIcon className="size-4" />
-                  プレスキット
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -134,7 +123,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="https://github.com/frouriojs/magnito"
+                  href="https://github.com/frourios/magnito"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground transition-colors hover:text-primary"

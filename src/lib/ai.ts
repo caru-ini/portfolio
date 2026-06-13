@@ -13,7 +13,7 @@ export const generateWithGLM = async ({
   instructions: string;
   input: string;
 }) => {
-  const model = openRouter("z-ai/glm-4.5-air:free");
+  const model = openRouter(env.DESCRIBE_MODEL);
   const response = await generateText({
     model,
     prompt: `${instructions}\n\n${input}`,

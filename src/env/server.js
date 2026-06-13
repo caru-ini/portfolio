@@ -12,6 +12,7 @@ export const env = createEnv({
     GITHUB_WEBHOOK_SECRET: z.string().min(1),
     GOOGLE_FONTS_API_KEY: z.string().min(1),
     OPENROUTER_API_KEY: z.string().min(1),
+    DESCRIBE_MODEL: z.string().min(1),
   },
   /**
    * Skip validation of environment variables (useful for CI/CD)

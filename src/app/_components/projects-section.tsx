@@ -8,7 +8,7 @@ import Link from "next/link";
 import { SiGithub } from "react-icons/si";
 
 const cardBaseStyles =
-  "group overflow-hidden border border-border/50 bg-background transition-all duration-300 hover:ring-1 hover:ring-ring";
+  "overflow-hidden border border-border/50 bg-background transition-all duration-300 hover:ring-1 hover:ring-ring";
 const tagStyles = "rounded-full bg-muted px-3 py-1 text-xs font-medium text-muted-foreground";
 
 type ProjectType = {
@@ -238,7 +238,7 @@ function FeaturedProject({ project, stars }: { project: ProjectType; stars?: num
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             quality={80}
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover"
           />
         </div>
         <div className="flex flex-col justify-center p-6 md:p-8">
@@ -272,10 +272,7 @@ function ProjectItem({ project, stars }: { project: ProjectType; stars?: number 
           fill
           sizes="(max-width: 768px) 100vw, 320px"
           quality={70}
-          className={cn(
-            "transition-transform duration-300 group-hover:scale-105",
-            project.id === "magnito" ? "object-contain" : "object-cover"
-          )}
+          className={cn(project.id === "magnito" ? "object-contain" : "object-cover")}
         />
       </div>
       <div className="flex flex-1 flex-col p-4">

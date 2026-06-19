@@ -21,7 +21,7 @@ const generateWithGLMCached = cache(async (input: string) => {
     出力はプレーンテキストで、日本語(敬体)で記述してください。
     この要約は筆者"かる(@caru_ini)"のサイトのブログ記事紹介セクションで、ブログ記事カードの短い説明として使用されます。
     読者の興味を引く(ただしフォーマルに)、わかりやすい説明を心がけてください。
-    出力は100文字以内に収めてください。`,
+    出力は60文字以内に収めてください。`,
         input,
       })
     : "Disabled in development environment";
